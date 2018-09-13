@@ -1,6 +1,12 @@
 @import "~antd/dist/antd.css";
+@import "~bootstrap/scss/bootstrap";
 @import "variables";
 @import "mixins";
 
 body {
+
+}
+
+.canvas-container {
+  height: 100vh;
 }

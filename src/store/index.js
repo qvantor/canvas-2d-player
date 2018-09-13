@@ -8,6 +8,7 @@ export const sagaMiddleware = createSagaMiddleware()
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const middlewares = [sagaMiddleware]
-const enhancer = composeEnhancers(applyMiddleware(...middlewares), persistState(['objects'], { deserialize: subset => Immutable(JSON.parse(subset)) }))
+const enhancer = composeEnhancers(applyMiddleware(...middlewares),
+  persistState(['objects', 'control'], { deserialize: subset => Immutable(JSON.parse(subset)) }))
 
 export const store = createStore(rootReducer, enhancer)
