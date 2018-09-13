@@ -1,5 +1,4 @@
 import ReactReconciler from 'react-reconciler'
-import { fabric } from 'fabric'
 import createInstance from './core/createInstance'
 import { createCanvas, canvas } from './core/container'
 
@@ -40,10 +39,10 @@ const hostConfig = {
     child.forEachObject(item => canvas.add(item))
   },
   prepareUpdate (domElement, type, oldProps, newProps) {
-    return true
+    return newProps.params !== oldProps.params
   },
   commitUpdate (domElement, updatePayload, type, oldProps, newProps) {
-    // console.log('commitUpdate')
+    if (domElement.update) domElement.update(newProps, oldProps, type)
   },
   commitTextUpdate (textInstance, oldText, newText) {
   },

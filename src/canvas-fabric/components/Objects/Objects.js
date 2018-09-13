@@ -9,7 +9,10 @@ class Objects extends Component {
     return (
       <collection>
         {visible.map(item => {
-          return <item.type key={item.id} {...item.props} />
+          return <item.type
+            key={item.id}
+            id={item.id}
+            params={item.params} />
         })}
       </collection>
     )
