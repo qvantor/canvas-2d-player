@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "standard",
+    "standard-react"
+  ],
+  "parser": "babel-eslint",
+  "env": {
+    "es6": true,
+    "node": true
+  }
+}

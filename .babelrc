@@ -1,0 +1,10 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/react"
+  ],
+  "plugins": [
+    "transform-flow-strip-types",
+    "transform-class-properties"
+  ]
+}
