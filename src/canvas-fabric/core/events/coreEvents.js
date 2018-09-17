@@ -21,5 +21,7 @@ export default (obj) => {
   obj.on('scaled', ({ target }) => set(target))
   obj.on('rotated', ({ target }) => set(target))
 
+  obj.on('changed', () => setParams(obj.id, { text: obj.text }))
+
   return obj
 }

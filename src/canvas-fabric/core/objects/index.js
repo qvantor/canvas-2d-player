@@ -13,3 +13,5 @@ export const img = (props) => {
   })
   return fimg
 }
+
+export const textbox = props => new fabric.Textbox(props.params.text, props.params)
