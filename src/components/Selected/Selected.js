@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Rect from './Rect'
+import Text from './Text'
 
 class Selected extends Component {
   render () {
@@ -14,6 +15,7 @@ class Selected extends Component {
     return (
       <div className='pt-3'>
         {obj.type === 'rect' && <Rect obj={obj} />}
+        {obj.type === 'textbox' && <Text obj={obj} />}
       </div>
     )
   }

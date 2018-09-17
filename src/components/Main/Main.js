@@ -3,6 +3,7 @@ import React from 'react'
 import Canvas from '../Canvas/Canvas'
 import Objects from '../Objects/Objects'
 import Selected from '../Selected/Selected'
+import Events from './Events'
 
 class Main extends React.Component {
   state = { cwidth: null, cheight: null }
@@ -17,6 +18,7 @@ class Main extends React.Component {
 
     return (
       <div className='container-fluid'>
+        <Events />
         <div className='row'>
           <div className='col-md-9 canvas-container' ref='canvasContainer'>
             <Canvas width={cwidth} height={cheight} />

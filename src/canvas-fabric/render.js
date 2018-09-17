@@ -30,7 +30,6 @@ const hostConfig = {
   },
   appendChild (parent, child) {
     canvas.add(child)
-    // console.log('appendChild')
   },
   finalizeInitialChildren: (domElement, type, props) => {},
   supportsMutation: true,
@@ -47,7 +46,7 @@ const hostConfig = {
   commitTextUpdate (textInstance, oldText, newText) {
   },
   removeChild (parentInstance, child) {
-    // console.log('removeChild')
+    canvas.remove(child)
   }
 }
 const ReactReconcilerInst = ReactReconciler(hostConfig)

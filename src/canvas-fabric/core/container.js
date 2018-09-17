@@ -1,6 +1,6 @@
 import { fabric } from 'fabric'
 
-import { selected, deselected } from 'reducers/control/control.actions'
+import { selected, deselected, entered, exited } from 'reducers/control/control.actions'
 
 export let canvas
 
@@ -11,6 +11,9 @@ export const createCanvas = elem => {
   canvas.on('selection:cleared', deselected)
   canvas.on('selection:created', select)
   canvas.on('selection:updated', select)
+
+  canvas.on('text:editing:entered', entered)
+  canvas.on('text:editing:exited', exited)
 
   return canvas
 }

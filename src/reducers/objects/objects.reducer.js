@@ -5,6 +5,8 @@ export default function objects (state = Model, { type, payload }) {
   switch (type) {
     case constants.ADD_OBJ:
       return state.merge({ visible: [...state.visible, payload] })
+    case constants.REMOVE_OBJ:
+      return state.merge({ visible: state.visible.filter(item => item.id !== payload) })
     case constants.OBJ_SET_PROPS:
       return state.merge({
         visible: state.visible.update(
