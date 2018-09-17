@@ -12,7 +12,9 @@ export default (obj) => {
     flipX: target.flipX,
     flipY: target.flipY,
     originX: target.originX,
-    originY: target.originY
+    originY: target.originY,
+    width: target.width,
+    height: target.height
   })
 
   obj.on('moved', ({ target }) => set(target))

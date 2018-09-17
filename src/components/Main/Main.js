@@ -1,6 +1,8 @@
 import React from 'react'
 
 import Canvas from '../Canvas/Canvas'
+import Objects from '../Objects/Objects'
+import Selected from '../Selected/Selected'
 
 class Main extends React.Component {
   state = { cwidth: null, cheight: null }
@@ -14,12 +16,15 @@ class Main extends React.Component {
     const { cwidth, cheight } = this.state
 
     return (
-      <div>
+      <div className='container-fluid'>
         <div className='row'>
           <div className='col-md-9 canvas-container' ref='canvasContainer'>
             <Canvas width={cwidth} height={cheight} />
           </div>
-          <div className='col-md-3'>text</div>
+          <div className='col-md-3 p-3 bg-clouds'>
+            <Objects />
+            <Selected />
+          </div>
         </div>
       </div>
     )

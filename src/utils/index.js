@@ -1,7 +1,8 @@
-export const withTimeout = () => {
-  let timeout
-  return (func, time = 80) => {
-    if (timeout) clearTimeout(timeout)
-    timeout = setTimeout(func, time)
+let timeout
+export const withTimeout = (func, time = 80) => {
+  if (timeout) {
+    clearTimeout(timeout)
+    timeout = undefined
   }
+  timeout = setTimeout(func, time)
 }
