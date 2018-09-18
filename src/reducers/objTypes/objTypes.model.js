@@ -19,9 +19,12 @@ export default Immutable({
       name: 'Text',
       type: 'textbox',
       params: {
-        text: 'What?',
+        text: 'Text',
+        fontFamily: 'Arial',
         width: 150,
-        fontSize: 20
+        fontSize: 20,
+        fontWeight: 400,
+        fill: '#000000'
       }
     },
     {
