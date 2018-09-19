@@ -1,0 +1,9 @@
+.selected-params {
+  height: 30vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  .row {
+    margin-bottom: 5px;
+  }
+}

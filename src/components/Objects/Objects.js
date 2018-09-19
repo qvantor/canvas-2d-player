@@ -14,7 +14,7 @@ class Objects extends Component {
       img: Img
     }
     return (
-      <div>
+      <div className='objects-creator'>
         {list.map(item => {
           const TypeComponent = types[item.type]
           if (TypeComponent) return <TypeComponent key={item.type} item={item} />

@@ -26,7 +26,9 @@ class Main extends React.Component {
           </div>
           <div className='col-md-3 p-3 bg-clouds'>
             <Objects />
-            <Selected />
+            <div className='selected-params'>
+              <Selected />
+            </div>
             <LayersExplorer />
           </div>
         </div>

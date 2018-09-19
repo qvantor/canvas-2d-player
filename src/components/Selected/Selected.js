@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import { findObj } from 'reducers/objects/objects.utils'
 
+import Position from './Position'
 import Rect from './Rect'
 import Text from './Text'
 
@@ -17,6 +18,7 @@ class Selected extends Component {
 
     return (
       <div className='pt-3'>
+        <Position obj={obj} />
         {obj.type === 'rect' && <Rect obj={obj} />}
         {obj.type === 'textbox' && <Text obj={obj} />}
       </div>

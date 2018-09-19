@@ -16,7 +16,12 @@ class Img extends Component {
     return (
       <Popover content={<form onSubmit={e => {
         e.preventDefault()
-        addObject({ id: id(), type: item.type, url: value, params: Object.assign({}, item.params, { url: value }) })
+        addObject(Object.assign({
+          id: id(),
+          type: item.type,
+          url: value,
+          params: Object.assign({}, item.params, { url: value })
+        }, item))
       }}>
         <Input
           onChange={e => this.setState({ value: e.target.value })}

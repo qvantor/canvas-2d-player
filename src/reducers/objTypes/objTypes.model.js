@@ -6,11 +6,13 @@ export default Immutable({
       name: 'Group',
       type: 'group',
       params: {},
+      keyframes: [],
       children: []
     },
     {
       name: 'Rect',
       type: 'rect',
+      keyframes: [],
       params: {
         width: 50,
         height: 50,
@@ -20,6 +22,7 @@ export default Immutable({
     {
       name: 'Text',
       type: 'textbox',
+      keyframes: [],
       params: {
         text: 'Text',
         fontFamily: 'Arial',
@@ -31,6 +34,7 @@ export default Immutable({
     },
     {
       name: 'Image',
-      type: 'img'
+      type: 'img',
+      keyframes: []
     }]
 })
