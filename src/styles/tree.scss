@@ -1,0 +1,20 @@
+.tree {
+  border: 1px solid $silver;
+  padding: 10px 0;
+  .tree-item {
+    .item {
+      padding: 2px 10px;
+      margin: 3px 0;
+      border: 1px solid $silver;
+    }
+    .children {
+      margin-left: 10px;
+    }
+
+    &.active {
+      & > .item {
+        background: transparentize($nephritis, 0.85);
+      }
+    }
+  }
+}

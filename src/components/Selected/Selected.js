@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import { findObj } from 'reducers/objects/objects.utils'
+
 import Rect from './Rect'
 import Text from './Text'
 
@@ -10,7 +12,8 @@ class Selected extends Component {
     const { selection, visible } = this.props
     if (!selection || selection.length !== 1) return null
     const selected = selection[0]
-    const obj = visible.find(item => item.id === selected)
+    const obj = findObj(selected, visible)
+    if (!obj) return null
 
     return (
       <div className='pt-3'>

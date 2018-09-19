@@ -3,6 +3,7 @@ import React from 'react'
 import Canvas from '../Canvas/Canvas'
 import Objects from '../Objects/Objects'
 import Selected from '../Selected/Selected'
+import LayersExplorer from '../LayersExplorer/LayersExplorer'
 import Events from './Events'
 
 class Main extends React.Component {
@@ -26,6 +27,7 @@ class Main extends React.Component {
           <div className='col-md-3 p-3 bg-clouds'>
             <Objects />
             <Selected />
+            <LayersExplorer />
           </div>
         </div>
       </div>

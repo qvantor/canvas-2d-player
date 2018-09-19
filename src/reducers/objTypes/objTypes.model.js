@@ -4,7 +4,9 @@ export default Immutable({
   list: [
     {
       name: 'Group',
-      type: 'group'
+      type: 'group',
+      params: {},
+      children: []
     },
     {
       name: 'Rect',

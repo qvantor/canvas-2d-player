@@ -20,7 +20,7 @@ class Objects extends Component {
           if (TypeComponent) return <TypeComponent key={item.type} item={item} />
           return (<Button
             className='mr-1'
-            onClick={() => addObject({ id: id(), type: item.type, params: item.params })}
+            onClick={() => addObject(Object.assign({ id: id() }, item))}
             key={item.type}>
             {item.name}
           </Button>)

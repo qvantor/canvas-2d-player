@@ -29,7 +29,8 @@ const hostConfig = {
     else throw Error('This element can\'t contain child')
   },
   appendChild (parent, child) {
-    canvas.add(child)
+    if (parent.type === 'group') parent.addWithUpdate(child)
+    else canvas.add(child)
   },
   finalizeInitialChildren: (domElement, type, props) => {},
   supportsMutation: true,
@@ -45,8 +46,9 @@ const hostConfig = {
   },
   commitTextUpdate (textInstance, oldText, newText) {
   },
-  removeChild (parentInstance, child) {
-    canvas.remove(child)
+  removeChild (parent, child) {
+    if (parent.type === 'group') parent.remove(child)
+    else canvas.remove(child)
   }
 }
 const ReactReconcilerInst = ReactReconciler(hostConfig)
