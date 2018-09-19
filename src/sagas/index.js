@@ -1,5 +1,4 @@
 import { sagaMiddleware } from '../store'
 
-// import initial from './initial.saga'
-//
-// sagaMiddleware.run(initial)
+import play from './play.saga'
+sagaMiddleware.run(play)

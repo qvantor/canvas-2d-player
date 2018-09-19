@@ -1,4 +1,4 @@
-import { canvas } from '../container'
+import { render } from '../container'
 
 import rect from './rect'
 import textbox from './textbox'
@@ -19,7 +19,7 @@ export default (obj, props) => {
     obj.width = params.width
     obj.height = params.height
     obj.setCoords()
-    canvas.renderAll()
+    render()
   }
   return obj
 }
