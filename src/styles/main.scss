@@ -6,6 +6,7 @@
 @import "layers-explorer";
 @import "objects-creator";
 @import "selected-params";
+@import "timeline-container";
 
 body {
 
@@ -13,10 +14,6 @@ body {
 
 .canvas-container {
   height: 60vh;
-}
-
-.timeline-container {
-  height: 39vh;
 }
 
 .bg-clouds {

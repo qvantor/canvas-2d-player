@@ -1,0 +1,16 @@
+.timeline-container {
+  padding: 10px;
+  background: $silver;
+  height: 40vh;
+
+  .timeline-editor {
+    svg {
+      .bg-rect {
+        fill: transparent;
+      }
+      .line-time {
+        stroke: $alizarin;
+      }
+    }
+  }
+}
