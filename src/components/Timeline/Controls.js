@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Icon from 'antd/lib/icon'
+import ControlsFrames from './ControlsFrames'
 import { frameToggle } from 'reducers/control/control.actions'
 import { getClassNames } from 'dynamic-class-list'
 
@@ -14,6 +15,7 @@ class Controls extends Component {
             <Icon type='caret-right' onClick={() => frameToggle(item.id)} />
             {item.name}
           </div>
+          {open && <ControlsFrames obj={item} />}
           {item.children && this.renderObjects(item.children)}
         </div>)
     })

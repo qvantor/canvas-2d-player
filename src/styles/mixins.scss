@@ -1,3 +1,11 @@
 @mixin transition($time:500ms,$timing:ease-out) {
   transition: all $time $timing;
 }
+
+@mixin rotate($angle: 90deg) {
+  -webkit-transform: rotate($angle);
+  -moz-transform: rotate($angle);
+  -o-transform: rotate($angle);
+  -ms-transform: rotate($angle);
+  transform: rotate($angle);
+}

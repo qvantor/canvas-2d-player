@@ -9,7 +9,7 @@ import TimelineEditorList from './TimelineEditorList'
 class TimelineEditor extends Component {
   render () {
     const { width, height, duration } = this.props
-    const padding = 0
+    const padding = 5
 
     const xScale = scaleLinear()
       .domain([0, duration])

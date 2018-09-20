@@ -1,6 +1,6 @@
 $lineHeight: 22px;
 $lineMargin: 2px;
-$border: 1px solid $clouds;
+$border: 1px solid transparentize($clouds, 0.3);
 
 .timeline-container {
   padding: 10px;
@@ -21,13 +21,14 @@ $border: 1px solid $clouds;
       line-height: $lineHeight;
       &.open {
         .anticon-caret-right {
-          -webkit-transform: rotate(90deg);
-          -moz-transform: rotate(90deg);
-          -o-transform: rotate(90deg);
-          -ms-transform: rotate(90deg);
-          transform: rotate(90deg);
+          @include rotate();
         }
       }
+    }
+    .keyframe {
+      border-bottom: $border;
+      height: $lineHeight;
+      line-height: $lineHeight;
     }
   }
 
@@ -83,6 +84,20 @@ $border: 1px solid $clouds;
               right: 0;
             }
           }
+        }
+      }
+      .keyframe-field {
+        position: relative;
+        padding-left: 5px;
+        height: $lineHeight;
+        border-bottom: $border;
+        .keyframe {
+          @include rotate(45deg);
+          position: absolute;
+          background: $sunFlower;
+          width: 10px;
+          height: 10px;
+          top: 6px;
         }
       }
     }

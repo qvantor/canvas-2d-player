@@ -13,6 +13,7 @@ class Timeline extends Component {
   }
 
   render () {
+    // @todo put TimelineEditor and Controls together
     const { width, height } = this.state
     return (
       <div className='timeline-container row'>
