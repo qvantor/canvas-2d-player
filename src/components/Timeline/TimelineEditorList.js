@@ -13,6 +13,7 @@ class TimelineEditorList extends Component {
             <VisibleLines key={i} objId={item.id} keyId={i} line={line} scale={scale} />
           )}
         </div>
+        {item.children && this.renderObjects(item.children)}
       </div>)
   }
 

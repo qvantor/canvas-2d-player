@@ -1,15 +1,40 @@
-$lineHeight: 20px;
+$lineHeight: 22px;
 $lineMargin: 2px;
+$border: 1px solid $clouds;
 
 .timeline-container {
   padding: 10px;
   background: $silver;
   height: 40vh;
+  .scroll-y {
+    overflow-y: scroll;
+    width: 100%;
+  }
+  .static {
+    position: fixed;
+  }
+  .controls {
+    padding-top: 40px;
+    .control-item {
+      border-bottom: $border;
+      height: $lineHeight;
+      line-height: $lineHeight;
+      &.open {
+        .anticon-caret-right {
+          -webkit-transform: rotate(90deg);
+          -moz-transform: rotate(90deg);
+          -o-transform: rotate(90deg);
+          -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
 
   .timeline-editor {
-    overflow: scroll;
-    max-height: 100%;
     svg.axis {
+      overflow: visible;
+      z-index: 1;
       background: $silver;
       position: fixed;
       .bg-rect {
@@ -19,6 +44,7 @@ $lineMargin: 2px;
     svg.line {
       position: fixed;
       pointer-events: none;
+      z-index: 2;
       .line-time {
         stroke: $alizarin;
       }
@@ -29,7 +55,7 @@ $lineMargin: 2px;
       .visible-lines {
         position: relative;
         height: $lineHeight;
-        border-bottom: 1px solid $clouds;
+        border-bottom: $border;
         left: 5px;
 
         .line {

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import Buttons from './Buttons'
+import Controls from './Controls'
 import TimelineEditor from './TimelineEditor'
 
 class Timeline extends Component {
@@ -15,11 +16,16 @@ class Timeline extends Component {
     const { width, height } = this.state
     return (
       <div className='timeline-container row'>
-        <div className='col-3'>
-          <Buttons />
-        </div>
-        <div className='col-9 p-0' ref='timeline'>
-          <TimelineEditor height={height} width={width} />
+        <div className='scroll-y row'>
+          <div className='col-3 pr-0'>
+            <div className='static'>
+              <Buttons />
+            </div>
+            <Controls />
+          </div>
+          <div className='col-9 p-0' ref='timeline'>
+            <TimelineEditor height={height} width={width} />
+          </div>
         </div>
       </div>
     )
