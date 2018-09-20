@@ -16,3 +16,6 @@ export const putToRoot = (child) => {
 }
 export const removeObject = (id) => dispatch({ type: constants.REMOVE_OBJ, payload: id })
 export const setParams = (id, params) => dispatch({ type: constants.OBJ_SET_PROPS, payload: { id, params } })
+
+export const setObjectVisibleFrame = (objId, keyId, value) =>
+  dispatch({ type: constants.OBJ_VISIBLE_FRAME_SET, payload: { objId, keyId, value } })

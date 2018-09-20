@@ -28,7 +28,7 @@ class Main extends React.Component {
             </div>
             <Timeline />
           </div>
-          <div className='col-md-3 p-3 bg-clouds'>
+          <div className='col-md-3 bg-clouds'>
             <Objects />
             <div className='selected-params'>
               <Selected />

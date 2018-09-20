@@ -4,8 +4,18 @@ import 'reducers/objects/objects.actions'
 import { calcParams } from './animate'
 
 class Objects extends Component {
+  checkVisible = (keys, time) => {
+    for (let key of keys) {
+      if (key[0] <= time && key[1] >= time) {
+        return true
+      }
+    }
+    return false
+  }
+
   renderObj = (objs) =>
     objs.map(item => {
+      if (!this.checkVisible(item.visible, this.props.time)) return
       let newParams
       if (Object.keys(item.keyframes).length > 0) {
         const keyParams = calcParams(item.keyframes, this.props.time)

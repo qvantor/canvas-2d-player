@@ -1,5 +1,7 @@
 export const ADD_OBJ = 'ADD_OBJ'
 export const OBJ_MOVED = 'OBJ_MOVED'
 export const OBJ_MOVED_ROOT = 'OBJ_MOVED_ROOT'
+export const OBJ_VISIBLE_FRAME_SET = 'OBJ_VISIBLE_FRAME_SET'
+export const OBJ_VISIBLE_FRAME_SETTED = 'OBJ_VISIBLE_FRAME_SETTED'
 export const REMOVE_OBJ = 'REMOVE_OBJ'
 export const OBJ_SET_PROPS = 'OBJ_SET_PROPS'

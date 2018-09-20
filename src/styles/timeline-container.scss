@@ -1,15 +1,63 @@
+$lineHeight: 20px;
+$lineMargin: 2px;
+
 .timeline-container {
   padding: 10px;
   background: $silver;
   height: 40vh;
 
   .timeline-editor {
-    svg {
+    overflow: scroll;
+    max-height: 100%;
+    svg.axis {
+      background: $silver;
+      position: fixed;
       .bg-rect {
         fill: transparent;
       }
+    }
+    svg.line {
+      position: fixed;
+      pointer-events: none;
       .line-time {
         stroke: $alizarin;
+      }
+    }
+    .timeline-editor-list {
+      padding-top: 40px;
+
+      .visible-lines {
+        position: relative;
+        height: $lineHeight;
+        border-bottom: 1px solid $clouds;
+        left: 5px;
+
+        .line {
+          position: absolute;
+          height: $lineHeight;
+          .brush {
+            height: $lineHeight - ($lineMargin * 2);
+            margin: $lineMargin 0;
+            width: 100%;
+            background: $orange;
+          }
+
+          .handle {
+            position: absolute;
+            background: $wetAsphalt;
+            height: $lineHeight - ($lineMargin * 2);
+            width: 3px;
+            top: $lineMargin;
+            cursor: ew-resize;
+
+            &.handle-left {
+              left: 0;
+            }
+            &.handle-right {
+              right: 0;
+            }
+          }
+        }
       }
     }
   }

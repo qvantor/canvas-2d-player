@@ -28,6 +28,10 @@ const hostConfig = {
     else if (parent.add) parent.add(child)
     else throw Error('This element can\'t contain child')
   },
+  insertBefore: (parent, child) => {
+    if (parent.type === 'group') parent.addWithUpdate(child)
+    else canvas.add(child)
+  },
   appendChild (parent, child) {
     if (parent.type === 'group') parent.addWithUpdate(child)
     else canvas.add(child)

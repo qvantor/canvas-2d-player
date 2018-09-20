@@ -39,12 +39,12 @@ const recursiveToRoot = (oldState, id) => {
   return [...state, model]
 }
 
-const recursiveSetProp = (state, id, prop) => {
+const recursiveSetProp = merge => (state, id) => {
   for (let item of state) {
     if (item.id === id) {
-      return state.update(state.indexOf(item), item => item.merge({ params: item.params.merge(prop) }))
+      return state.update(state.indexOf(item), merge)
     } else if (item.children) {
-      const newState = recursiveSetProp(item.children, id, prop)
+      const newState = recursiveSetProp(item.children, id)
       if (newState) return state.update(state.indexOf(item), item => item.merge({ children: newState }))
     }
   }
@@ -61,7 +61,17 @@ export default function objects (state = Model, { type, payload }) {
     case constants.REMOVE_OBJ:
       return state.merge({ visible: findNremove(state.visible, payload).state })
     case constants.OBJ_SET_PROPS:
-      return state.merge({ visible: recursiveSetProp(state.visible, payload.id, payload.params) })
+      return state.merge({
+        visible: recursiveSetProp(item => item.merge({
+          params: item.params.merge(payload.params)
+        }))(state.visible, payload.id)
+      })
+    case constants.OBJ_VISIBLE_FRAME_SETTED:
+      return state.merge({
+        visible: recursiveSetProp(item => item.merge({
+          visible: payload.frames
+        }))(state.visible, payload.id)
+      })
     default:
       return state
   }
