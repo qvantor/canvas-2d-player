@@ -5,7 +5,7 @@ export default Immutable({
     {
       name: 'Group',
       type: 'group',
-      visible: [[0, 1000], [1500, 2000]],
+      visible: [[0, 5000]],
       params: {},
       keyframes: {},
       children: []
@@ -14,13 +14,7 @@ export default Immutable({
       name: 'Rect',
       type: 'rect',
       visible: [[0, 5000]],
-      keyframes: {
-        width: {
-          keys: [[0, 50], [1000, 100], [2000, 50]],
-          from: 0,
-          to: 2000
-        }
-      },
+      keyframes: {},
       params: {
         width: 50,
         height: 50,
@@ -34,9 +28,11 @@ export default Immutable({
     {
       name: 'Text',
       type: 'textbox',
-      visible: [[0, 1000], [1500, 2000]],
+      visible: [[0, 5000]],
       keyframes: {},
       params: {
+        left: 100,
+        top: 100,
         text: 'Text',
         fontFamily: 'Arial',
         width: 150,

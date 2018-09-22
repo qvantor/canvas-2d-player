@@ -1,31 +1,18 @@
-import MainLoop from 'mainloop.js'
 import { take } from 'redux-saga/effects'
 import { store } from 'store/'
 
 import * as timelineConst from 'reducers/timeline/timeline.constants'
 import { setTime } from 'reducers/timeline/timeline.actions'
 
-const { getState } = store
-
-MainLoop.setMaxAllowedFPS(25)
-
-const loop = MainLoop
-  .setUpdate(e => {
-    const { timeline: { time, duration } } = getState()
-    if (time >= duration) {
-      setTime(0)
-    } else {
-      setTime(Math.ceil(time + e))
-    }
-  })
+const {getState} = store
 
 export default function * () {
   while (true) {
     yield take(timelineConst.TIMELINE_PLAY)
-    const a = 30
+    const a = 20
     const loop = setInterval(e => {
-      const { timeline: { time, duration } } = getState()
-      if (time >= duration) {
+      const {timeline: {time, duration}} = getState()
+      if (time + a >= duration) {
         setTime(0)
       } else {
         setTime(time + a)

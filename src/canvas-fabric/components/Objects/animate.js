@@ -17,7 +17,7 @@ export const calcParams = (keyframes, time) => {
     } else {
       const firstFrame = value.keys[0]
       const lastFrame = value.keys[value.keys.length - 1]
-      calculated[key] = firstFrame.time >= time ? firstFrame[1] : lastFrame[1]
+      calculated[key] = firstFrame[0] >= time ? firstFrame[1] : lastFrame[1]
     }
   }
   return calculated

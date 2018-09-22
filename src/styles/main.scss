@@ -7,6 +7,7 @@
 @import "objects-creator";
 @import "selected-params";
 @import "timeline-container";
+@import "keyframes";
 
 body {
 
@@ -18,4 +19,8 @@ body {
 
 .bg-clouds {
   background: $clouds;
+}
+
+.text-color-concrete {
+  color: $concrete
 }

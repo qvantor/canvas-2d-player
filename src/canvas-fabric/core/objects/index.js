@@ -1,5 +1,5 @@
 import { fabric } from 'fabric'
-import { canvas, render } from '../container'
+import { render } from '../container'
 
 export const rect = (props) => new fabric.Rect(props.params)
 export const group = (props) => new fabric.Group(null, props.params)

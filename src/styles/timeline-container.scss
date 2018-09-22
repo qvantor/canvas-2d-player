@@ -93,6 +93,7 @@ $border: 1px solid transparentize($clouds, 0.3);
         border-bottom: $border;
         .keyframe {
           @include rotate(45deg);
+          cursor: ew-resize;
           position: absolute;
           background: $sunFlower;
           width: 10px;

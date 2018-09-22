@@ -33,7 +33,7 @@ export const render = () => {
 export const createCanvas = elem => {
   canvas = new fabric.Canvas(elem)
   const stats = new Stats()
-  // document.body.appendChild(stats.dom)
+  document.body.appendChild(stats.dom)
 
   const select = (e) => selected(e.selected.map(item => item.id))
   canvas.on('selection:cleared', deselected)
