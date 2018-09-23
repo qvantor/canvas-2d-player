@@ -4,13 +4,18 @@ import { select, mouse } from 'd3-selection'
 import { drag } from 'd3-drag'
 import ReactDOM from 'react-dom'
 
-import { setKeyFrameTime } from 'reducers/objects/objects.actions'
+import { setKeyFrameTime, removeKeyFrame } from 'reducers/objects/objects.actions'
 
 class TimelineEditorFrames extends Component {
   state = { parent: null }
 
   componentDidMount () {
     this.setState({ parent: ReactDOM.findDOMNode(this).parentNode })
+  }
+
+  onContextMenu = (e, id, index, key) => {
+    e.preventDefault()
+    removeKeyFrame(id, index, key)
   }
 
   render () {
@@ -27,6 +32,7 @@ class TimelineEditorFrames extends Component {
                 key={i}
                 style={{ left: scale(item[0]) }}
                 className='keyframe'
+                onContextMenu={e => this.onContextMenu(e, obj.id, i, key)}
                 ref={el => select(el).call(drag().on('drag', () => {
                   const value = scale.invert(mouse(parent || this.refs.parent)[0])
                   setKeyFrameTime(obj.id, i, value, key)

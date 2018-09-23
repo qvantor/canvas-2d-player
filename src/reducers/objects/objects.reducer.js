@@ -83,6 +83,18 @@ export default function objects (state = Model, { type, payload }) {
             })
           }))(state.visible, payload.id)
       })
+
+    case constants.OBJ_KEYFRAME_REMOVE:
+      return state.merge({
+        visible: recursiveSetProp(item =>
+          item.merge({
+            keyframes: item.keyframes.merge({
+              [payload.key]: {
+                keys: item.keyframes[payload.key].keys.filter((f, i) => i !== payload.keyId)
+              }
+            })
+          }))(state.visible, payload.id)
+      })
     default:
       return state
   }

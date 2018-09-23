@@ -22,3 +22,6 @@ export const setObjectVisibleFrame = (objId, keyId, value) =>
 
 export const setKeyFrameTime = (id, keyId, value, key) =>
   dispatch({ type: constants.OBJ_KEYFRAME_TIME_SET, payload: { id, keyId, value: Math.round(value), key } })
+
+export const removeKeyFrame = (id, keyId, key) =>
+  dispatch({ type: constants.OBJ_KEYFRAME_REMOVE, payload: { id, keyId, key } })
