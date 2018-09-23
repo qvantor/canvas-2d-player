@@ -1,6 +1,7 @@
 import * as constants from './objects.constants'
 import { store } from 'store'
 import { setActiveObject } from 'canvas-fabric/core/container'
+import { round } from 'utils/'
 
 const { dispatch } = store
 
@@ -15,13 +16,13 @@ export const putToRoot = (child) => {
   setActiveObject(child)
 }
 export const removeObject = (id) => dispatch({ type: constants.REMOVE_OBJ, payload: id })
-export const setParams = (id, params) => dispatch({ type: constants.OBJ_SET_PROPS, payload: { id, params } })
+export const setParams = (id, params) => dispatch({ type: constants.OBJ_PROPS_SET, payload: { id, params } })
 
 export const setObjectVisibleFrame = (objId, keyId, value) =>
   dispatch({ type: constants.OBJ_VISIBLE_FRAME_SET, payload: { objId, keyId, value } })
 
 export const setKeyFrameTime = (id, keyId, value, key) =>
-  dispatch({ type: constants.OBJ_KEYFRAME_TIME_SET, payload: { id, keyId, value: Math.round(value), key } })
+  dispatch({ type: constants.OBJ_KEYFRAME_TIME_SET, payload: { id, keyId, value: round(value), key } })
 
 export const removeKeyFrame = (id, keyId, key) =>
   dispatch({ type: constants.OBJ_KEYFRAME_REMOVE, payload: { id, keyId, key } })

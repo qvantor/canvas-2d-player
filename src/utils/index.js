@@ -6,3 +6,5 @@ export const withTimeout = (func, time = 80) => {
   }
   timeout = setTimeout(func, time)
 }
+
+export const round = (num, div = 30) => Math.floor(num / div) * div

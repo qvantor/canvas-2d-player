@@ -60,7 +60,7 @@ export default function objects (state = Model, { type, payload }) {
       return state.merge({ visible: recursiveToRoot(state.visible, payload) })
     case constants.REMOVE_OBJ:
       return state.merge({ visible: findNremove(state.visible, payload).state })
-    case constants.OBJ_SET_PROPS:
+    case constants.OBJ_PROPS_SETTED:
       return state.merge({
         visible: recursiveSetProp(item => item.merge({
           params: item.params.merge(payload.params)
@@ -72,6 +72,14 @@ export default function objects (state = Model, { type, payload }) {
           visible: payload.frames
         }))(state.visible, payload.id)
       })
+
+    case constants.OBJ_KEYFRAME_ADD:
+      return state.merge({
+        visible: recursiveSetProp(item => item.merge({
+          keyframes: payload.newKeyFrames
+        }))(state.visible, payload.id)
+      })
+
     case constants.OBJ_KEYFRAME_TIME_SET:
       return state.merge({
         visible: recursiveSetProp(item =>
