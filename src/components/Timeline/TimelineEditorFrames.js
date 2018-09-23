@@ -4,6 +4,8 @@ import { select, mouse } from 'd3-selection'
 import { drag } from 'd3-drag'
 import ReactDOM from 'react-dom'
 
+import { setKeyFrameTime } from 'reducers/objects/objects.actions'
+
 class TimelineEditorFrames extends Component {
   state = { parent: null }
 
@@ -17,9 +19,9 @@ class TimelineEditorFrames extends Component {
 
     return (
       <div ref='parent'>
-        {Object.keys(obj.keyframes).map(item => {
-          const frame = obj.keyframes[item]
-          return (<div className='keyframe-field' key={item}>
+        {Object.keys(obj.keyframes).map(key => {
+          const frame = obj.keyframes[key]
+          return (<div className='keyframe-field' key={key}>
             {frame.keys.map((item, i) =>
               <div
                 key={i}
@@ -27,7 +29,7 @@ class TimelineEditorFrames extends Component {
                 className='keyframe'
                 ref={el => select(el).call(drag().on('drag', () => {
                   const value = scale.invert(mouse(parent || this.refs.parent)[0])
-                  console.log(value)
+                  setKeyFrameTime(obj.id, i, value, key)
                 }))} />)}
           </div>)
         })}

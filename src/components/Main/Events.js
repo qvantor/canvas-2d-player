@@ -15,7 +15,7 @@ class Events extends React.Component {
 
   removeElement = () => {
     const { selection, textEditing } = this.props
-    if (selection.length === 1 && !textEditing) removeObject(selection[0])
+    if (selection && selection.length === 1 && !textEditing) removeObject(selection[0])
   }
 
   render = () => null

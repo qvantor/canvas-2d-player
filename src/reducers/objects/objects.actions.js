@@ -19,3 +19,6 @@ export const setParams = (id, params) => dispatch({ type: constants.OBJ_SET_PROP
 
 export const setObjectVisibleFrame = (objId, keyId, value) =>
   dispatch({ type: constants.OBJ_VISIBLE_FRAME_SET, payload: { objId, keyId, value } })
+
+export const setKeyFrameTime = (id, keyId, value, key) =>
+  dispatch({ type: constants.OBJ_KEYFRAME_TIME_SET, payload: { id, keyId, value: Math.round(value), key } })

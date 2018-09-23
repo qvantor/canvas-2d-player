@@ -72,6 +72,17 @@ export default function objects (state = Model, { type, payload }) {
           visible: payload.frames
         }))(state.visible, payload.id)
       })
+    case constants.OBJ_KEYFRAME_TIME_SET:
+      return state.merge({
+        visible: recursiveSetProp(item =>
+          item.merge({
+            keyframes: item.keyframes.merge({
+              [payload.key]: {
+                keys: item.keyframes[payload.key].keys.update(payload.keyId, frame => [payload.value, frame[1]])
+              }
+            })
+          }))(state.visible, payload.id)
+      })
     default:
       return state
   }
