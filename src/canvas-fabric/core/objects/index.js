@@ -7,7 +7,7 @@ export const collection = () => fabric.Collection
 
 export const img = (props) => {
   const fimg = new fabric.Image(null, props.params)
-  fimg.setSrc(props.params.url, () => {
+  fimg.setSrc(props.url, () => {
     render()
     fimg.setCoords()
   })

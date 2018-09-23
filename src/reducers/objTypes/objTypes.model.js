@@ -49,22 +49,10 @@ export default Immutable({
       name: 'Image',
       type: 'img',
       visible: [[0, 5000]],
-      keyframes: {
-        scaleX: {
-          keys: [[0, 1], [700, 1.5], [1500, 0.5], [2000, 1]],
-          from: 0,
-          to: 2000
-        },
-        scaleY: {
-          keys: [[0, 1], [900, 1.5], [1800, 0.5], [2000, 1]],
-          from: 0,
-          to: 2000
-        },
-        angle: {
-          keys: [[0, 90], [900, 60], [1800, 180], [2000, 90]],
-          from: 0,
-          to: 2000
-        }
-      }
+      params: {
+        left: 100,
+        top: 100
+      },
+      keyframes: {}
     }]
 })

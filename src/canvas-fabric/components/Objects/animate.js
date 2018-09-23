@@ -2,6 +2,7 @@ export const calcParams = (keyframes, time) => {
   const calculated = {}
   for (let key in keyframes) {
     const value = keyframes[key]
+    if (value.keys.length === 0) continue
     const secondFrame = value.keys.find(item => item[0] >= time)
     const firstFrameIndex = value.keys.indexOf(secondFrame) - 1
     if (value.keys[firstFrameIndex]) {

@@ -19,8 +19,7 @@ class Img extends Component {
         addObject(Object.assign({
           id: id(),
           type: item.type,
-          url: value,
-          params: Object.assign({}, item.params, { url: value })
+          url: value
         }, item))
       }}>
         <Input

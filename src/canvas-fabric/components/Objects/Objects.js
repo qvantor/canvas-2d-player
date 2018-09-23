@@ -26,11 +26,12 @@ class Objects extends Component {
       return <item.type
         key={item.id}
         id={item.id}
+        url={item.url}
         params={newParams || item.params}>{item.children && this.renderObj(item.children)}</item.type>
     })
 
   render () {
-    const { visible } = this.props
+    const {visible} = this.props
 
     return (
       <collection>{this.renderObj(visible)}</collection>
