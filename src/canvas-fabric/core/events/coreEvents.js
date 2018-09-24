@@ -1,4 +1,5 @@
 import { setParams } from 'reducers/objects/objects.actions'
+import { fabric } from 'fabric'
 
 export default (obj) => {
   if (!obj.on) return obj
@@ -10,8 +11,8 @@ export default (obj) => {
     scaleY: target.scaleY,
     flipX: target.flipX,
     flipY: target.flipY,
-    originX: target.originX,
-    originY: target.originY,
+    originX: 'center',
+    originY: 'center',
     width: target.width,
     height: target.height
   })

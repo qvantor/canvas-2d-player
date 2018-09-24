@@ -1,6 +1,9 @@
 import Immutable from 'seamless-immutable'
 
 export default Immutable({
+  shadow: {
+
+  },
   list: [
     {
       name: 'Group',
@@ -22,7 +25,10 @@ export default Immutable({
         left: 100,
         top: 100,
         scaleX: 1,
-        scaleY: 1
+        scaleY: 1,
+        originX: 'center',
+        originY: 'center',
+        shadow: false
       }
     },
     {
@@ -38,7 +44,8 @@ export default Immutable({
         width: 150,
         fontSize: 20,
         fontWeight: 400,
-        fill: '#000000'
+        fill: '#000000',
+        shadow: false
       }
     },
     {
@@ -47,7 +54,10 @@ export default Immutable({
       visible: [[0, 5000]],
       params: {
         left: 100,
-        top: 100
+        top: 100,
+        originX: 'center',
+        originY: 'center',
+        shadow: false
       },
       keyframes: {}
     }]
