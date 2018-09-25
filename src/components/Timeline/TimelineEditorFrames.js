@@ -33,10 +33,12 @@ class TimelineEditorFrames extends Component {
                 style={{ left: scale(item[0]) }}
                 className='keyframe'
                 onContextMenu={e => this.onContextMenu(e, obj.id, i, key)}
-                ref={el => select(el).call(drag().on('drag', () => {
-                  const value = scale.invert(mouse(parent || this.refs.parent)[0])
-                  setKeyFrameTime(obj.id, i, value, key)
-                }))} />)}
+                ref={el => select(el).call(drag()
+                  .on('drag', () => {
+                    const value = scale.invert(mouse(parent || this.refs.parent)[0])
+                    setKeyFrameTime(obj.id, item[2], value, key)
+                  })
+                )} />)}
           </div>)
         })}
       </div>

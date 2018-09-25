@@ -1,5 +1,4 @@
 import { setParams } from 'reducers/objects/objects.actions'
-import { fabric } from 'fabric'
 
 export default (obj) => {
   if (!obj.on) return obj

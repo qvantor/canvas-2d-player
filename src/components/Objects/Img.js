@@ -14,7 +14,7 @@ class Img extends Component {
     const { value } = this.state
 
     return (
-      <Popover content={<form onSubmit={e => {
+      <Popover placement='bottom' content={<form onSubmit={e => {
         e.preventDefault()
         addObject(Object.assign({
           id: id(),

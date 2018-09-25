@@ -27,7 +27,9 @@ class Objects extends Component {
         key={item.id}
         id={item.id}
         url={item.url}
-        params={newParams || item.params}>{item.children && this.renderObj(item.children)}</item.type>
+        params={newParams || item.params}>
+        {item.children && this.renderObj(item.children)}
+      </item.type>
     })
 
   render () {

@@ -11,7 +11,7 @@ export default (obj, props) => {
   obj.update = ({params}, oldProps, type) => {
     if (type === 'rect') rect(obj, params, oldProps.params)
     if (type === 'textbox') textbox(obj, params, oldProps.params)
-    if (params.shadow) updateShadow(obj, params, oldProps.params)
+    updateShadow(obj, params, oldProps.params)
 
     obj.angle = params.angle
     obj.left = params.left

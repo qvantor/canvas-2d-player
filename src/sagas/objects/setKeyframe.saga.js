@@ -3,6 +3,7 @@ import { call, select, take, put } from 'redux-saga/es/effects'
 import { findObj } from 'reducers/objects/objects.utils'
 import { calcParams } from 'canvas-fabric/components/Objects/animate'
 import { round } from 'utils/'
+import idGen from 'utils/id'
 
 export default function * () {
   while (true) {
@@ -17,8 +18,8 @@ export default function * () {
     let changes = false
     for (let key in keyframes) {
       if (params[key] !== undefined && oldParams[key] !== params[key]) {
-        const newKeyFrame = [round(time), params[key]]
-        const sameTimeFrame = keyframes[key].keys.find((item, i) => item[0] === newKeyFrame[0])
+        const newKeyFrame = [round(time), params[key], idGen()]
+        const sameTimeFrame = keyframes[key].keys.find((item) => item[0] === newKeyFrame[0])
         if (sameTimeFrame) {
           newKeyFrames[key] = {
             keys: keyframes[key].keys.update(
