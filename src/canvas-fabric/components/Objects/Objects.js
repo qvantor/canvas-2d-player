@@ -33,7 +33,7 @@ class Objects extends Component {
     })
 
   render () {
-    const {visible} = this.props
+    const { visible } = this.props
 
     return (
       <collection>{this.renderObj(visible)}</collection>

@@ -1,4 +1,4 @@
-import { take, put, call, select } from 'redux-saga/es/effects'
+import { take, put, call, select } from 'redux-saga/effects'
 import * as constants from 'reducers/objects/objects.constants'
 import { findObj } from 'reducers/objects/objects.utils'
 

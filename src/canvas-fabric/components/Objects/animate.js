@@ -13,7 +13,7 @@ export const calcParams = (keyframes, time) => {
 
       const valDiff = secondFrame[1] - firstFrame[1]
 
-      calculated[key] = Math.round(firstFrame[1] + (valDiff * (deltaTime / diff)))
+      calculated[key] = Math.round((firstFrame[1] + (valDiff * (deltaTime / diff))) * 100) / 100
     } else {
       const firstFrame = value.keys[0]
       const lastFrame = value.keys[value.keys.length - 1]

@@ -33,7 +33,9 @@ class LayersExplorer extends Component {
         }}
         onDrop={e => this.onDrop(e, item, parent)}
         draggable>
-        <div className='item' onClick={() => setActiveObject(item.id)}>{item.name}</div>
+        <div className='item' onClick={() => {
+          if (parent === 'root') setActiveObject(item.id)
+        }}>{item.name}</div>
         {item.children && <div className='children'>
           {this.renderChild(item.children, item.id)}
         </div>}

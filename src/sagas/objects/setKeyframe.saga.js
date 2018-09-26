@@ -1,5 +1,5 @@
 import * as constants from 'reducers/objects/objects.constants'
-import { call, select, take, put } from 'redux-saga/es/effects'
+import { call, select, take, put } from 'redux-saga/effects'
 import { findObj } from 'reducers/objects/objects.utils'
 import { calcParams } from 'canvas-fabric/components/Objects/animate'
 import { round } from 'utils/'

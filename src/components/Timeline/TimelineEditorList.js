@@ -16,7 +16,7 @@ class TimelineEditorList extends Component {
           )}
         </div>
         {open && <TimelineEditorFrames obj={item} scale={scale} />}
-        {item.children && this.renderObjects(item.children)}
+        {/*{item.children && this.renderObjects(item.children)}*/}
       </div>)
     })
   }

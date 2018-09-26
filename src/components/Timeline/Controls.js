@@ -16,7 +16,7 @@ class Controls extends Component {
             {item.name}
           </div>
           {open && <ControlsFrames obj={item} />}
-          {item.children && this.renderObjects(item.children)}
+          {/*{item.children && this.renderObjects(item.children)}*/}
         </div>)
     })
 

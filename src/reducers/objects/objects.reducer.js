@@ -44,7 +44,7 @@ const recursiveSetProp = merge => (state, id) => {
     if (item.id === id) {
       return state.update(state.indexOf(item), merge)
     } else if (item.children) {
-      const newState = recursiveSetProp(item.children, id)
+      const newState = recursiveSetProp(merge)(item.children, id)
       if (newState) return state.update(state.indexOf(item), item => item.merge({ children: newState }))
     }
   }
