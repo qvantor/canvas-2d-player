@@ -44,8 +44,8 @@ export const createCanvas = elem => {
   canvas.on('text:editing:entered', entered)
   canvas.on('text:editing:exited', exited)
 
-  canvas.isDrawingMode = true
-  canvas.freeDrawingBrush = curveBrush(canvas)
+  // canvas.isDrawingMode = true
+  // canvas.freeDrawingBrush = curveBrush(canvas)
 
   const render = (e) => {
     fabric.util.requestAnimFrame(render)

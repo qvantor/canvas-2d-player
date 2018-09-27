@@ -6,6 +6,7 @@ import Button from 'antd/lib/button'
 import { addObject } from 'reducers/objects/objects.actions'
 import id from 'utils/id'
 import Img from './Img'
+import Tools from '../Tools/Tools'
 
 class Objects extends Component {
   render () {
@@ -14,7 +15,8 @@ class Objects extends Component {
       img: Img
     }
     return (
-      <div className='objects-creator'>
+      <div className='objects-creator pt-1'>
+        <Tools />
         {list.map(item => {
           const TypeComponent = types[item.type]
           if (TypeComponent) return <TypeComponent key={item.type} item={item} />

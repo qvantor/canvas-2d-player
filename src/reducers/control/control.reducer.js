@@ -17,6 +17,8 @@ export default function control (state = Model, { type, payload }) {
           ? [...state.openFrames, payload]
           : state.openFrames.filter(item => item !== payload)
       })
+    case constants.CONTROL_SET_TOOL:
+      return state.merge({ tool: payload })
     default:
       return state
   }
