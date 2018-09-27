@@ -21,18 +21,18 @@ class Controls extends Component {
     })
 
   render () {
-    const { visible } = this.props
+    const { objects } = this.props
 
     return (
       <div className='controls'>
-        {this.renderObjects(visible)}
+        {this.renderObjects(objects)}
       </div>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  visible: state.objects.visible,
+  objects: state.objects,
   openFrames: state.control.openFrames
 })
 export default connect(mapStateToProps)(Controls)

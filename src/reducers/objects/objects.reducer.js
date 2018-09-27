@@ -1,5 +1,6 @@
 import * as constants from './objects.constants'
 import Model from './objects.model'
+import Immutable from 'seamless-immutable'
 
 const findNremove = (state, id) => {
   for (let item of state) {
@@ -36,7 +37,7 @@ const recursiveReplace = (oldState, child, parent) => {
 
 const recursiveToRoot = (oldState, id) => {
   const { model, state } = findNremove(oldState, id)
-  return [...state, model]
+  return Immutable([...state, model])
 }
 
 const recursiveSetProp = merge => (state, id) => {
@@ -53,73 +54,59 @@ const recursiveSetProp = merge => (state, id) => {
 export default function objects (state = Model, { type, payload }) {
   switch (type) {
     case constants.ADD_OBJ:
-      return state.merge({ visible: [...state.visible, payload] })
+      return Immutable([...state, payload])
     case constants.OBJ_MOVED:
-      return state.merge({ visible: recursiveReplace(state.visible, payload.child, payload.parent) })
+      return recursiveReplace(state, payload.child, payload.parent)
     case constants.OBJ_MOVED_ROOT:
-      return state.merge({ visible: recursiveToRoot(state.visible, payload) })
+      return recursiveToRoot(state, payload)
     case constants.REMOVE_OBJ:
-      return state.merge({ visible: findNremove(state.visible, payload).state })
+      return findNremove(state, payload).state
     case constants.OBJ_PROPS_SETTED:
-      return state.merge({
-        visible: recursiveSetProp(item => item.merge({
-          params: item.params.merge(payload.params, { deep: true })
-        }))(state.visible, payload.id)
-      })
+      return recursiveSetProp(item => item.merge({
+        params: item.params.merge(payload.params, { deep: true })
+      }))(state, payload.id)
     case constants.OBJ_VISIBLE_FRAME_SETTED:
-      return state.merge({
-        visible: recursiveSetProp(item => item.merge({
-          visible: payload.frames
-        }))(state.visible, payload.id)
-      })
+      return recursiveSetProp(item => item.merge({
+        visible: payload.frames
+      }))(state, payload.id)
 
     case constants.OBJ_KEYFRAME_ADD_PARAM:
-      return state.merge({
-        visible: recursiveSetProp(item => item.merge({
-          keyframes: item.keyframes.merge({ [payload.key]: { keys: [] } })
-        }))(state.visible, payload.id)
-      })
+      return recursiveSetProp(item => item.merge({
+        keyframes: item.keyframes.merge({ [payload.key]: { keys: [] } })
+      }))(state, payload.id)
 
     case constants.OBJ_KEYFRAME_REMOVE_PARAM:
-      return state.merge({
-        visible: recursiveSetProp(item => item.merge({
-          keyframes: item.keyframes.without(payload.key)
-        }))(state.visible, payload.id)
-      })
+      return recursiveSetProp(item => item.merge({
+        keyframes: item.keyframes.without(payload.key)
+      }))(state, payload.id)
 
     case constants.OBJ_KEYFRAME_ADD:
-      return state.merge({
-        visible: recursiveSetProp(item => item.merge({
-          keyframes: payload.newKeyFrames
-        }))(state.visible, payload.id)
-      })
+      return recursiveSetProp(item => item.merge({
+        keyframes: payload.newKeyFrames
+      }))(state, payload.id)
 
     case constants.OBJ_KEYFRAME_TIME_SET:
-      return state.merge({
-        visible: recursiveSetProp(item =>
-          item.merge({
-            keyframes: item.keyframes.merge({
-              [payload.key]: {
-                keys: [...item.keyframes[payload.key].keys.update(
-                  item.keyframes[payload.key].keys.findIndex(item => item[2] === payload.keyId),
-                  frame => [payload.value, frame[1], frame[2]])]
-                  .sort((a, b) => a[0] - b[0])
-              }
-            })
-          }))(state.visible, payload.id)
-      })
+      return recursiveSetProp(item =>
+        item.merge({
+          keyframes: item.keyframes.merge({
+            [payload.key]: {
+              keys: [...item.keyframes[payload.key].keys.update(
+                item.keyframes[payload.key].keys.findIndex(item => item[2] === payload.keyId),
+                frame => [payload.value, frame[1], frame[2]])]
+                .sort((a, b) => a[0] - b[0])
+            }
+          })
+        }))(state, payload.id)
 
     case constants.OBJ_KEYFRAME_REMOVE:
-      return state.merge({
-        visible: recursiveSetProp(item =>
-          item.merge({
-            keyframes: item.keyframes.merge({
-              [payload.key]: {
-                keys: item.keyframes[payload.key].keys.filter((f, i) => i !== payload.keyId)
-              }
-            })
-          }))(state.visible, payload.id)
-      })
+      return recursiveSetProp(item =>
+        item.merge({
+          keyframes: item.keyframes.merge({
+            [payload.key]: {
+              keys: item.keyframes[payload.key].keys.filter((f, i) => i !== payload.keyId)
+            }
+          })
+        }))(state, payload.id)
     default:
       return state
   }

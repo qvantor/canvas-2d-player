@@ -1,5 +1,3 @@
 import Immutable from 'seamless-immutable'
 
-export default Immutable({
-  visible: []
-})
+export default Immutable([])

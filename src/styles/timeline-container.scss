@@ -3,7 +3,7 @@ $lineMargin: 2px;
 $border: 1px solid transparentize($clouds, 0.3);
 
 .timeline-container {
-  padding: 10px;
+  padding: 10px 10px 0 10px;
   background: $silver;
   height: 40vh;
   .scroll-y {

@@ -1,5 +1,6 @@
 import { fabric } from 'fabric'
 import Stats from 'stats.js'
+import curveBrush from '../brushes/curve'
 
 import { selected, deselected, entered, exited } from 'reducers/control/control.actions'
 
@@ -33,7 +34,7 @@ export const render = () => {
 export const createCanvas = elem => {
   canvas = new fabric.Canvas(elem)
   const stats = new Stats()
-  document.body.appendChild(stats.dom)
+  // document.body.appendChild(stats.dom)
 
   const select = (e) => selected(e.selected.map(item => item.id))
   canvas.on('selection:cleared', deselected)
@@ -42,6 +43,9 @@ export const createCanvas = elem => {
 
   canvas.on('text:editing:entered', entered)
   canvas.on('text:editing:exited', exited)
+
+  canvas.isDrawingMode = true
+  canvas.freeDrawingBrush = curveBrush(canvas)
 
   const render = (e) => {
     fabric.util.requestAnimFrame(render)

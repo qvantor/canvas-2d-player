@@ -33,16 +33,16 @@ class Objects extends Component {
     })
 
   render () {
-    const { visible } = this.props
+    const { objects } = this.props
 
     return (
-      <collection>{this.renderObj(visible)}</collection>
+      <collection>{this.renderObj(objects)}</collection>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  visible: state.objects.visible,
+  objects: state.objects,
   time: state.timeline.time
 })
 export default connect(mapStateToProps)(Objects)

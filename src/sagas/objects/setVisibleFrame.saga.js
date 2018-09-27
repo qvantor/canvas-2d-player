@@ -5,7 +5,7 @@ import { take, select, call, put } from 'redux-saga/effects'
 export default function * () {
   while (true) {
     const { payload: { objId, keyId, value } } = yield take(constants.OBJ_VISIBLE_FRAME_SET)
-    const objects = yield select(({ objects }) => objects.visible)
+    const objects = yield select(({ objects }) => objects)
     const obj = yield call(findObj, objId, objects)
     // console.log(obj, keyId, value)
 

@@ -43,7 +43,7 @@ class LayersExplorer extends Component {
   }
 
   render () {
-    const { visible } = this.props
+    const { objects } = this.props
 
     return (
       <div className='layers-explorer'>
@@ -54,7 +54,7 @@ class LayersExplorer extends Component {
             e.stopPropagation()
           }}
           onDrop={e => putToRoot(this.drag)}>
-          {this.renderChild(visible, 'root')}
+          {this.renderChild(objects, 'root')}
         </div>
       </div>
     )
@@ -62,12 +62,12 @@ class LayersExplorer extends Component {
 }
 
 LayersExplorer.propTypes = {
-  visible: PropTypes.array,
+  objects: PropTypes.array,
   selection: PropTypes.arrayOf(PropTypes.string)
 }
 
 const mapStateToProps = state => ({
   selection: state.control.selection,
-  visible: state.objects.visible
+  objects: state.objects
 })
 export default connect(mapStateToProps)(LayersExplorer)

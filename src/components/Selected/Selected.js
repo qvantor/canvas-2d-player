@@ -10,14 +10,14 @@ import Shadow from './Shadow'
 import Rect from './Rect'
 import Text from './Text'
 
-const {Panel} = Collapse
+const { Panel } = Collapse
 
 class Selected extends Component {
   render () {
-    const {selection, visible} = this.props
+    const { selection, objects } = this.props
     if (!selection || selection.length !== 1) return null
     const selected = selection[0]
-    const obj = findObj(selected, visible)
+    const obj = findObj(selected, objects)
     if (!obj) return null
 
     return (
@@ -39,11 +39,11 @@ class Selected extends Component {
 
 Selected.propTypes = {
   selection: PropTypes.arrayOf(PropTypes.string),
-  visible: PropTypes.arrayOf(PropTypes.object)
+  objects: PropTypes.arrayOf(PropTypes.object)
 }
 
 const mapStateToProps = state => ({
   selection: state.control.selection,
-  visible: state.objects.visible
+  objects: state.objects
 })
 export default connect(mapStateToProps)(Selected)
