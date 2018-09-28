@@ -14,8 +14,11 @@ class Events extends React.Component {
   }
 
   removeElement = () => {
-    const { selection, textEditing } = this.props
-    if (selection && selection.length === 1 && !textEditing) removeObject(selection[0])
+    const { selection, textEditing, tool } = this.props
+    if (selection &&
+      selection.length === 1 &&
+      !textEditing &&
+      tool === 'standard') removeObject(selection[0])
   }
 
   render = () => null
@@ -23,6 +26,7 @@ class Events extends React.Component {
 
 const mapStateToProps = state => ({
   selection: state.control.selection,
+  tool: state.control.tool,
   textEditing: state.control.textEditing
 })
 export default connect(mapStateToProps)(Events)

@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getClassNames } from 'dynamic-class-list'
+import ExplorerItem from './ExplorerItem'
 
-import { setActiveObject } from 'canvas-fabric/core/container'
 import { putToChild, putToRoot } from 'reducers/objects/objects.actions'
 
 class LayersExplorer extends Component {
@@ -33,9 +33,7 @@ class LayersExplorer extends Component {
         }}
         onDrop={e => this.onDrop(e, item, parent)}
         draggable>
-        <div className='item' onClick={() => {
-          if (parent === 'root') setActiveObject(item.id)
-        }}>{item.name}</div>
+        <ExplorerItem parent={parent} item={item} />
         {item.children && <div className='children'>
           {this.renderChild(item.children, item.id)}
         </div>}

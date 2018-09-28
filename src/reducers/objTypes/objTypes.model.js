@@ -25,7 +25,8 @@ export default Immutable({
         scaleX: 1,
         scaleY: 1,
         originX: 'center',
-        originY: 'center'
+        originY: 'center',
+        selectable: true
       },
       shadow: {}
     },
@@ -37,12 +38,15 @@ export default Immutable({
       params: {
         left: 100,
         top: 100,
+        scaleX: 1,
+        scaleY: 1,
         text: 'Text',
         fontFamily: 'Arial',
         width: 150,
         fontSize: 20,
         fontWeight: 400,
-        fill: '#000000'
+        fill: '#000000',
+        selectable: true
       }
     },
     {
@@ -54,6 +58,26 @@ export default Immutable({
         top: 100,
         originX: 'center',
         originY: 'center',
+        selectable: true
+      },
+      keyframes: {}
+    },
+    {
+      name: 'Path',
+      type: 'path',
+      visible: [[0, 5000]],
+      params: {
+        left: 100,
+        top: 100,
+        originX: 'center',
+        originY: 'center',
+        selectable: true,
+        points: [
+          { x: 0, y: 1 },
+          { x: 10, y: 100 },
+          { x: 20, y: 300 }
+        ],
+        func: 'curveBasisClosed'
       },
       keyframes: {}
     }]

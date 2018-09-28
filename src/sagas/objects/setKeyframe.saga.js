@@ -8,6 +8,7 @@ import idGen from 'utils/id'
 export default function * () {
   while (true) {
     const { payload: { id, params } } = yield take(constants.OBJ_PROPS_SET)
+    if (!id) continue
     const objects = yield select(({ objects }) => objects)
     const { time } = yield select(({ timeline }) => timeline)
     const obj = yield call(findObj, id, objects)

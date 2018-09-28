@@ -1,6 +1,5 @@
 import { fabric } from 'fabric'
 import Stats from 'stats.js'
-import curveBrush from '../brushes/curve'
 
 import { selected, deselected, entered, exited } from 'reducers/control/control.actions'
 

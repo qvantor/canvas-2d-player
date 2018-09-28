@@ -1,5 +1,6 @@
 import { fabric } from 'fabric'
 import { render } from '../container'
+import curves from 'canvas-fabric/utils/curves'
 
 export const rect = (props) => new fabric.Rect(props.params)
 export const group = (props) => new fabric.Group(null, props.params)
@@ -15,3 +16,5 @@ export const img = (props) => {
 }
 
 export const textbox = props => new fabric.Textbox(props.params.text, props.params)
+
+export const path = props => new fabric.Path(curves(props.params.func)(props.params.points), props.params)

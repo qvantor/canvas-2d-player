@@ -33,16 +33,21 @@ class Objects extends Component {
     })
 
   render () {
-    const { objects } = this.props
-
+    const { objects, tool } = this.props
+    const tree = tool !== 'spline'
+      ? this.renderObj(objects)
+      : <group params={{ selectable: false }}>{this.renderObj(objects)}</group>
     return (
-      <collection>{this.renderObj(objects)}</collection>
+      <collection>
+        {tree}
+      </collection>
     )
   }
 }
 
 const mapStateToProps = state => ({
   objects: state.objects,
-  time: state.timeline.time
+  time: state.timeline.time,
+  tool: state.control.tool
 })
 export default connect(mapStateToProps)(Objects)

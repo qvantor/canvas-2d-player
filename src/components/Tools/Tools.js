@@ -22,6 +22,7 @@ class Tools extends Component {
       <div className='pb-2'>
         <Button.Group size='small'>
           {tools.map(item => <Button
+            key={item.key}
             onClick={() => setTool(item.key)}
             type={item.key === tool ? 'primary' : 'default'}
             icon={item.icon} />)}
