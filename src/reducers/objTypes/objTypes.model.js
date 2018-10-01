@@ -67,8 +67,6 @@ export default Immutable({
       type: 'path',
       visible: [[0, 5000]],
       params: {
-        left: 100,
-        top: 100,
         originX: 'center',
         originY: 'center',
         selectable: true,

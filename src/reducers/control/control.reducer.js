@@ -4,7 +4,7 @@ import Model from './control.model'
 export default function control (state = Model, { type, payload }) {
   switch (type) {
     case constants.CONTROL_DESELECTED:
-      return state.merge({ selection: null })
+      return state.merge({ selection: null, lastSelected: state.selection })
     case constants.CONTROL_SELECTED:
       return state.merge({ selection: payload })
     case constants.CONTROL_EDITING_ENTER:

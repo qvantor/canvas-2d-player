@@ -1,7 +1,7 @@
 import { fabric } from 'fabric'
 import curves from 'canvas-fabric/utils/curves'
 
-export default (canvas) => {
+export default (canvas, params) => {
   const defaultValues = {
     selection: canvas.selection,
     defaultCursor: canvas.defaultCursor,
@@ -15,7 +15,7 @@ export default (canvas) => {
   const d3line = curves(func, d => d.point.x, d => d.point.y)
   const margin = 3
   let points = []
-  let oldLine
+  let oldLine = new fabric.Path()
   let ended = false
   let moving = false
 
@@ -92,7 +92,7 @@ export default (canvas) => {
 
   const renderPath = () => {
     if (points.length > 1) {
-      const line = new fabric.Path(d3line(points, func), {
+      const lineParams = {
         fill: 'rgba(0,0,0,0.1)',
         stroke: 'red',
         strokeWidth: 1,
@@ -101,12 +101,26 @@ export default (canvas) => {
         hasControls: false,
         hoverCursor: 'cell',
         type: 'spline-line'
-      })
+      }
+      let fullParams
+      if (params) {
+        fullParams = Object.assign(lineParams, {
+          fill: params.fill
+        })
+      }
+      const line = new fabric.Path(d3line(points, func), fullParams || lineParams)
       if (oldLine) canvas.remove(oldLine)
       canvas.add(line)
       canvas.sendBackwards(line)
       oldLine = line
     } else if (oldLine) canvas.remove(oldLine)
+  }
+
+  if (params) {
+    ended = true
+    func = params.func
+    params.points.forEach(item => points.push(createPoint(item)))
+    renderPath()
   }
 
   return {
@@ -120,6 +134,11 @@ export default (canvas) => {
       canvas.off('mouse:move', canvasMouseMove)
       canvas.off('mouse:down:before', canvasMouseDown)
       return {
+        params: {
+          top: oldLine.top,
+          left: oldLine.left,
+          fill: oldLine.fill
+        },
         points: points.map(point => {
           point.obj.destroy()
           return point.point

@@ -16,12 +16,12 @@ export default (obj) => {
     height: target.height
   })
 
-  obj.on('moved', ({target}) => set(target))
-  obj.on('scaled', ({target}) => set(target))
-  obj.on('rotated', ({target}) => set(target))
+  obj.on('moved', ({ target }) => set(target))
+  obj.on('scaled', ({ target }) => set(target))
+  obj.on('rotated', ({ target }) => set(target))
 
-  obj.on('changed', () => setParams(obj.id, {text: obj.text}))
+  obj.on('changed', () => setParams(obj.id, { text: obj.text }))
 
-  set(obj)
+  // set(obj)
   return obj
 }

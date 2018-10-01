@@ -36,7 +36,7 @@ class Objects extends Component {
     const { objects, tool } = this.props
     const tree = tool !== 'spline'
       ? this.renderObj(objects)
-      : <group params={{ selectable: false }}>{this.renderObj(objects)}</group>
+      : <group params={{ selectable: false, evented: false }}>{this.renderObj(objects)}</group>
     return (
       <collection>
         {tree}
