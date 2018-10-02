@@ -5,6 +5,12 @@ import { createCanvas, canvas } from './core/container'
 const rootHostContext = {}
 const childHostContext = {}
 
+const addMask = (parent, child) => {
+  parent.clipPath = child
+  child.maskParents = child.maskParents ? [...child.maskParents, parent] : [parent]
+  console.log(child.maskParents)
+}
+
 const hostConfig = {
   now: Date.now,
   getRootHostContext: () => {
@@ -24,16 +30,18 @@ const hostConfig = {
   createTextInstance: text => {
   },
   appendInitialChild: (parent, child) => {
-    if (parent.addWithUpdate) parent.addWithUpdate(child)
+    if (child.mask) addMask(parent, child)
+    else if (parent.addWithUpdate) parent.addWithUpdate(child)
     else if (parent.add) parent.add(child)
-    else throw Error('This element can\'t contain child')
   },
   insertBefore: (parent, child) => {
-    if (parent.type === 'group') parent.addWithUpdate(child)
+    if (child.mask) addMask(parent, child)
+    else if (parent.type === 'group') parent.addWithUpdate(child)
     else canvas.add(child)
   },
   appendChild (parent, child) {
-    if (parent.type === 'group') parent.addWithUpdate(child)
+    if (child.mask) addMask(parent, child)
+    else if (parent.type === 'group') parent.addWithUpdate(child)
     else canvas.add(child)
   },
   finalizeInitialChildren: (domElement, type, props) => {},
@@ -45,8 +53,13 @@ const hostConfig = {
   prepareUpdate (domElement, type, oldProps, newProps) {
     return newProps.params !== oldProps.params
   },
-  commitUpdate (domElement, updatePayload, type, oldProps, newProps) {
-    if (domElement.update) domElement.update(newProps, oldProps, type)
+  commitUpdate (element, updatePayload, type, oldProps, newProps) {
+    if (element.update) element.update(newProps, oldProps, type)
+    if (element.mask && element.maskParents) {
+      element.maskParents.forEach(item => {
+        if (item.addWithUpdate) item.addWithUpdate()
+      })
+    }
   },
   commitTextUpdate (textInstance, oldText, newText) {
   },

@@ -1,0 +1,2 @@
+export const MASK_ADDED = 'MASK_ADDED'
+export const MASK_PARAMS_SETTED = 'MASK_PARAMS_SETTED'

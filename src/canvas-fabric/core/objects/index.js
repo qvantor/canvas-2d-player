@@ -2,8 +2,9 @@ import { fabric } from 'fabric'
 import { render } from '../container'
 import curves from 'canvas-fabric/utils/curves'
 
+export * from './group'
+
 export const rect = (props) => new fabric.Rect(props.params)
-export const group = (props) => new fabric.Group(null, props.params)
 export const collection = () => fabric.Collection
 
 export const img = (props) => {

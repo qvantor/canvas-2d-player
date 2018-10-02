@@ -9,6 +9,7 @@ export default (obj, props) => {
   if (props.shadow) obj.shadow = createShadow(props)
 
   obj.update = (props, oldProps, type) => {
+    console.log('update', props)
     const { params } = props
     if (type === 'rect') rect(obj, params, oldProps.params)
     if (type === 'textbox') textbox(obj, params, oldProps.params)
@@ -26,6 +27,7 @@ export default (obj, props) => {
     if (params.height) obj.height = params.height
     if (params.selectable !== undefined) obj.selectable = params.selectable
     obj.setCoords()
+    // if (obj.addWithUpdate) obj.addWithUpdate()
     render()
   }
   return obj
