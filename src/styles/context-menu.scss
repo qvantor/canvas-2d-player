@@ -1,0 +1,23 @@
+
+.context-menu-portal {
+  position: absolute;
+  width: 200px;
+  z-index: 10;
+  list-style: none;
+  background: $white;
+  padding: 5px 0;
+  border-radius: 2px;
+  font-size: 12px;
+
+  -webkit-box-shadow: 0 0 21px -7px rgba(0, 0, 0, 0.47);
+  -moz-box-shadow: 0 0 21px -7px rgba(0, 0, 0, 0.47);
+  box-shadow: 0 0 21px -7px rgba(0, 0, 0, 0.47);
+
+  li.list-item {
+    @include transition();
+    padding: 2px 5px;
+    &:hover {
+      background: transparentize($river, 0.8);
+    }
+  }
+}

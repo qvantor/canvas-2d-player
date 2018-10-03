@@ -7,10 +7,12 @@ export default Immutable({
       name: 'Group',
       type: 'group',
       visible: [[0, 5000]],
-      params: {},
+      params: {
+        mask: false,
+        selectable: true
+      },
       keyframes: {},
-      children: [],
-      mask: '12wedfxzs'
+      children: []
     },
     {
       name: 'Rect',
@@ -28,9 +30,7 @@ export default Immutable({
         originX: 'center',
         originY: 'center',
         selectable: true
-      },
-      shadow: {}
-      // mask: '12wedfxzs'
+      }
     },
     {
       name: 'Text',
@@ -62,8 +62,7 @@ export default Immutable({
         originY: 'center',
         selectable: true
       },
-      keyframes: {},
-      mask: '12wedfxzs'
+      keyframes: {}
     },
     {
       name: 'Path',
@@ -80,7 +79,6 @@ export default Immutable({
         ],
         func: 'curveBasisClosed'
       },
-      keyframes: {},
-      mask: '12wedfxzs'
+      keyframes: {}
     }]
 })

@@ -12,6 +12,7 @@ export const OBJ_PROPS_SET = 'OBJ_PROPS_SET'
 export const OBJ_PROPS_SETTED = 'OBJ_PROPS_SETTED'
 export const OBJ_MOVED = 'OBJ_MOVED'
 export const OBJ_MOVED_ROOT = 'OBJ_MOVED_ROOT'
+export const OBJ_CLONE = 'OBJ_CLONE'
 export const REMOVE_OBJ = 'REMOVE_OBJ'
 
 export const NEXT_KEYFRAME = 'NEXT_KEYFRAME'

@@ -4,12 +4,11 @@ export default Immutable({
   '12wedfxzs': {
     name: 'Mask',
     params: {
-      left: -50,
-      top: -50,
+      left: 100,
+      top: 100,
       scaleX: 1,
       scaleY: 1,
-      mask: true
-      // absolutePositioned: true
+      absolutePositioned: true
     },
     children: [{
       id: 'asdasd',

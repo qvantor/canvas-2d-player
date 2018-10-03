@@ -1,21 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import 'reducers/objects/objects.actions'
 
 import ObjectsList from './ObjectsList'
 
-class Objects extends Component {
-  render () {
-    const { objects, tool } = this.props
-    const tree = tool !== 'spline'
-      ? <ObjectsList objects={objects} />
-      : <group params={{ selectable: false, evented: false }}><ObjectsList objects={objects} /></group>
-    return (
-      <collection>
-        {tree}
-      </collection>
-    )
-  }
+const Objects = (props) => {
+  const { objects, tool } = props
+  return tool !== 'spline'
+    ? <ObjectsList objects={objects} />
+    : <group params={{ selectable: false, evented: false }}><ObjectsList objects={objects} /></group>
 }
 
 const mapStateToProps = state => ({

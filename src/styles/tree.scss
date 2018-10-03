@@ -12,7 +12,7 @@
     }
 
     &.active {
-      & > .item {
+      & > div > .item {
         background: transparentize($nephritis, 0.85);
       }
     }

@@ -6,6 +6,7 @@ import { round } from 'utils/'
 const { dispatch } = store
 
 export const addObject = (obj) => dispatch({ type: constants.ADD_OBJ, payload: obj })
+export const cloneObject = (id) => dispatch({ type: constants.OBJ_CLONE, payload: id })
 export const putToChild = (child, parent) => {
   if (child === parent) return
   dispatch({ type: constants.OBJ_MOVED, payload: { child, parent } })

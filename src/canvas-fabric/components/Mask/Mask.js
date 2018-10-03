@@ -5,11 +5,12 @@ import ObjectsList from '../Objects/ObjectsList'
 import 'reducers/masks/masks.actions'
 
 const Mask = (props) => {
-  const { id, masks } = props
+  const { masks } = props
 
-  return (<group id={id} params={masks[id].params}>
-    <ObjectsList objects={masks[id].children} />
-  </group>)
+  return Object.keys(masks).map(id =>
+    <mask id={id} key={id} params={masks[id].params}>
+      <ObjectsList objects={masks[id].children} />
+    </mask>)
 }
 
 const mapStateToProps = state => ({

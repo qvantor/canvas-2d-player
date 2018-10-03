@@ -1,20 +1,18 @@
 import { render } from '../container'
-import { createShadow, updateShadow } from '../objects/shadow'
+import { updateShadow } from '../objects/shadow'
+import * as Masks from '../Masks'
 
 import rect from './rect'
 import textbox from './textbox'
+import mask from './mask'
 
 export default (obj, props) => {
   obj.id = props.id
-  if (props.shadow) obj.shadow = createShadow(props)
+  if (props.params && props.params.mask) obj.clipPath = Masks.getMask(props.params.mask, obj)
 
   obj.update = (props, oldProps, type) => {
-    console.log('update', props)
     const { params } = props
-    if (type === 'rect') rect(obj, params, oldProps.params)
-    if (type === 'textbox') textbox(obj, params, oldProps.params)
-    updateShadow(obj, params, oldProps.params)
-
+    // coordinates sync
     if (params.angle) obj.angle = params.angle
     if (params.left) obj.left = params.left
     if (params.top) obj.top = params.top
@@ -26,8 +24,23 @@ export default (obj, props) => {
     if (params.width) obj.width = params.width
     if (params.height) obj.height = params.height
     if (params.selectable !== undefined) obj.selectable = params.selectable
+
+    // extratypes sync
+    if (type === 'rect') rect(obj, params, oldProps.params)
+    if (type === 'textbox') textbox(obj, params, oldProps.params)
+    // shadow sync
+    updateShadow(obj, params, oldProps.params)
+
+    // obj.mask sync
+    if (params.mask !== oldProps.params.mask) {
+      obj.clipPath = Masks.getMask(params.mask)
+      if (obj.addWithUpdate) obj.addWithUpdate()
+    }
+
     obj.setCoords()
-    // if (obj.addWithUpdate) obj.addWithUpdate()
+
+    // mask update
+    if (type === 'mask') mask(obj, params, oldProps.params)
     render()
   }
   return obj

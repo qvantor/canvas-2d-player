@@ -1,15 +1,10 @@
 import ReactReconciler from 'react-reconciler'
 import createInstance from './core/createInstance'
 import { createCanvas, canvas } from './core/container'
+import * as Masks from './core/Masks'
 
 const rootHostContext = {}
 const childHostContext = {}
-
-const addMask = (parent, child) => {
-  parent.clipPath = child
-  child.maskParents = child.maskParents ? [...child.maskParents, parent] : [parent]
-  console.log(child.maskParents)
-}
 
 const hostConfig = {
   now: Date.now,
@@ -30,17 +25,17 @@ const hostConfig = {
   createTextInstance: text => {
   },
   appendInitialChild: (parent, child) => {
-    if (child.mask) addMask(parent, child)
+    if (child.type === 'mask') return Masks.setMask(child.id, child)
     else if (parent.addWithUpdate) parent.addWithUpdate(child)
     else if (parent.add) parent.add(child)
   },
   insertBefore: (parent, child) => {
-    if (child.mask) addMask(parent, child)
+    if (child.type === 'mask') return Masks.setMask(child.id, child)
     else if (parent.type === 'group') parent.addWithUpdate(child)
     else canvas.add(child)
   },
   appendChild (parent, child) {
-    if (child.mask) addMask(parent, child)
+    if (child.type === 'mask') return Masks.setMask(child.id, child)
     else if (parent.type === 'group') parent.addWithUpdate(child)
     else canvas.add(child)
   },
@@ -55,11 +50,6 @@ const hostConfig = {
   },
   commitUpdate (element, updatePayload, type, oldProps, newProps) {
     if (element.update) element.update(newProps, oldProps, type)
-    if (element.mask && element.maskParents) {
-      element.maskParents.forEach(item => {
-        if (item.addWithUpdate) item.addWithUpdate()
-      })
-    }
   },
   commitTextUpdate (textInstance, oldText, newText) {
   },

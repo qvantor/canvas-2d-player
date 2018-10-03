@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { calcParams } from './animate'
 import { connect } from 'react-redux'
 
-import Mask from '../Mask/Mask'
-
 class ObjectsList extends Component {
   checkVisible = (keys, time) => {
     for (let key of keys) {
@@ -29,7 +27,6 @@ class ObjectsList extends Component {
         url={item.url}
         params={newParams || item.params}>
         {item.children && this.renderObj(item.children)}
-        {item.mask && <Mask id={item.mask} />}
       </item.type>
     })
 
