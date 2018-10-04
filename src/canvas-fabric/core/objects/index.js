@@ -1,5 +1,5 @@
 import { fabric } from 'fabric'
-import { render } from '../container'
+import { renderer } from '../container'
 import curves from 'canvas-fabric/utils/curves'
 
 export * from './mask'
@@ -11,8 +11,8 @@ export const collection = () => fabric.Collection
 export const img = (props) => {
   const fimg = new fabric.Image(null, props.params)
   fimg.setSrc(props.url, () => {
-    render()
     fimg.setCoords()
+    renderer.render()
   })
   return fimg
 }

@@ -6,5 +6,6 @@ export default Immutable({
   textEditing: false,
   tool: 'standard',
   openFrames: [],
+  openObjects: [],
   colors: ['#ffffff', '#000000']
 })

@@ -8,6 +8,12 @@ export default function * () {
     const { payload } = yield take(constants.OBJ_CLONE)
     const objects = yield select(({ objects }) => objects)
     const obj = yield call(findObj, payload, objects)
-    yield put({ type: constants.ADD_OBJ, payload: obj.merge({ id: idGen() }) })
+    yield put({
+      type: constants.ADD_OBJ,
+      payload: obj.merge({
+        id: idGen(),
+        name: `${obj.name} clone`
+      })
+    })
   }
 }
