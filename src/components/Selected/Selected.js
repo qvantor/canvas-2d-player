@@ -21,18 +21,20 @@ class Selected extends Component {
     if (!obj) return null
 
     return (
-      <Collapse bordered={false} defaultActiveKey={['1']}>
-        <Panel header='Position' key={'1'}>
-          <Position obj={obj} />
-        </Panel>
-        <Panel header='Shadow' key={'2'}>
-          <Shadow obj={obj} />
-        </Panel>
-        <Panel header={obj.type} key={'3'}>
-          {obj.type === 'rect' && <Rect obj={obj} />}
-          {obj.type === 'textbox' && <Text obj={obj} />}
-        </Panel>
-      </Collapse>
+      <div className='selected-params'>
+        <Collapse className='collapse-xs' bordered={false} defaultActiveKey={['1']}>
+          <Panel header='Position' key={'1'}>
+            <Position obj={obj} />
+          </Panel>
+          <Panel header='Shadow' key={'2'}>
+            <Shadow obj={obj} />
+          </Panel>
+          <Panel header={obj.type} key={'3'}>
+            {obj.type === 'rect' && <Rect obj={obj} />}
+            {obj.type === 'textbox' && <Text obj={obj} />}
+          </Panel>
+        </Collapse>
+      </div>
     )
   }
 }

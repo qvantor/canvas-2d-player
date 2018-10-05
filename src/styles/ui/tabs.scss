@@ -1,0 +1,27 @@
+.ant-tabs.small-tabs {
+  > .ant-tabs-bar {
+    margin: 0;
+    background: $silver;
+    border-color: $gray-600;
+
+    .ant-tabs-nav-container {
+      height: auto;
+      padding-top: 3px;
+      .ant-tabs-tab {
+        border-radius: 0;
+        margin: 0;
+        padding: 2px 4px;
+        line-height: 20px;
+        background: transparent;
+        border-color: $gray-600;
+
+        &.ant-tabs-tab-active {
+          border: none;
+          font-weight: normal;
+          background: $clouds;
+          margin-top: 1px;
+        }
+      }
+    }
+  }
+}

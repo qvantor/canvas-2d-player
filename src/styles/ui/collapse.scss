@@ -1,0 +1,17 @@
+.collapse-xs.ant-collapse {
+  font-size: 14px;
+  border-radius: 0;
+
+  > .ant-collapse-item {
+    > .ant-collapse-header {
+      padding: 0 0 0 30px;
+      .arrow {
+        left: 8px;
+      }
+    }
+
+    > .ant-collapse-content > .ant-collapse-content-box {
+      padding: 4px;
+    }
+  }
+}

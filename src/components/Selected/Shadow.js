@@ -37,6 +37,7 @@ class Shadow extends Component {
             <div className='col-md-6'>
               <InputNumber
                 style={{width: '100%'}}
+                size='small'
                 min={0}
                 value={params.shadow.blur}
                 onChange={e => setParams(id, {shadow: {blur: e}})} />
@@ -47,6 +48,7 @@ class Shadow extends Component {
             <div className='col-md-6'>
               <InputNumber
                 style={{width: '100%'}}
+                size='small'
                 value={params.shadow.offsetX}
                 onChange={e => setParams(id, {shadow: {offsetX: e}})} />
             </div>
@@ -56,6 +58,7 @@ class Shadow extends Component {
             <div className='col-md-6'>
               <InputNumber
                 style={{width: '100%'}}
+                size='small'
                 value={params.shadow.offsetY}
                 onChange={e => setParams(id, {shadow: {offsetY: e}})} />
             </div>

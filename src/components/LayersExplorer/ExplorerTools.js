@@ -19,7 +19,7 @@ const ExplorerTools = (props) => {
   const { selection, objects } = props
   let obj
   if (selection) obj = findObj(selection[0], objects)
-  return (<div>
+  return (<div className='my-1'>
     <Button.Group size='small'>
       <Button
         onClick={() => cloneAsMask(obj.id)}

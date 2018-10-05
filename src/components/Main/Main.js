@@ -1,13 +1,10 @@
 import React from 'react'
 
 import Canvas from '../Canvas/Canvas'
-import Objects from '../Objects/Objects'
-import Selected from '../Selected/Selected'
-import LayersExplorer from '../LayersExplorer/LayersExplorer'
 import Timeline from '../Timeline/Timeline'
 import Events from './Events'
-
 import LeftMenu from '../LeftMenu/LeftMenu'
+import RightMenu from '../RightMenu/RightMenu'
 
 class Main extends React.Component {
   state = { cwidth: null, cheight: null }
@@ -30,12 +27,7 @@ class Main extends React.Component {
           </div>
           <Timeline />
         </div>
-        <div className='right-menu bg-clouds p-1'>
-          <div className='selected-params'>
-            <Selected />
-          </div>
-          <LayersExplorer />
-        </div>
+        <RightMenu />
       </div>
     )
   }

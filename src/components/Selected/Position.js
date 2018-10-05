@@ -8,7 +8,7 @@ import { setParams } from 'reducers/objects/objects.actions'
 class Position extends Component {
 
   render () {
-    const {obj} = this.props
+    const { obj } = this.props
 
     const positionParams = ['angle', 'top', 'left', 'scaleX', 'scaleY']
 
@@ -22,9 +22,10 @@ class Position extends Component {
             </div>
             <div className='col-md-6'>
               <InputNumber
-                style={{width: '100%'}}
+                size='small'
+                style={{ width: '100%' }}
                 value={obj.params[item]}
-                onChange={e => setParams(obj.id, {[item]: e})} />
+                onChange={e => setParams(obj.id, { [item]: e })} />
             </div>
           </div>)}
       </div>

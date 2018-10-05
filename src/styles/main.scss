@@ -1,5 +1,5 @@
 @import "~antd/dist/antd.css";
-@import "~bootstrap/scss/bootstrap";
+@import "bootstrap";
 @import "variables";
 @import "mixins";
 @import "tree";
@@ -9,6 +9,8 @@
 @import "timeline-container";
 @import "keyframes";
 @import "context-menu";
+@import "ui/collapse";
+@import "ui/tabs";
 
 body {
 
@@ -19,7 +21,6 @@ body {
     position: fixed;
     width: 40px;
     height: 100vh;
-    border-right: 1px solid $midNight;
   }
   .canvas-timeline {
     width: calc(100% - 360px);
@@ -27,16 +28,16 @@ body {
     left: 40px;
   }
   .right-menu {
-    border-left: 1px solid $midNight;
     position: fixed;
     right: 0;
     width: 320px;
+    height: 100vh;
   }
 }
 
 .canvas-container {
   height: 60vh;
-  background-image: url(data:image/gif;base64,R0lGODlhCgAKAIAAAOLi4v///yH5BAAHAP8ALAAAAAAKAAoAAAIRhB2ZhxoM3GMSykqd1VltzxQAOw==);
+  background-image: url('/assets/img/bg.jpg')
 }
 
 .bg-clouds {
