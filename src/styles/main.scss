@@ -14,6 +14,26 @@ body {
 
 }
 
+.main-layout {
+  .left-menu {
+    position: fixed;
+    width: 40px;
+    height: 100vh;
+    border-right: 1px solid $midNight;
+  }
+  .canvas-timeline {
+    width: calc(100% - 360px);
+    position: fixed;
+    left: 40px;
+  }
+  .right-menu {
+    border-left: 1px solid $midNight;
+    position: fixed;
+    right: 0;
+    width: 320px;
+  }
+}
+
 .canvas-container {
   height: 60vh;
   background-image: url(data:image/gif;base64,R0lGODlhCgAKAIAAAOLi4v///yH5BAAHAP8ALAAAAAAKAAoAAAIRhB2ZhxoM3GMSykqd1VltzxQAOw==);

@@ -9,7 +9,7 @@ class Tools extends Component {
     const { tool } = this.props
 
     const tools = [{
-      name: 'Standard',
+      name: 'Move tool',
       key: 'standard',
       icon: 'drag'
     }, {
@@ -19,14 +19,15 @@ class Tools extends Component {
     }]
 
     return (
-      <div className='pb-2'>
-        <Button.Group size='small'>
-          {tools.map(item => <Button
-            key={item.key}
-            onClick={() => setTool(item.key)}
-            type={item.key === tool ? 'primary' : 'default'}
-            icon={item.icon} />)}
-        </Button.Group>
+      <div>
+        {tools.map(item => <Button
+          key={item.key}
+          size='small'
+          className='w-100 rounded-0'
+          title={item.name}
+          onClick={() => setTool(item.key)}
+          type={item.key === tool ? 'primary' : 'default'}
+          icon={item.icon} />)}
       </div>
     )
   }

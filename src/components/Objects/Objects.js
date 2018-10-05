@@ -2,11 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import Button from 'antd/lib/button'
+import { Button, Popover } from 'antd'
 import { addObject } from 'reducers/objects/objects.actions'
 import id from 'utils/id'
 import Img from './Img'
-import Tools from '../Tools/Tools'
 
 class Objects extends Component {
   render () {
@@ -15,20 +14,23 @@ class Objects extends Component {
       img: Img
     }
     return (
-      <div className='objects-creator pt-1'>
-        <Tools />
-        {list.map(item => {
-          const TypeComponent = types[item.type]
-          if (TypeComponent) return <TypeComponent key={item.type} item={item} />
-          return (<Button
-            className='mr-1'
-            onClick={() => addObject(Object.assign({ id: id() }, item))}
-            key={item.type}>
-            {item.name}
-          </Button>)
-        })}
-      </div>
-    )
+      <Popover
+        placement='right'
+        content={
+          <div className='objects-creator pt-1'>
+            {list.map(item => {
+              const TypeComponent = types[item.type]
+              if (TypeComponent) return <TypeComponent key={item.type} item={item} />
+              return (<Button
+                className='mr-1'
+                onClick={() => addObject(Object.assign({ id: id() }, item))}
+                key={item.type}>
+                {item.name}
+              </Button>)
+            })}
+          </div>}>
+        <Button icon='plus-circle' className='w-100 rounded-0' />
+      </Popover>)
   }
 }
 

@@ -16,7 +16,7 @@ class Timeline extends Component {
     // @todo put TimelineEditor and Controls together
     const { width, height } = this.state
     return (
-      <div className='timeline-container row'>
+      <div className='timeline-container'>
         <div className='scroll-y row'>
           <div className='col-3 pr-0'>
             <div className='static'>

@@ -7,6 +7,8 @@ import LayersExplorer from '../LayersExplorer/LayersExplorer'
 import Timeline from '../Timeline/Timeline'
 import Events from './Events'
 
+import LeftMenu from '../LeftMenu/LeftMenu'
+
 class Main extends React.Component {
   state = { cwidth: null, cheight: null }
 
@@ -19,22 +21,20 @@ class Main extends React.Component {
     const { cwidth, cheight } = this.state
 
     return (
-      <div className='container-fluid'>
+      <div className='main-layout'>
         <Events />
-        <div className='row'>
-          <div className='col-md-9'>
-            <div className='canvas-container row' ref='canvasContainer'>
-              <Canvas width={cwidth} height={cheight} />
-            </div>
-            <Timeline />
+        <LeftMenu />
+        <div className='canvas-timeline'>
+          <div className='canvas-container' ref='canvasContainer'>
+            <Canvas width={cwidth} height={cheight} />
           </div>
-          <div className='col-md-3 bg-clouds'>
-            <Objects />
-            <div className='selected-params'>
-              <Selected />
-            </div>
-            <LayersExplorer />
+          <Timeline />
+        </div>
+        <div className='right-menu bg-clouds p-1'>
+          <div className='selected-params'>
+            <Selected />
           </div>
+          <LayersExplorer />
         </div>
       </div>
     )

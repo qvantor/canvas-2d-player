@@ -12,7 +12,10 @@ export default class Renderer {
     this.playing = false
     this.animationTime = 0
 
+    this.stats.dom.style.left = '40px'
+    this.stats.dom.style['z-index'] = 10
     document.body.appendChild(this.stats.dom)
+
     this._render()
   }
 
