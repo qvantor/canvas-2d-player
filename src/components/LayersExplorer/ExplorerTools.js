@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Button } from 'antd'
 import { findObj } from 'reducers/objects/objects.utils'
 import { setParams, cloneObject, removeObject } from 'reducers/objects/objects.actions'
+import { cloneAsMask } from 'reducers/masks/masks.actions'
 
 const ExplorerTools = (props) => {
   const lock = (obj) => setParams(obj.id, {
@@ -20,7 +21,11 @@ const ExplorerTools = (props) => {
   if (selection) obj = findObj(selection[0], objects)
   return (<div>
     <Button.Group size='small'>
-      <Button title='Set mask' icon='block' disabled={!obj} />
+      <Button
+        onClick={() => cloneAsMask(obj.id)}
+        title='Clone as mask'
+        icon='block'
+        disabled={!obj} />
       <Button
         onClick={() => cloneObject(obj.id)}
         title='Clone'

@@ -6,8 +6,6 @@ export default Immutable({
     params: {
       left: 100,
       top: 100,
-      scaleX: 1,
-      scaleY: 1,
       absolutePositioned: true
     },
     children: [{

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { setActiveObject } from 'canvas-fabric/core/container'
 import { cloneObject } from 'reducers/objects/objects.actions'
 
-import { Button, Icon } from 'antd'
+import { Icon } from 'antd'
 import ContextMenu from '../ContextMenu/ContextMenu'
 
 class ExplorerItem extends PureComponent {
