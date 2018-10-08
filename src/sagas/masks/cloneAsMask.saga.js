@@ -16,7 +16,8 @@ export default function * () {
         id: maskId,
         attached: [],
         params: {
-          absolutePositioned: true
+          absolutePositioned: true,
+          inverted: false
         },
         objects: [],
         children: setPropToAll(item => item.merge({ id: idGen() }))([obj])

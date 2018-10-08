@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import Time from './Time'
 import Buttons from './Buttons'
 import Controls from './Controls'
 import TimelineEditor from './TimelineEditor'
@@ -19,8 +20,9 @@ class Timeline extends Component {
       <div className='timeline-container border-top border-dark'>
         <div className='scroll-y row'>
           <div className='col-3 pr-0'>
-            <div className='static'>
-              <Buttons />
+            <div className='static row'>
+              <div className='col-4'><Time /></div>
+              <div className='col-8'><Buttons /></div>
             </div>
             <Controls />
           </div>

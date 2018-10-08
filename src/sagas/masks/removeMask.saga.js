@@ -6,6 +6,7 @@ export default function * () {
   while (true) {
     const { payload } = yield take(constants.MASK_REMOVE)
     const { attached } = yield select(({ masks }) => masks[payload])
+    if (!attached) continue
     for (let key of attached) {
       yield put({ type: objConstants.OBJ_PROPS_SETTED, payload: { id: key, params: { mask: null } } })
     }

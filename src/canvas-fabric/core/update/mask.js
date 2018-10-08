@@ -1,5 +1,5 @@
 export default (obj, props, oldProps) => {
-  obj.maskParents.forEach(item => {
-    if (item.addWithUpdate) item.addWithUpdate()
-  })
+  obj.absolutePositioned = props.absolutePositioned
+  obj.inverted = props.inverted
+  obj.maskParents.forEach(item => (item.dirty = true))
 }

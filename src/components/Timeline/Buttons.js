@@ -16,7 +16,7 @@ class Buttons extends Component {
     const { playing } = this.props
 
     return (
-      <Group>
+      <Group size='small'>
         <Button type='primary' onClick={e => this.playPause()} icon={playing ? 'pause-circle-o' : 'play-circle-o'} />
         <Button type='primary' icon='setting' />
       </Group>

@@ -8,7 +8,7 @@ import initialKeyFrame from './objects/initialKeyFrame.saga'
 import objClone from './objects/objClone.saga'
 
 import cloneAsMask from './masks/cloneAsMask.saga'
-import addMaskToObj from './masks/addMaskToObj.saga'
+import maskAttached from './masks/maskAttached.saga'
 import removeMask from './masks/removeMask.saga'
 
 import toolSelected from './control/toolSelected.saga'
@@ -22,7 +22,7 @@ sagaMiddleware.run(nextKeyframe)
 sagaMiddleware.run(initialKeyFrame)
 sagaMiddleware.run(objClone)
 
-sagaMiddleware.run(addMaskToObj)
+sagaMiddleware.run(maskAttached)
 sagaMiddleware.run(cloneAsMask)
 sagaMiddleware.run(removeMask)
 

@@ -11,7 +11,7 @@ export const collection = () => fabric.Collection
 export const img = (props) => {
   const fimg = new fabric.Image(null, props.params)
   fimg.setSrc(props.url, () => {
-    fimg.setCoords()
+    fimg.dirty = true
     renderer.render()
   })
   return fimg
