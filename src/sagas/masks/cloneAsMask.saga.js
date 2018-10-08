@@ -8,15 +8,17 @@ export default function * () {
     const { payload } = yield take(constants.CLONE_AS_MASK)
     const objects = yield select(({ objects }) => objects)
     const obj = findObj(payload, objects)
-    const maskId = idGen()
+    const maskId = idGen('mask')
     yield put({
       type: constants.MASK_ADDED,
       payload: {
         name: 'Mask',
         id: maskId,
+        attached: [],
         params: {
           absolutePositioned: true
         },
+        objects: [],
         children: setPropToAll(item => item.merge({ id: idGen() }))([obj])
       }
     })

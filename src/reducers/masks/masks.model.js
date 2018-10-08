@@ -1,8 +1,9 @@
 import Immutable from 'seamless-immutable'
 
 export default Immutable({
-  '12wedfxzs': {
+  'mask_12wedfxzs': {
     name: 'Mask',
+    attached: [],
     params: {
       left: 100,
       top: 100,
@@ -18,8 +19,8 @@ export default Immutable({
         width: 50,
         height: 50,
         fill: '#000000',
-        left: 0,
-        top: 0,
+        left: 100,
+        top: 100,
         scaleX: 1,
         scaleY: 1,
         selectable: true
@@ -34,8 +35,8 @@ export default Immutable({
         width: 100,
         height: 100,
         fill: '#000000',
-        left: 50,
-        top: 50,
+        left: 150,
+        top: 150,
         scaleX: 1,
         scaleY: 1,
         selectable: true
@@ -50,8 +51,8 @@ export default Immutable({
         width: 50,
         height: 50,
         fill: '#000000',
-        left: 150,
-        top: 150,
+        left: 250,
+        top: 250,
         scaleX: 1,
         scaleY: 1,
         selectable: true

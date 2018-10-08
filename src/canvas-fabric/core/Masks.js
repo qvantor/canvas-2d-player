@@ -10,3 +10,7 @@ export const getMask = (id, obj) => {
   if (obj) mask.maskParents.push(obj)
   return mask
 }
+
+export const removeMask = (id) => {
+  delete masks[id]
+}

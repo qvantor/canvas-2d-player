@@ -1,5 +1,7 @@
 import { setParams } from 'reducers/objects/objects.actions'
 
+import dragNDrop from './dragNdrop'
+
 export default (obj) => {
   if (!obj.on) return obj
   const set = target => setParams(target.id, {
@@ -15,6 +17,7 @@ export default (obj) => {
     width: target.width,
     height: target.height
   })
+  dragNDrop(obj)
 
   obj.on('moved', ({ target }) => set(target))
   obj.on('scaled', ({ target }) => set(target))

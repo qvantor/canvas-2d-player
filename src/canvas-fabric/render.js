@@ -54,7 +54,8 @@ const hostConfig = {
   commitTextUpdate (textInstance, oldText, newText) {
   },
   removeChild (parent, child) {
-    if (parent.type === 'group') parent.remove(child)
+    if (child.type === 'mask') Masks.removeMask(child.id)
+    else if (parent.type === 'group') parent.remove(child)
     else canvas.remove(child)
   }
 }

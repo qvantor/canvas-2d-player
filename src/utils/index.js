@@ -1,4 +1,7 @@
 let timeout
+
+export const typeById = id => id.split('_')[0]
+
 export const withTimeout = (func, time = 80) => {
   if (timeout) {
     clearTimeout(timeout)

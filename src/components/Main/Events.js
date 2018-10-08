@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { removeObject } from 'reducers/objects/objects.actions'
+import { removeMask } from 'reducers/masks/masks.actions'
+import { typeById } from 'utils/'
 
 class Events extends React.Component {
   componentDidMount () {
@@ -18,7 +20,11 @@ class Events extends React.Component {
     if (selection &&
       selection.length === 1 &&
       !textEditing &&
-      tool === 'standard') removeObject(selection[0])
+      tool === 'standard') {
+      const type = typeById(selection[0])
+      if (type === 'object') removeObject(selection[0])
+      if (type === 'mask') removeMask(selection[0])
+    }
   }
 
   render = () => null

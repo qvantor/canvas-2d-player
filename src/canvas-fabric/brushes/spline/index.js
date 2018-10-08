@@ -93,7 +93,7 @@ export default (canvas, params) => {
   const renderPath = () => {
     if (points.length > 1) {
       const lineParams = {
-        fill: 'rgba(0,0,0,0.1)',
+        fill: 'rgba(0,0,0,0.4)',
         stroke: 'red',
         strokeWidth: 1,
         evented: false,
