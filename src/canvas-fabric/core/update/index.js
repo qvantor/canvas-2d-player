@@ -45,9 +45,10 @@ export default (obj, props) => {
     // obj.mask sync
     if (params.mask !== oldParams.mask) {
       obj.clipPath = Masks.getMask(params.mask)
+      obj.dirty = true
     }
 
-    obj.dirty = true
+    obj.setCoords()
     // mask update
     if (type === 'mask') mask(obj, params, oldParams)
     renderer.render()

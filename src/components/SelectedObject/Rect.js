@@ -1,30 +1,24 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
+import FormGenerator from '../FormGenerator/FormGenerator'
+import { renderField } from '../FormGenerator/Rows'
 
 import { setParams } from 'reducers/objects/objects.actions'
 
-class Rect extends Component {
-  render () {
-    const { obj: { params, id } } = this.props
+const Rect = props => {
+  const { obj: { params, id } } = props
+  const onChange = (e, item) => setParams(id, { [item.key]: e })
+  const rectSchema = [
+    { type: 'Color', name: 'Color', key: 'fill', onChange, render: renderField },
+    { type: 'Number', name: 'Width', key: 'width', onChange, render: renderField },
+    { type: 'Number', name: 'Height', key: 'height', onChange, render: renderField }]
 
-    return (
-      <div>
-        <div className='row'>
-          <div className='col-md-6'>Fill</div>
-          <div className='col-md-6'>
-            <input
-              value={params.fill}
-              onChange={({ target }) => setParams(id, { fill: target.value })}
-              type='color' />
-          </div>
-        </div>
-      </div>
-    )
-  }
+  return (<FormGenerator schema={rectSchema} values={params} />)
 }
 
 Rect.propTypes = {
-  obj: PropTypes.object
+  obj: PropTypes.object,
+  renderField: PropTypes.func
 }
 
 export default Rect

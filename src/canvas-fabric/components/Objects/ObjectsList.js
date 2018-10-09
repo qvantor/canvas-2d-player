@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { calcParams } from './animate'
 import { connect } from 'react-redux'
 
-class ObjectsList extends Component {
-  checkVisible = (keys, time) => {
+const ObjectsList = (props) => {
+  const checkVisible = (keys, time) => {
     for (let key of keys) {
       if (key[0] <= time && key[1] >= time) {
         return true
@@ -11,12 +11,12 @@ class ObjectsList extends Component {
     }
     return false
   }
-  renderObj = (objs) =>
+  const renderObj = (objs) =>
     objs.map(item => {
-      if (!this.checkVisible(item.visible, this.props.time)) return
+      if (!checkVisible(item.visible, props.time)) return
       let newParams
       if (Object.keys(item.keyframes).length > 0) {
-        const keyParams = calcParams(item.keyframes, this.props.time)
+        const keyParams = calcParams(item.keyframes, props.time)
         if (Object.keys(item.keyframes).length > 0) {
           newParams = Object.assign({}, item.params, keyParams)
         }
@@ -26,15 +26,10 @@ class ObjectsList extends Component {
         id={item.id}
         url={item.url}
         params={newParams || item.params}>
-        {item.children && this.renderObj(item.children)}
+        {item.children && renderObj(item.children)}
       </item.type>
     })
-
-  render () {
-    const { objects } = this.props
-
-    return this.renderObj(objects)
-  }
+  return renderObj(props.objects)
 }
 
 const mapStateToProps = state => ({

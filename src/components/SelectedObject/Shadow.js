@@ -1,85 +1,44 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import Checkbox from 'antd/lib/checkbox'
 import { setParams } from 'reducers/objects/objects.actions'
-import InputNumber from 'antd/lib/input-number'
+import FormGenerator from '../FormGenerator/FormGenerator'
+import { renderField } from '../FormGenerator/Rows'
 
-class Shadow extends Component {
-  render () {
-    const {obj: {params, id}} = this.props
-    const shadowOn = params.shadow !== undefined
-
-    const shadowParams = {
-      blur: 10,
-      offsetX: 0,
-      offsetY: 0,
-      affectStroke: true,
-      color: '#000000'
-    }
-
-    return (
-      <div>
-        <div className='row'>
-          <div className='col-md-6'>Shadow</div>
-          <div className='col-md-6'>
-            <Checkbox
-              checked={shadowOn}
-              onChange={e => {
-                if (e.target.checked) setParams(id, {shadow: shadowParams})
-                else setParams(id, {shadow: undefined})
-              }} />
-          </div>
-        </div>
-        {shadowOn &&
-        <div>
-          <div className='row'>
-            <div className='col-md-6'>Blur</div>
-            <div className='col-md-6'>
-              <InputNumber
-                style={{width: '100%'}}
-                size='small'
-                min={0}
-                value={params.shadow.blur}
-                onChange={e => setParams(id, {shadow: {blur: e}})} />
-            </div>
-          </div>
-          <div className='row'>
-            <div className='col-md-6'>OffsetX</div>
-            <div className='col-md-6'>
-              <InputNumber
-                style={{width: '100%'}}
-                size='small'
-                value={params.shadow.offsetX}
-                onChange={e => setParams(id, {shadow: {offsetX: e}})} />
-            </div>
-          </div>
-          <div className='row'>
-            <div className='col-md-6'>OffsetY</div>
-            <div className='col-md-6'>
-              <InputNumber
-                style={{width: '100%'}}
-                size='small'
-                value={params.shadow.offsetY}
-                onChange={e => setParams(id, {shadow: {offsetY: e}})} />
-            </div>
-          </div>
-          <div className='row'>
-            <div className='col-md-6'>Color</div>
-            <div className='col-md-6'>
-              <input
-                value={params.shadow.color}
-                onChange={({target}) => setParams(id, {shadow: {color: target.value}})}
-                type='color' />
-            </div>
-          </div>
-        </div>}
-      </div>
-    )
+const Shadow = props => {
+  const { obj: { params, id } } = props
+  const shadowOn = params.shadow !== undefined
+  const shadowParams = {
+    blur: 10,
+    offsetX: 0,
+    offsetY: 0,
+    affectStroke: true,
+    color: '#000000'
   }
+  const onChange = (e, item) => setParams(id, { shadow: { [item.key]: e } })
+  const shadowSchema = [{
+    type: 'Checkbox',
+    name: 'Shadow',
+    key: 'shadow',
+    onChange: e => e ? setParams(id, { shadow: shadowParams }) : setParams(id, { shadow: undefined }),
+    render: renderField
+  }]
+  const shadowParamsSchema = [
+    { type: 'Color', name: 'Color', key: 'color', onChange, render: renderField },
+    { type: 'Number', name: 'Blur', key: 'blur', min: 0, onChange, render: renderField },
+    { type: 'Number', key: 'offsetX', name: 'Offset X', onChange, render: renderField },
+    { type: 'Number', key: 'offsetY', name: 'Offset Y', onChange, render: renderField }]
+
+  return (
+    <div>
+      <FormGenerator schema={shadowSchema} values={{ shadow: shadowOn }} />
+      {shadowOn && <FormGenerator schema={shadowParamsSchema} values={params.shadow} />}
+    </div>
+  )
 }
 
 Shadow.propTypes = {
-  obj: PropTypes.object.isRequired
+  obj: PropTypes.object.isRequired,
+  renderField: PropTypes.func
 }
 
 export default Shadow

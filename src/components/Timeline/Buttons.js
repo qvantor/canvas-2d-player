@@ -24,10 +24,7 @@ class Buttons extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    playing: state.timeline.play,
-    time: state.timeline.time
-  }
-}
+const mapStateToProps = state => ({
+  playing: state.timeline.play
+})
 export default connect(mapStateToProps)(Buttons)
