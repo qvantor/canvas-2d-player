@@ -37,6 +37,11 @@ const ExplorerTools = (props) => {
         icon='lock'
         disabled={!obj} />
       <Button
+        onClick={() => setParams(obj.id, { mask: undefined })}
+        title='Unmask'
+        icon='gateway'
+        disabled={!obj || !obj.params.mask} />
+      <Button
         onClick={() => removeObject(obj.id)}
         title='Delete'
         className='color-red'

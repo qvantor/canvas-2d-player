@@ -10,11 +10,14 @@ const SelectedMask = (props) => {
   const selected = selection[0]
   const selectedType = typeById(selected)
   if (selectedType !== 'mask') return null
+  const mask = masks[selected]
+  if (!mask) return null
+
   return (
     <group
-      id={masks[selected].id}
-      params={masks[selected].params.merge({ opacity: 0.1 })}>
-      <ObjectsList objects={masks[selected].children} />
+      id={mask.id}
+      params={mask.params.merge({ opacity: 0.1 })}>
+      <ObjectsList objects={mask.children} />
     </group>)
 }
 

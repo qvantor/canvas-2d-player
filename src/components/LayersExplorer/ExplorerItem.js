@@ -37,7 +37,8 @@ class ExplorerItem extends PureComponent {
               {item.name}
             </div>
             <div className='col-3'>
-              {item.params.locked && <Icon type={'lock'} />}
+              {item.params.locked && <Icon type='lock' className='item-icons' />}
+              {item.params.mask && <Icon type='gateway' className='item-icons' />}
             </div>
           </div>
         </div>

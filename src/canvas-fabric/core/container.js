@@ -9,7 +9,10 @@ export let renderer
 export const createCanvas = elem => {
   canvas = new fabric.Canvas(elem)
 
-  const select = (e) => selected(e.selected.map(item => item.id).filter(item => item))
+  const select = (e) => {
+    const objects = e.selected.map(item => item.id).filter(item => item)
+    if (objects.length > 0) selected(objects)
+  }
   canvas.on('selection:cleared', deselected)
   canvas.on('selection:created', select)
   canvas.on('selection:updated', select)
