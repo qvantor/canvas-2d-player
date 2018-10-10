@@ -1,6 +1,6 @@
 import * as constants from './objects.constants'
 import { store } from 'store'
-import { setActiveObject } from 'canvas-fabric/core/container'
+import { setActiveObject } from 'canvas-fabric/utils'
 import { round } from 'utils/'
 
 const { dispatch } = store

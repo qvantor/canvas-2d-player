@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 
 import Mask from '../Mask/Mask'
+import SelectedMask from '../SelectedMask/SelectedMask'
 import Objects from '../Objects/Objects'
 
 class Root extends PureComponent {
@@ -16,6 +17,7 @@ class Root extends PureComponent {
     return (
       <collection>
         <Mask />
+        <SelectedMask />
         {renderObj && <Objects />}
       </collection>
     )

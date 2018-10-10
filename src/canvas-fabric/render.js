@@ -31,12 +31,12 @@ const hostConfig = {
   },
   insertBefore: (parent, child) => {
     if (child.type === 'mask') return Masks.setMask(child.id, child)
-    else if (parent.type === 'group') parent.addWithUpdate(child)
+    else if (parent.type === 'group' || parent.type === 'mask') parent.addWithUpdate(child)
     else canvas.add(child)
   },
   appendChild (parent, child) {
     if (child.type === 'mask') return Masks.setMask(child.id, child)
-    else if (parent.type === 'group') parent.addWithUpdate(child)
+    else if (parent.type === 'group' || parent.type === 'mask') parent.addWithUpdate(child)
     else canvas.add(child)
   },
   finalizeInitialChildren: (domElement, type, props) => {},

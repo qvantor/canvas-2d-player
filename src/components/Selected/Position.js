@@ -4,7 +4,7 @@ import FormGenerator from '../FormGenerator/FormGenerator'
 
 import { setParams } from 'reducers/objects/objects.actions'
 import { setMaskParams } from 'reducers/masks/masks.actions'
-import { typeById } from 'utils/'
+import { typeById } from 'utils'
 
 const Position = (props) => {
   const { obj, renderWithKeyFrames } = props

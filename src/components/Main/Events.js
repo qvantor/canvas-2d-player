@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { removeObject } from 'reducers/objects/objects.actions'
 import { removeMask } from 'reducers/masks/masks.actions'
-import { typeById } from 'utils/'
+import { typeById } from 'utils'
 
 class Events extends React.Component {
   componentDidMount () {

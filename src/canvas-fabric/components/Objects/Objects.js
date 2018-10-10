@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import 'reducers/objects/objects.actions'
 
 import ObjectsList from './ObjectsList'
 

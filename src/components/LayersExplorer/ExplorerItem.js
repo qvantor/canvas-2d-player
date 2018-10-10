@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { setActiveObject } from 'canvas-fabric/core/container'
+import { setActiveObject } from 'canvas-fabric/utils'
 import { cloneObject } from 'reducers/objects/objects.actions'
+import { select } from 'reducers/control/control.actions'
 
 import { Icon } from 'antd'
 import ContextMenu from '../ContextMenu/ContextMenu'
@@ -29,7 +30,7 @@ class ExplorerItem extends PureComponent {
         <div
           className='item'
           onClick={() => {
-            if (parent === 'root') setActiveObject(item.id)
+            if (parent === 'root') select([item.id])
           }}>
           <div className='row justify-content-between'>
             <div className='col-9'>

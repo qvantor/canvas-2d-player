@@ -12,6 +12,7 @@ import maskAttached from './masks/maskAttached.saga'
 import removeMask from './masks/removeMask.saga'
 
 import toolSelected from './control/toolSelected.saga'
+import selectSync from './control/selectSync.saga'
 
 sagaMiddleware.run(play)
 
@@ -27,3 +28,4 @@ sagaMiddleware.run(cloneAsMask)
 sagaMiddleware.run(removeMask)
 
 sagaMiddleware.run(toolSelected)
+sagaMiddleware.run(selectSync)

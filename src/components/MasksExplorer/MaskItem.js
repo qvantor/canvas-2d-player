@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { getClassNames } from 'dynamic-class-list'
-import { selected } from 'reducers/control/control.actions'
+import { select } from 'reducers/control/control.actions'
 
 const MaskItem = (props) => {
   const onDragStart = (e) => e.dataTransfer.setData('id', props.id)
   const { mask, isSelected, id } = props
   return (
     <div
-      onClick={() => selected([id])}
+      onClick={() => select([id])}
       className={getClassNames('mask-item', { 'active': isSelected })}
       onDragStart={onDragStart}
       draggable>

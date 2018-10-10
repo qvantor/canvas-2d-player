@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { typeById } from 'utils/'
+import { typeById } from 'utils'
 
 import SelectedObject from '../SelectedObject/SelectedObject'
 import SelectedMask from '../SelectedMask/SelectedMask'
