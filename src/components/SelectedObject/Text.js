@@ -41,8 +41,7 @@ const Text = (props) => {
 }
 
 Text.propTypes = {
-  obj: PropTypes.object,
-  renderField: PropTypes.func
+  obj: PropTypes.object
 }
 
 export default Text

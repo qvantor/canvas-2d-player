@@ -9,3 +9,11 @@
   -ms-transform: rotate($angle);
   transform: rotate($angle);
 }
+
+@mixin transparentBg($color: $clouds) {
+  background-position: 0 0, 10px 10px;
+  -webkit-background-size: 21px 21px;
+  background-size: 21px 21px;
+  background-image: -webkit-linear-gradient(45deg, $color 25%, transparent 25%, transparent 75%, $color 75%, $color),
+  -webkit-linear-gradient(45deg, $color 25%, transparent 25%, transparent 75%, $color 75%, $color)
+}

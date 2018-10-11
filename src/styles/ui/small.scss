@@ -1,0 +1,22 @@
+.color-picker {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+
+  .color-picker-background {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 20px;
+  }
+
+  .color-picker-background-absolute {
+    @include transparentBg();
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 20px;
+    top: 0;
+    left: 0;
+  }
+}

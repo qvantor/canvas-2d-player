@@ -17,8 +17,7 @@ const Rect = props => {
 }
 
 Rect.propTypes = {
-  obj: PropTypes.object,
-  renderField: PropTypes.func
+  obj: PropTypes.object
 }
 
 export default Rect

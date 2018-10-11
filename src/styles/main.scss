@@ -12,10 +12,8 @@
 @import "context-menu";
 @import "ui/collapse";
 @import "ui/tabs";
-
-body {
-
-}
+@import "ui/popover";
+@import "ui/small";
 
 .main-layout {
   .left-menu {
@@ -37,11 +35,8 @@ body {
 }
 
 .canvas-container {
+  @include transparentBg();
   height: 60vh;
-  background-position: 0 0, 10px 10px;
-  -webkit-background-size: 21px 21px;
-  background-size: 21px 21px;
-  background-image: -webkit-linear-gradient(45deg, $clouds 25%, transparent 25%, transparent 75%, $clouds 75%, $clouds), -webkit-linear-gradient(45deg, $clouds 25%, transparent 25%, transparent 75%, $clouds 75%, $clouds)
 }
 
 .bg-clouds {

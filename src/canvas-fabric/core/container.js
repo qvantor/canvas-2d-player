@@ -9,6 +9,8 @@ export let renderer
 export const createCanvas = elem => {
   canvas = new fabric.Canvas(elem)
 
+  canvas.preserveObjectStacking = true
+
   const select = (e) => {
     const objects = e.selected.map(item => item.id).filter(item => item)
     if (objects.length > 0) selected(objects)

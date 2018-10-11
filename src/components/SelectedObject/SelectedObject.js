@@ -10,6 +10,7 @@ import Position from '../Selected/Position'
 import Shadow from './Shadow'
 import Rect from './Rect'
 import Text from './Text'
+import Path from './Path'
 
 const { Panel } = Collapse
 
@@ -30,16 +31,17 @@ const SelectedObject = (props) => {
     </div>)
 
   return (
-    <Collapse className='collapse-xs' bordered={false} defaultActiveKey={['1']}>
+    <Collapse className='collapse-xs' bordered={false} defaultActiveKey={['1', '3']}>
       <Panel header='Position' key={'1'}>
         <Position obj={obj} renderWithKeyFrames={renderWithKeyFrames} />
-      </Panel>
-      <Panel header='Shadow' key={'2'}>
-        <Shadow obj={obj} />
       </Panel>
       <Panel header={obj.type} key={'3'}>
         {obj.type === 'rect' && <Rect obj={obj} />}
         {obj.type === 'textbox' && <Text obj={obj} />}
+        {obj.type === 'path' && <Path obj={obj} />}
+      </Panel>
+      <Panel header='Shadow' key={'2'}>
+        <Shadow obj={obj} />
       </Panel>
     </Collapse>
   )

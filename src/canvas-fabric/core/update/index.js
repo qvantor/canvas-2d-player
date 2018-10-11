@@ -5,6 +5,7 @@ import * as Masks from '../Masks'
 import rect from './rect'
 import textbox from './textbox'
 import mask from './mask'
+import path from './path'
 
 export default (obj, props) => {
   obj.id = props.id
@@ -38,7 +39,8 @@ export default (obj, props) => {
     //
     // extratypes sync
     if (type === 'rect') rect(obj, params, oldParams)
-    if (type === 'textbox') textbox(obj, params, oldParams)
+    else if (type === 'textbox') textbox(obj, params, oldParams)
+    else if (type === 'path') path(obj, params, oldParams)
     // shadow sync
     updateShadow(obj, params, oldParams)
 

@@ -37,8 +37,7 @@ const Shadow = props => {
 }
 
 Shadow.propTypes = {
-  obj: PropTypes.object.isRequired,
-  renderField: PropTypes.func
+  obj: PropTypes.object.isRequired
 }
 
 export default Shadow

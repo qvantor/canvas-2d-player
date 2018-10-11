@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import ObjectsList from '../Objects/ObjectsList'
-import { typeById } from 'utils'
+import { typeById } from '../../../utils'
 
 const SelectedMask = (props) => {
   const { selection, masks } = props
