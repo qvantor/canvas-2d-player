@@ -15,6 +15,7 @@ import toolSelected from './control/toolSelected.saga'
 import selectSync from './control/selectSync.saga'
 
 import imageAdd from './images/imageAdd.saga'
+import removeImgObject from './images/removeImgObject.saga'
 
 sagaMiddleware.run(play)
 
@@ -33,3 +34,4 @@ sagaMiddleware.run(toolSelected)
 sagaMiddleware.run(selectSync)
 
 sagaMiddleware.run(imageAdd)
+sagaMiddleware.run(removeImgObject)

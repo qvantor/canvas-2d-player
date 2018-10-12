@@ -1,4 +1,7 @@
 export const IMAGE_ADD = 'IMAGE_ADD'
 export const IMAGE_ADDED = 'IMAGE_ADDED'
+
+export const IMAGE_OBJECT_REMOVE = 'IMAGE_OBJECT_REMOVE'
 export const IMAGE_PARAM_SETTED = 'IMAGE_PARAM_SETTED'
+
 export const IMAGE_REMOVE = 'IMAGE_REMOVE'

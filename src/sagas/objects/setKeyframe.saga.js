@@ -4,6 +4,7 @@ import { findObj } from 'reducers/objects/objects.utils'
 import { calcParams } from 'canvas-fabric/components/Objects/animate'
 import { round, id as idGen } from 'utils/'
 
+// @todo maybe BEFORE middleware helps
 export default function * () {
   while (true) {
     const { payload: { id, params } } = yield take(constants.OBJ_PROPS_SET)

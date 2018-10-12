@@ -17,6 +17,7 @@ const createImg = (url) => {
   return {
     id: id(types.IMAGE),
     url,
+    objects: [],
     loaded: false
   }
 }
@@ -36,6 +37,7 @@ export default function * () {
     const { payload } = yield take(constants.IMAGE_ADD)
     const img = yield call(createImg, payload)
     const imgObj = yield call(createImgObj, img.id)
+    img.objects.push(imgObj.id)
 
     yield put({ type: constants.IMAGE_ADDED, payload: img })
     yield call(addObject, imgObj)
