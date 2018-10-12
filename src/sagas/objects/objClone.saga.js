@@ -1,7 +1,7 @@
 import { take, call, select, put } from 'redux-saga/effects'
 import * as constants from 'reducers/objects/objects.constants'
 import { findObj } from 'reducers/objects/objects.utils'
-import idGen from 'utils/id'
+import { id } from 'utils/'
 
 export default function * () {
   while (true) {
@@ -11,7 +11,7 @@ export default function * () {
     yield put({
       type: constants.ADD_OBJ,
       payload: obj.merge({
-        id: idGen(),
+        id: id(),
         name: `${obj.name} clone`
       })
     })

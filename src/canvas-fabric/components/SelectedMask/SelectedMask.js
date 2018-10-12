@@ -2,14 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import ObjectsList from '../Objects/ObjectsList'
-import { typeById } from '../../../utils'
+import { typeById, types } from '../../../utils'
 
 const SelectedMask = (props) => {
   const { selection, masks } = props
   if (!selection) return null
   const selected = selection[0]
   const selectedType = typeById(selected)
-  if (selectedType !== 'mask') return null
+  if (selectedType !== types.MASK) return null
   const mask = masks[selected]
   if (!mask) return null
 

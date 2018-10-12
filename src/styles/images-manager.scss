@@ -1,0 +1,22 @@
+.images-manager {
+  flex-direction: column;
+
+  .images-list {
+    flex-wrap: wrap;
+    flex-direction: row;
+    .image-item {
+      align-items: center;
+      width: 98px;
+      max-height: 98px;
+      .item-img {
+        width: 100%;
+        max-height: 100%;
+      }
+
+      &.selected {
+        background: lighten($nephritis, 40%);
+        border: 1px solid lighten($nephritis, 10%) !important;
+      }
+    }
+  }
+}

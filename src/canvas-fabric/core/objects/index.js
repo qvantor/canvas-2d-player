@@ -1,6 +1,6 @@
 import { fabric } from 'fabric'
-import { renderer } from '../container'
 import curves from 'canvas-fabric/utils/curves'
+import { addListener } from 'reducers/images/images.manager'
 
 export * from './mask'
 
@@ -10,11 +10,7 @@ export const collection = () => fabric.Collection
 
 export const img = (props) => {
   const fimg = new fabric.Image(null, props.params)
-  fimg.setSrc(props.url, () => {
-    fimg.dirty = true
-    fimg.setCoords()
-    renderer.render()
-  })
+  addListener(props.imgId, fimg)
   return fimg
 }
 

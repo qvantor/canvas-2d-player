@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { typeById } from 'utils'
+import { typeById, types } from 'utils'
 
 import SelectedObject from '../SelectedObject/SelectedObject'
 import SelectedMask from '../SelectedMask/SelectedMask'
@@ -11,9 +11,9 @@ const Selected = (props) => {
   if (!selection || selection.length !== 1) return null
   const selected = selection[0]
   const selectedType = typeById(selected)
-
-  if (selectedType === 'object') return <SelectedObject selected={selected} />
-  if (selectedType === 'mask') return <SelectedMask selected={selected} />
+  if (selectedType === types.OBJECT) return <SelectedObject selected={selected} />
+  if (selectedType === types.MASK) return <SelectedMask selected={selected} />
+  return null
 }
 
 Selected.propTypes = {

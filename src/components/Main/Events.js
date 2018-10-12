@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { removeObject } from 'reducers/objects/objects.actions'
 import { removeMask } from 'reducers/masks/masks.actions'
-import { typeById } from 'utils'
+import { removeImage } from 'reducers/images/images.actions'
+import { typeById, types } from 'utils'
 
 class Events extends React.Component {
   componentDidMount () {
@@ -22,8 +23,9 @@ class Events extends React.Component {
       !textEditing &&
       tool === 'standard') {
       const type = typeById(selection[0])
-      if (type === 'object') removeObject(selection[0])
-      if (type === 'mask') removeMask(selection[0])
+      if (type === types.OBJECT) removeObject(selection[0])
+      else if (type === types.MASK) removeMask(selection[0])
+      else if (type === types.IMAGE) removeImage(selection[0])
     }
   }
 

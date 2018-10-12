@@ -5,7 +5,7 @@ import { canvas } from 'canvas-fabric/core/container'
 import splineBrush from 'canvas-fabric/brushes/spline'
 import { addObject, removeObject } from 'reducers/objects/objects.actions'
 import { findObj } from 'reducers/objects/objects.utils'
-import idGen from 'utils/id'
+import { id } from 'utils/'
 
 let brush
 
@@ -28,7 +28,7 @@ function * configureTool (tool) {
     const { list } = yield select(({ objTypes }) => objTypes)
     const cleanObj = list.find(item => item.type === 'path')
     const obj = cleanObj.merge({
-      id: idGen(),
+      id: id(),
       params: Object.assign({ points, func }, params)
     }, { deep: true })
     yield call(addObject, obj)

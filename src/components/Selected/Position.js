@@ -4,14 +4,14 @@ import FormGenerator from '../FormGenerator/FormGenerator'
 
 import { setParams } from 'reducers/objects/objects.actions'
 import { setMaskParams } from 'reducers/masks/masks.actions'
-import { typeById } from 'utils'
+import { typeById, types } from 'utils'
 
 const Position = (props) => {
   const { obj, renderWithKeyFrames } = props
   const onChange = (e, item) => {
     const type = typeById(obj.id)
-    if (type === 'object') setParams(obj.id, { [item.key]: e })
-    if (type === 'mask') setMaskParams(obj.id, { [item.key]: e })
+    if (type === types.OBJECT) setParams(obj.id, { [item.key]: e })
+    if (type === types.MASK) setMaskParams(obj.id, { [item.key]: e })
   }
   const positionSchema = [
     { type: 'Number', name: 'Angle', key: 'angle', step: 0.1, onChange, render: renderWithKeyFrames },

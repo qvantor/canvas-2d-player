@@ -24,7 +24,7 @@ const ObjectsList = (props) => {
       return <item.type
         key={item.id}
         id={item.id}
-        url={item.url}
+        imgId={item.imgId}
         params={newParams || item.params}>
         {item.children && renderObj(item.children)}
       </item.type>

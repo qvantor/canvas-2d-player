@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import Button from 'antd/lib/button'
 import Popover from 'antd/lib/popover'
 import Input from 'antd/lib/input'
-import id from 'utils/id'
-import { addObject } from 'reducers/objects/objects.actions'
+import { addImage } from 'reducers/images/images.actions'
 
 class Img extends Component {
   state = { value: null }
@@ -16,11 +15,7 @@ class Img extends Component {
     return (
       <Popover placement='bottom' content={<form onSubmit={e => {
         e.preventDefault()
-        addObject(Object.assign({
-          id: id(),
-          type: item.type,
-          url: value
-        }, item))
+        addImage(value)
       }}>
         <Input
           onChange={e => this.setState({ value: e.target.value })}

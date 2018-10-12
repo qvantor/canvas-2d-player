@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { Button, Popover } from 'antd'
 import { addObject } from 'reducers/objects/objects.actions'
-import id from 'utils/id'
+import { id } from 'utils/'
 import Img from './Img'
 
 class Objects extends Component {

@@ -1,6 +1,6 @@
 import { setParams } from 'reducers/objects/objects.actions'
 import { setMaskParams } from 'reducers/masks/masks.actions'
-import { typeById } from '../../../utils/'
+import { typeById, types } from '../../../utils/'
 
 import dragNDrop from './dragNdrop'
 
@@ -23,8 +23,8 @@ export default (obj) => {
 
   const set = target => {
     const type = typeById(target.id)
-    if (type === 'object') setParams(target.id, extractParams(target))
-    else if (type === 'mask') setMaskParams(target.id, extractParams(target))
+    if (type === types.OBJECT) setParams(target.id, extractParams(target))
+    else if (type === types.MASK) setMaskParams(target.id, extractParams(target))
   }
   dragNDrop(obj)
 

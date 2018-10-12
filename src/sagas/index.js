@@ -14,6 +14,8 @@ import removeMask from './masks/removeMask.saga'
 import toolSelected from './control/toolSelected.saga'
 import selectSync from './control/selectSync.saga'
 
+import imageAdd from './images/imageAdd.saga'
+
 sagaMiddleware.run(play)
 
 sagaMiddleware.run(setVisibleFrame)
@@ -29,3 +31,5 @@ sagaMiddleware.run(removeMask)
 
 sagaMiddleware.run(toolSelected)
 sagaMiddleware.run(selectSync)
+
+sagaMiddleware.run(imageAdd)
