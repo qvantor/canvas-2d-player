@@ -1,8 +1,9 @@
-import * as constants from 'reducers/objects/objects.constants'
+import * as objConstants from 'reducers/objects/objects.constants'
+import * as imgConstants from 'reducers/images/images.constants'
 
 export const BEFORE = `BEFORE_`
 
-const beforeActions = [constants.REMOVE_OBJ]
+const beforeActions = [objConstants.REMOVE_OBJ, imgConstants.IMAGE_REMOVE]
 
 export default () => next => action => {
   if (beforeActions.indexOf(action.type) !== -1) {

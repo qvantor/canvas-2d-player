@@ -5,6 +5,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     .image-item {
+      @include transition(200ms);
       align-items: center;
       width: 98px;
       max-height: 98px;

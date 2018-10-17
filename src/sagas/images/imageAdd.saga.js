@@ -3,6 +3,7 @@ import * as constants from 'reducers/images/images.constants'
 import { setParams } from 'reducers/images/images.actions'
 import * as imgManager from 'reducers/images/images.manager'
 import { addObject } from 'reducers/objects/objects.actions'
+import { createImgObj } from 'reducers/objects/objects.utils'
 import { id, types } from 'utils/'
 
 const initialize = function * () {
@@ -20,15 +21,6 @@ const createImg = (url) => {
     objects: [],
     loaded: false
   }
-}
-
-const createImgObj = function * (imgId) {
-  const objTypes = yield select(({ objTypes }) => objTypes.list)
-  const clearImgObj = objTypes.find(item => item.type === 'img')
-  return Object.assign({}, clearImgObj, {
-    id: id(types.OBJECT),
-    imgId
-  })
 }
 
 export default function * () {

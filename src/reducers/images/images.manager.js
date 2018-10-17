@@ -24,7 +24,7 @@ export const addImage = img => new Promise((resolve, reject) => {
     }
     resolve(image)
   }
-  image.onerror = (e) => reject(e)
+  image.onerror = (e) => console.log('Image is not available', img.url)
 })
 
 export const getImage = id => cache[id]

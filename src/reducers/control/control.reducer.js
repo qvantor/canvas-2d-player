@@ -25,6 +25,11 @@ export default function control (state = Model, { type, payload }) {
       })
     case constants.CONTROL_SET_TOOL:
       return state.merge({ tool: payload })
+
+    case constants.CONTROL_DRAG_STARTED:
+      return state.merge({ drag: { dragging: true, type: payload.type, target: payload.target, data: payload.data } })
+    case constants.CONTROL_DRAG_ENDED:
+      return state.merge({ drag: { dragging: false, type: null, target: null, data: null } })
     default:
       return state
   }

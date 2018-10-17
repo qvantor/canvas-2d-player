@@ -2,7 +2,7 @@ import { setParams } from 'reducers/objects/objects.actions'
 import { setMaskParams } from 'reducers/masks/masks.actions'
 import { typeById, types } from '../../../utils/'
 
-import dragNDrop from './dragNdrop'
+import dragNDrop from './dragNdrop/'
 
 export default (obj) => {
   if (!obj.on) return obj

@@ -1,6 +1,6 @@
 import * as objects from './objects/'
 
-import coreEvents from './events/coreEvents'
+import objEvents from './objEvents/'
 import update from './update'
 
-export default (type, props) => coreEvents(update(objects[type](props), props))
+export default (type, props) => objEvents(update(objects[type](props), props))

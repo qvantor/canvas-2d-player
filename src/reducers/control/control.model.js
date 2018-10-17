@@ -7,5 +7,11 @@ export default Immutable({
   tool: 'standard',
   openFrames: [],
   openObjects: [],
-  colors: ['#ffffff', '#000000']
+  colors: ['#ffffff', '#000000'],
+  drag: {
+    dragging: false,
+    type: null,
+    target: null,
+    data: null
+  }
 })

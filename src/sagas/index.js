@@ -1,4 +1,5 @@
 import { sagaMiddleware } from '../store'
+import { all, fork } from 'redux-saga/effects'
 
 import play from './play.saga'
 import setVisibleFrame from './objects/setVisibleFrame.saga'
@@ -16,22 +17,32 @@ import selectSync from './control/selectSync.saga'
 
 import imageAdd from './images/imageAdd.saga'
 import removeImgObject from './images/removeImgObject.saga'
+import cloneImage from './images/cloneImage.saga'
+import removeImage from './images/removeImage.saga'
 
-sagaMiddleware.run(play)
+function * rootSaga () {
+  yield all([
+    fork(play),
 
-sagaMiddleware.run(setVisibleFrame)
-sagaMiddleware.run(setKeyframe)
-sagaMiddleware.run(prevKeyframe)
-sagaMiddleware.run(nextKeyframe)
-sagaMiddleware.run(initialKeyFrame)
-sagaMiddleware.run(objClone)
+    fork(setVisibleFrame),
+    fork(setKeyframe),
+    fork(prevKeyframe),
+    fork(nextKeyframe),
+    fork(initialKeyFrame),
+    fork(objClone),
 
-sagaMiddleware.run(maskAttached)
-sagaMiddleware.run(cloneAsMask)
-sagaMiddleware.run(removeMask)
+    fork(maskAttached),
+    fork(cloneAsMask),
+    fork(removeMask),
 
-sagaMiddleware.run(toolSelected)
-sagaMiddleware.run(selectSync)
+    fork(toolSelected),
+    fork(selectSync),
 
-sagaMiddleware.run(imageAdd)
-sagaMiddleware.run(removeImgObject)
+    fork(imageAdd),
+    fork(cloneImage),
+    fork(removeImgObject),
+    fork(removeImage)
+  ])
+}
+
+sagaMiddleware.run(rootSaga)
