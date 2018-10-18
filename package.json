@@ -19,7 +19,7 @@
     "d3": "^5.7.0",
     "dynamic-class-list": "^1.0.8",
     "exonum-client-anchoring": "^0.6.1",
-    "fabric": "^2.4.1",
+    "fabric": "^2.4.2-b",
     "mainloop.js": "^1.0.4",
     "prop-types": "15.6.2",
     "react": "16.4.2",

@@ -3,15 +3,19 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 const Time = (props) => {
-  const { time } = props
-  return <small>{Math.round(time / 10) / 100}</small>
+  const { frame, frameTime } = props
+  return <small>
+    {Math.round((frame * frameTime) / 10) / 100}
+  </small>
 }
 
 Time.propTypes = {
-  time: PropTypes.number
+  frame: PropTypes.number.isRequired,
+  frameTime: PropTypes.number.isRequired,
 }
 
 const mapStateToProps = state => ({
-  time: state.timeline.time
+  frame: state.timeline.frame,
+  frameTime: state.timeline.frameTime
 })
 export default connect(mapStateToProps)(Time)

@@ -8,11 +8,11 @@ import TimelineEditorList from './TimelineEditorList'
 
 class TimelineEditor extends Component {
   render () {
-    const { width, height, duration } = this.props
+    const { width, height, frames } = this.props
     const padding = 5
 
     const xScale = scaleLinear()
-      .domain([0, duration])
+      .domain([0, frames])
       .range([0, width - (padding * 1.5)])
 
     return (
@@ -34,6 +34,6 @@ class TimelineEditor extends Component {
 }
 
 const mapStateToProps = state => ({
-  duration: state.timeline.duration
+  frames: state.timeline.frames
 })
 export default connect(mapStateToProps)(TimelineEditor)

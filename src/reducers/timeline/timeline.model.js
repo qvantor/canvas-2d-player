@@ -2,6 +2,7 @@ import Immutable from 'seamless-immutable'
 
 export default Immutable({
   play: false,
-  time: 500,
-  duration: 5000
+  frame: 0,
+  frames: 150,
+  frameTime: 16.6666666667
 })

@@ -2,7 +2,7 @@ import * as constants from 'reducers/objects/objects.constants'
 import { call, select, take, put } from 'redux-saga/effects'
 import { findObj } from 'reducers/objects/objects.utils'
 import { calcParams } from 'canvas-fabric/components/Objects/animate'
-import { round, id as idGen } from 'utils/'
+import { id as idGen } from 'utils/'
 
 // @todo maybe BEFORE middleware helps
 export default function * () {
@@ -10,16 +10,16 @@ export default function * () {
     const { payload: { id, params } } = yield take(constants.OBJ_PROPS_SET)
     if (!id) continue
     const objects = yield select(({ objects }) => objects)
-    const { time } = yield select(({ timeline }) => timeline)
+    const { frame } = yield select(({ timeline }) => timeline)
     const obj = yield call(findObj, id, objects)
     const { keyframes } = obj
-    const oldParams = calcParams(keyframes, time)
+    const oldParams = calcParams(keyframes, frame)
 
     const newKeyFrames = {}
     let changes = false
     for (let key in keyframes) {
       if (params[key] !== undefined && oldParams[key] !== params[key]) {
-        const newKeyFrame = [round(time), params[key], idGen()]
+        const newKeyFrame = [frame, params[key], idGen()]
         const sameTimeFrame = keyframes[key].keys.find((item) => item[0] === newKeyFrame[0])
         if (sameTimeFrame) {
           newKeyFrames[key] = {

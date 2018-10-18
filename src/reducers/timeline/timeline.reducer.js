@@ -7,8 +7,8 @@ export default function timeline (state = Model, { type, payload }) {
       return state.merge({ play: true })
     case constants.TIMELINE_PAUSE:
       return state.merge({ play: false })
-    case constants.TIMELINE_TIME_SETTED:
-      return state.merge({ time: payload < 0 ? 0 : payload })
+    case constants.TIMELINE_FRAME_SETTED:
+      return state.merge({ frame: payload < 0 ? 0 : payload })
     default:
       return state
   }

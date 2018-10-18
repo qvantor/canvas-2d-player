@@ -22,7 +22,7 @@ export default Immutable({
     {
       name: 'Group',
       type: 'group',
-      visible: [[0, 5000]],
+      visible: [[0, 150]],
       params: {
         mask: false,
         selectable: true
@@ -33,7 +33,7 @@ export default Immutable({
     {
       name: 'Rect',
       type: 'rect',
-      visible: [[0, 5000]],
+      visible: [[0, 150]],
       keyframes: {},
       params: Object.assign({
         width: 100,
@@ -46,7 +46,7 @@ export default Immutable({
     {
       name: 'Text',
       type: 'textbox',
-      visible: [[0, 5000]],
+      visible: [[0, 150]],
       keyframes: {},
       params: Object.assign({
         left: 100,
@@ -62,7 +62,7 @@ export default Immutable({
     {
       name: 'Image',
       type: 'img',
-      visible: [[0, 5000]],
+      visible: [[0, 150]],
       params: Object.assign({
         left: 100,
         top: 100
@@ -72,7 +72,7 @@ export default Immutable({
     {
       name: 'Path',
       type: 'path',
-      visible: [[0, 5000]],
+      visible: [[0, 150]],
       params: Object.assign(basePart, {
         points: [],
         func: 'curveBasisClosed',

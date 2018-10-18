@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 
 class Line extends Component {
   render () {
-    const { height, scale, time } = this.props
-    const x = scale(time)
+    const { height, scale, frame } = this.props
+    const x = scale(frame)
     return (
       <line
         className='line-time'
@@ -17,6 +17,6 @@ class Line extends Component {
 }
 
 const mapStateToProps = state => ({
-  time: state.timeline.time
+  frame: state.timeline.frame
 })
 export default connect(mapStateToProps)(Line)
