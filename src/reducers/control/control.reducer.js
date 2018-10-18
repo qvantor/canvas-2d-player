@@ -7,10 +7,6 @@ export default function control (state = Model, { type, payload }) {
       return state.merge({ selection: null, lastSelected: state.selection })
     case constants.CONTROL_SELECTED:
       return state.merge({ selection: payload })
-    case constants.CONTROL_EDITING_ENTER:
-      return state.merge({ textEditing: true })
-    case constants.CONTROL_EDITING_EXIT:
-      return state.merge({ textEditing: false })
     case constants.CONTROL_OPEN_FRAMES_TOGGLE:
       return state.merge({
         openFrames: state.openFrames.indexOf(payload) === -1

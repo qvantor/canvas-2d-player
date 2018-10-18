@@ -15,8 +15,8 @@ export default (obj) => {
     scaleY: target.scaleY,
     flipX: target.flipX,
     flipY: target.flipY,
-    originX: 'center',
-    originY: 'center',
+    originX: target.originX,
+    originY: target.originY,
     width: target.width,
     height: target.height
   })

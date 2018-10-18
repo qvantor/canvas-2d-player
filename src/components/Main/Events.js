@@ -8,6 +8,7 @@ import { typeById, types } from 'utils'
 class Events extends React.Component {
   componentDidMount () {
     document.addEventListener('keydown', e => {
+      if (e.srcElement.nodeName !== 'BODY') return
       switch (e.keyCode) {
         case 8:
         case 46:
@@ -17,10 +18,9 @@ class Events extends React.Component {
   }
 
   removeElement = () => {
-    const { selection, textEditing, tool } = this.props
+    const { selection, tool } = this.props
     if (selection &&
       selection.length === 1 &&
-      !textEditing &&
       tool === 'standard') {
       const type = typeById(selection[0])
       if (type === types.OBJECT) removeObject(selection[0])
@@ -34,7 +34,6 @@ class Events extends React.Component {
 
 const mapStateToProps = state => ({
   selection: state.control.selection,
-  tool: state.control.tool,
-  textEditing: state.control.textEditing
+  tool: state.control.tool
 })
 export default connect(mapStateToProps)(Events)

@@ -73,10 +73,12 @@ export default Immutable({
       name: 'Path',
       type: 'path',
       visible: [[0, 5000]],
-      params: Object.assign({
+      params: Object.assign(basePart, {
         points: [],
-        func: 'curveBasisClosed'
-      }, basePart),
+        func: 'curveBasisClosed',
+        originX: 'left',
+        originY: 'top'
+      }),
       keyframes: {}
     }]
 })
