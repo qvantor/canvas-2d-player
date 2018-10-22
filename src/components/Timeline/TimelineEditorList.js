@@ -11,9 +11,7 @@ class TimelineEditorList extends Component {
       const open = openFrames.indexOf(item.id) !== -1
       return (<div key={item.id}>
         <div className='visible-lines'>
-          {item.visible.map((line, i) =>
-            <VisibleLines key={i} objId={item.id} keyId={i} line={line} scale={scale} />
-          )}
+          <VisibleLines objId={item.id} scale={scale} />
         </div>
         {open && <TimelineEditorFrames obj={item} scale={scale} />}
         {/*{item.children && this.renderObjects(item.children)}*/}

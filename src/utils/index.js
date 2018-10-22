@@ -1,6 +1,7 @@
 import * as types from 'types'
+import calcParams from './calcParams'
 
-export { types }
+export { types, calcParams }
 
 export const id = type => {
   const id = '_' + Math.random().toString(36).substr(2, 9)

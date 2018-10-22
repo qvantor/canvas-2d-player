@@ -2,6 +2,10 @@ import { sagaMiddleware } from '../store'
 import { all, fork } from 'redux-saga/effects'
 
 import play from './play.saga'
+import canvasRedux from './canvasRedux.saga'
+
+import visibleSet from './visible/visibleSet.saga'
+
 import setVisibleFrame from './objects/setVisibleFrame.saga'
 import setKeyframe from './objects/setKeyframe.saga'
 import { prevKeyframe, nextKeyframe } from './objects/toKeyFrame.saga'
@@ -23,6 +27,9 @@ import removeImage from './images/removeImage.saga'
 function * rootSaga () {
   yield all([
     fork(play),
+    fork(canvasRedux),
+
+    fork(visibleSet),
 
     fork(setVisibleFrame),
     fork(setKeyframe),
