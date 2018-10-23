@@ -16,7 +16,7 @@ class VisibleLines extends Component {
   render () {
     const { scale, objId, visible } = this.props
     const { parent } = this.state
-    const line = visible[objId]
+    const line = visible[objId] || [0, 0]
     const width = scale(line[1] - line[0])
     const left = scale(line[0])
 

@@ -1,8 +1,10 @@
 import * as constants from 'reducers/visible/visible.constants'
+import { removeVisible } from 'reducers/visible/visible.actions'
 import * as objConstants from 'reducers/objects/objects.constants'
-import { take, put, select, fork } from 'redux-saga/effects'
+import { take, put, select, fork, call } from 'redux-saga/effects'
 
 import { getFrames, getVisible } from 'sagas/selectors'
+import { BEFORE } from '../../store/beforeMiddleware'
 
 const checkVisible = (key, frame) => key[0] <= frame && key[1] >= frame
 
@@ -27,6 +29,19 @@ const calcCache = (cache, newObj, frames) => {
   return updatedCache
 }
 
+const removeFromCache = (cache, objId, frames) => {
+  const updatedCache = []
+  for (let i = 0; i <= frames; i++) {
+    const index = cache[i].indexOf(objId)
+    if (index !== -1) {
+      updatedCache[i] = cache[i].filter((o, i) => i !== index)
+    } else {
+      updatedCache[i] = cache[i]
+    }
+  }
+  return updatedCache
+}
+
 function * add () {
   while (true) {
     const { payload } = yield take(objConstants.ADD_OBJ)
@@ -37,16 +52,26 @@ function * add () {
     const cache = calcCache(visible.cache, newObj, frames)
 
     yield put({
-      type: constants.FRAMES_UPDATED,
+      type: constants.VISIBLE_FRAMES_UPDATED,
       payload: { id: newObj.id, keys: newObj.keys, cache }
     })
   }
 }
 
+function * remove () {
+  while (true) {
+    const { payload } = yield take(BEFORE + objConstants.REMOVE_OBJ)
+    const frames = yield select(getFrames)
+    const visible = yield select(getVisible)
+    const cache = removeFromCache(visible.cache, payload, frames)
+
+    yield call(removeVisible, payload, cache)
+  }
+}
+
 function * update () {
   while (true) {
-    const { payload } = yield take(constants.FRAMES_UPDATE)
-    console.log(payload)
+    const { payload } = yield take(constants.VISIBLE_FRAMES_UPDATE)
 
     const frames = yield select(getFrames)
     const visible = yield select(getVisible)
@@ -54,7 +79,7 @@ function * update () {
     const cache = calcCache(visible.cache, newObj, frames)
 
     yield put({
-      type: constants.FRAMES_UPDATED,
+      type: constants.VISIBLE_FRAMES_UPDATED,
       payload: { id: newObj.id, keys: newObj.keys, cache }
     })
   }
@@ -63,4 +88,5 @@ function * update () {
 export default function * () {
   yield fork(add)
   yield fork(update)
+  yield fork(remove)
 }

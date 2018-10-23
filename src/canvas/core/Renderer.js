@@ -1,7 +1,7 @@
 import { fabric } from 'fabric'
 import Stats from 'stats.js'
 import { store } from 'store'
-import { setFrame } from 'reducers/timeline/timeline.actions'
+import { setPlayFrame } from 'reducers/timeline/timeline.actions'
 import { canvas } from '../container'
 
 const { getState } = store
@@ -51,7 +51,7 @@ export default class Renderer {
     const frameOffset = Math.round(deltaTime / this.frameTime)
     const { timeline: { frame } } = getState()
     const frameNumber = frame + frameOffset
-    frame >= this.framesCount ? setFrame(0) : setFrame(frameNumber)
+    frame >= this.framesCount ? setPlayFrame(0) : setPlayFrame(frameNumber)
     canvas.setFrame(frameNumber)
     this.canvas.renderAll()
   }

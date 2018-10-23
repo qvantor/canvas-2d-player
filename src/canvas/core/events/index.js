@@ -1,6 +1,6 @@
 import { selected, deselected } from 'reducers/control/control.actions'
 
-// import dragNdrop from './dragNdrop/'
+import dragNdrop from './dragNdrop/'
 
 export default (canvas) => {
   const select = (e) => {
@@ -11,5 +11,5 @@ export default (canvas) => {
   canvas.on('selection:created', select)
   canvas.on('selection:updated', select)
 
-  // dragNdrop(canvas)
+  dragNdrop(canvas)
 }

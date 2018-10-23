@@ -10,25 +10,27 @@ import { store } from 'store'
 
 export let canvas
 
-const checkVisible = (keys, frame) => {
-  for (let key of keys) {
-    if (key[0] <= frame && key[1] >= frame) {
-      return true
-    }
-  }
-  return false
+const objWithParams = (objId, objects, frame) => {
+  // @todo [OPTIMIZATION] object should be taken from object not array
+  const object = objects.find(item => item.id === objId)
+  const params = calcParams(object.keyframes, frame)
+  if (Object.keys(object.keyframes).length === 0) return object
+  return Object.assign({}, object, { params: Object.assign({}, object.params, params) })
 }
 
 class Canvas {
   constructor (params) {
-    this.canvas = new fabric.Canvas(params.el)
-
-    this.canvas.preserveObjectStacking = true
+    this.canvas = new fabric.Canvas(params.el, {
+      preserveObjectStacking: true,
+      // renderOnAddRemove: false
+    })
 
     canvasEvents(this.canvas)
 
     this.renderer = new Renderer(this.canvas)
     this.scene = {}
+
+    this.renderCurrentFrame()
   }
 
   setSize ({ width, height }) {
@@ -37,68 +39,48 @@ class Canvas {
     this.canvas.calcOffset()
   }
 
-  addObj (obj, params) {
+  addObj (obj) {
     const newObj = createInstance(obj.type, obj)
-    newObj.set(params)
     this.scene[obj.id] = newObj
     this.canvas.add(newObj)
   }
 
   deleteObj (objId) {
     this.canvas.remove(this.scene[objId])
+    delete this.scene[objId]
   }
 
-  setInitialFrame () {
-    this.canvas.clear()
+  renderCurrentFrame () {
     const state = store.getState()
     const frame = getFrame(state)
-    const objects = getObjects(state)
-    const { cache } = getVisible(state)
-    const visible = cache[frame]
-    if (!visible) return
-
-    for (let objId of visible) {
-      // @todo [OPTIMIZATION] object should be taken from object not array
-      const object = objects.find(item => item.id === objId)
-      const params = calcParams(object.keyframes, frame)
-      this.addObj(object, Object.assign({}, object.params, params))
-    }
+    this._renderFrame(frame)
+    this.renderer.render()
   }
 
   setFrame (frame) {
+    this._renderFrame(frame)
+  }
+
+  _renderFrame (frame) {
     const state = store.getState()
     const { cache } = getVisible(state)
     const visible = cache[frame]
     if (!visible) return
 
-    const allVisibleIds = cache[frame].asMutable()
-
-    for (let key in this.scene) {
-      const obj = this.scene[key]
-      const objVisibleIndex = allVisibleIds[key]
-      if (objVisibleIndex !== -1) delete allVisibleIds[obj.id]
-      else {
-        this.deleteObj(obj.id)
-        delete allVisibleIds[obj.id]
+    const objects = getObjects(state)
+    let allVisibleIds = visible.asMutable()
+    for (let objId in this.scene) {
+      const visibleIndex = allVisibleIds.indexOf(objId)
+      if (visibleIndex === -1) {
+        this.deleteObj(objId)
         continue
       }
-      const params = calcParams(obj.keyframes, frame)
-      if (Object.keys(params).length > 0) obj.set(Object.assign({}, obj.params, params))
+      allVisibleIds.splice(visibleIndex, 1)
+      this.scene[objId].update(objWithParams(objId, objects, frame))
     }
-    // allVisibleIds and this.scene
-    // for(let obj in this.scene){
-    // if(allVisibleIds[obj.id]) delete allVisibleIds[obj.id]
-    // else {
-    //  this.deleteObj(obj.id)
-    //  delete allVisibleIds[obj.id]
-    // }
-    // const params = calcParams(object.keyframes, frame)
-    // if(params) obj.set(Object.assign({}, object.params, params))
-    // }
-    // const objects = getObjects(state)
-    // for(let objId in allVisibleIds){
-    // addObj(objects[objId])
-    // }
+    for (let objId of allVisibleIds) {
+      this.addObj(objWithParams(objId, objects, frame))
+    }
   }
 }
 

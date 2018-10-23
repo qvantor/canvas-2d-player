@@ -34,6 +34,5 @@ export default (obj) => {
 
   obj.on('changed', () => setParams(obj.id, { text: obj.text }))
 
-  // set(obj)
   return obj
 }

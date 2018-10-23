@@ -1,7 +1,8 @@
 import * as types from 'types'
 import calcParams from './calcParams'
+import connect from './connect'
 
-export { types, calcParams }
+export { types, calcParams, connect }
 
 export const id = type => {
   const id = '_' + Math.random().toString(36).substr(2, 9)

@@ -1,19 +1,19 @@
 import { img } from '../../objects/'
-import { canvas, renderer } from '../../container'
+import { canvas } from 'canvas/container'
 import { cloneImage } from 'reducers/images/images.actions'
 
 let imgObj
 let lastPoint
 
 export const drop = (e, data) => {
-  canvas.remove(imgObj)
+  canvas.canvas.remove(imgObj)
   imgObj = null
-  const point = canvas.getPointer(e.e)
+  const point = canvas.canvas.getPointer(e.e)
   cloneImage(data.imgId, { top: point.y, left: point.x })
 }
 
 export const dragenter = (e, data) => {
-  const point = canvas.getPointer(e.e)
+  const point = canvas.canvas.getPointer(e.e)
   imgObj = img({
     imgId: data.imgId,
     params: {
@@ -23,16 +23,16 @@ export const dragenter = (e, data) => {
       originY: 'center'
     }
   })
-  canvas.add(imgObj)
+  canvas.canvas.add(imgObj)
 }
 
 export const dragleave = () => {
-  canvas.remove(imgObj)
+  canvas.canvas.remove(imgObj)
   imgObj = null
 }
 
 export const dragover = (e) => {
-  const point = canvas.getPointer(e.e)
+  const point = canvas.canvas.getPointer(e.e)
   if (lastPoint && lastPoint.x === point.x && lastPoint.y === point.y) return
   imgObj.top = point.y
   imgObj.left = point.x
@@ -40,5 +40,5 @@ export const dragover = (e) => {
 
   lastPoint = point
 
-  renderer.render()
+  canvas.renderer.render()
 }
