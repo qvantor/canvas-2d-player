@@ -15,6 +15,7 @@ class Objects extends Component {
     }
     return (
       <Popover
+        trigger='click'
         placement='right'
         content={
           <div className='objects-creator pt-1'>
@@ -22,7 +23,7 @@ class Objects extends Component {
               const TypeComponent = types[item.type]
               if (TypeComponent) return <TypeComponent key={item.type} item={item} />
               return (<Button
-                className='mr-1'
+                className={`mr-1 ${item.name}`}
                 onClick={() => addObject(Object.assign({ id: id() }, item))}
                 key={item.type}>
                 {item.name}

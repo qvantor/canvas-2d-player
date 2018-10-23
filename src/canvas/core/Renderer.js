@@ -1,5 +1,5 @@
 import { fabric } from 'fabric'
-import Stats from 'stats.js'
+import Stats from './stats'
 import { store } from 'store'
 import { setPlayFrame } from 'reducers/timeline/timeline.actions'
 import { canvas } from '../container'
