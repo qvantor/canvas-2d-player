@@ -9,3 +9,5 @@ export const getObjTypesList = ({ objTypes }) => objTypes.list
 export const getImages = ({ images }) => images
 
 export const getVisible = ({ visible }) => visible
+
+export const getMasks = ({ masks }) => masks

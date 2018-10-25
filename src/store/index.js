@@ -16,6 +16,7 @@ const enhancer = composeEnhancers(applyMiddleware(...middlewares),
       const data = JSON.parse(subset)
       if (!data) return null
       for (let id in data.images) data.images[id].loaded = false
+      data.control.selection = null
       return Immutable(data)
     }
   }))

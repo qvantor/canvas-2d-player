@@ -2,6 +2,13 @@ import { store } from 'store'
 
 export default (mapProps, onChange) => {
   let currentState
+  const findDiff = (nextState, currentState) => {
+    if (!currentState) return true
+    for (let key in nextState) {
+      if (nextState[key] !== currentState[key]) return true
+    }
+    return false
+  }
 
   const handleChange = () => {
     let nextState = mapProps(store.getState())
@@ -11,15 +18,8 @@ export default (mapProps, onChange) => {
     }
   }
 
-  const findDiff = (nextState, currentState) => {
-    if (!currentState) return true
-    for (let key in nextState) {
-      if (nextState[key] !== currentState[key]) return true
-    }
-    return false
-  }
-
-  let unsubscribe = store.subscribe(handleChange)
+  const unsubscribe = store.subscribe(handleChange)
   handleChange()
+
   return unsubscribe
 }

@@ -3,10 +3,12 @@ import canvasEvents from './core/events'
 import Renderer from './core/Renderer'
 
 import createInstance from './core/createInstance'
+import components from './components'
 import { getObjects, getFrame, getVisible } from 'sagas/selectors'
 import { calcParams } from 'utils/'
 
 import { store } from 'store'
+import { renderer } from '../canvas-fabric/core/container'
 
 export let canvas
 
@@ -22,7 +24,7 @@ class Canvas {
   constructor (params) {
     this.canvas = new fabric.Canvas(params.el, {
       preserveObjectStacking: true,
-      // renderOnAddRemove: false
+      renderOnAddRemove: false
     })
 
     canvasEvents(this.canvas)
@@ -31,6 +33,7 @@ class Canvas {
     this.scene = {}
 
     this.renderCurrentFrame()
+    components(this)
   }
 
   setSize ({ width, height }) {
@@ -55,6 +58,13 @@ class Canvas {
     const frame = getFrame(state)
     this._renderFrame(frame)
     this.renderer.render()
+  }
+
+  selectObject (id) {
+    if (this.scene[id]) {
+      this.canvas.setActiveObject(this.scene[id])
+      this.renderer.render()
+    }
   }
 
   setFrame (frame) {
