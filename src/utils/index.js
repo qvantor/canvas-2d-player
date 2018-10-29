@@ -15,3 +15,17 @@ export const typeById = id => {
 }
 
 export const round = (num, div = 30) => Math.floor(num / div) * div
+
+export const extractParams = target => ({
+  angle: target.angle,
+  left: target.left,
+  top: target.top,
+  scaleX: target.scaleX,
+  scaleY: target.scaleY,
+  flipX: target.flipX,
+  flipY: target.flipY,
+  originX: target.originX,
+  originY: target.originY,
+  width: target.width,
+  height: target.height
+})

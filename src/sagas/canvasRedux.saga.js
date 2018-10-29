@@ -11,6 +11,7 @@ export default function * () {
       [constants.ADD_OBJ]: take(constants.ADD_OBJ),
       [constants.REMOVE_OBJ]: take(constants.REMOVE_OBJ),
       [constants.OBJ_PROPS_SETTED]: take(constants.OBJ_PROPS_SETTED),
+      [constants.OBJ_KEYFRAME_TIME_SET]: take(constants.OBJ_KEYFRAME_TIME_SET),
 
       [visibleConstants.VISIBLE_FRAMES_UPDATED]: take(visibleConstants.VISIBLE_FRAMES_UPDATED),
 

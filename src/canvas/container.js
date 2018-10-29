@@ -1,6 +1,7 @@
 import { fabric } from 'fabric'
 import canvasEvents from './core/events'
 import Renderer from './core/Renderer'
+import HelperContainer from './HelperContainer'
 
 import createInstance from './core/createInstance'
 import components from './components'
@@ -8,7 +9,6 @@ import { getObjects, getFrame, getVisible } from 'sagas/selectors'
 import { calcParams } from 'utils/'
 
 import { store } from 'store'
-import { renderer } from '../canvas-fabric/core/container'
 
 export let canvas
 
@@ -20,8 +20,9 @@ const objWithParams = (objId, objects, frame) => {
   return Object.assign({}, object, { params: Object.assign({}, object.params, params) })
 }
 
-class Canvas {
+class Canvas extends HelperContainer {
   constructor (params) {
+    super()
     this.canvas = new fabric.Canvas(params.el, {
       preserveObjectStacking: true,
       renderOnAddRemove: false
@@ -37,6 +38,7 @@ class Canvas {
   }
 
   setSize ({ width, height }) {
+    super.setSize({ width, height })
     this.canvas.setWidth(width)
     this.canvas.setHeight(height)
     this.canvas.calcOffset()

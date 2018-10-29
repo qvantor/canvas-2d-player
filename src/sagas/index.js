@@ -42,7 +42,7 @@ function * rootSaga () {
     fork(cloneAsMask),
     fork(removeMask),
 
-    fork(toolSelected),
+    // fork(toolSelected),
     fork(selectSync),
 
     fork(imageAdd),

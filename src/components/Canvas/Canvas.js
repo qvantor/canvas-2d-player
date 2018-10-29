@@ -11,10 +11,13 @@ class Canvas extends React.Component {
 
   render () {
     return (
-      <canvas
-        width={1000}
-        height={1000}
-        ref={el => createCanvas({ el })} />
+      <div className='canvas'>
+        <canvas id='help-canvas' />
+        <canvas
+          width={1000}
+          height={1000}
+          ref={el => createCanvas({ el })} />
+      </div>
     )
   }
 }

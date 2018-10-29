@@ -10,3 +10,7 @@ export const DND_IMAGE = 'DND_IMAGE'
 // drag and drop targets
 export const DND_TARGET_OBJ = 'DND_TARGET_OBJ'
 export const DND_TARGET_CANVAS = 'DND_TARGET_CANVAS'
+
+// tools types
+export const TOOL_SELECTION_MOVE = 'TOOL_SELECTION_MOVE'
+export const TOOL_BRUSH_CURVE = 'TOOL_BRUSH_CURVE'
