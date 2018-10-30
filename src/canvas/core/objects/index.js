@@ -1,5 +1,5 @@
 import { fabric } from 'fabric'
-import curves from 'canvas-fabric/utils/curves'
+import { curves } from 'utils'
 import { addListener } from 'reducers/images/images.manager'
 
 export * from './mask'

@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { setActiveObject } from 'canvas-fabric/utils'
 import { cloneObject } from 'reducers/objects/objects.actions'
 import { select } from 'reducers/control/control.actions'
 

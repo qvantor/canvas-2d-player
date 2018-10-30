@@ -1,8 +1,7 @@
 import * as constants from 'reducers/objects/objects.constants'
 import { call, select, take, put } from 'redux-saga/effects'
 import { findObj } from 'reducers/objects/objects.utils'
-import { calcParams } from 'canvas-fabric/components/Objects/animate'
-import { id as idGen } from 'utils/'
+import { id as idGen, calcParams } from 'utils/'
 
 // @todo maybe BEFORE middleware helps
 export default function * () {

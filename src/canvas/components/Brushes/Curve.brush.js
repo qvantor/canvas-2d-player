@@ -1,6 +1,5 @@
 import { fabric } from 'fabric'
-import curves from 'canvas-fabric/utils/curves'
-import { extractParams } from 'utils/'
+import { extractParams, curves } from 'utils/'
 
 import { addPathByPoints } from 'reducers/objects/objects.actions'
 
