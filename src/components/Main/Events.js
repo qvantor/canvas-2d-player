@@ -21,7 +21,7 @@ class Events extends React.Component {
     const { selection, tool } = this.props
     if (selection &&
       selection.length === 1 &&
-      tool === 'standard') {
+      tool === types.TOOL_SELECTION_MOVE) {
       const type = typeById(selection[0])
       if (type === types.OBJECT) removeObject(selection[0])
       else if (type === types.MASK) removeMask(selection[0])

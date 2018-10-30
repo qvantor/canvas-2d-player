@@ -7,18 +7,19 @@ import TimelineEditorFrames from './TimelineEditorFrames'
 class TimelineEditorList extends Component {
   renderObjects = (objects) => {
     const { scale, openFrames } = this.props
-    return objects.map(item => {
+    const list = []
+    for (let key in objects) {
+      const item = objects[key]
       const open = openFrames.indexOf(item.id) !== -1
-      return (<div key={item.id}>
+      list.push(<div key={item.id}>
         <div className='visible-lines'>
-          {item.visible.map((line, i) =>
-            <VisibleLines key={i} objId={item.id} keyId={i} line={line} scale={scale} />
-          )}
+          <VisibleLines objId={item.id} scale={scale} />
         </div>
         {open && <TimelineEditorFrames obj={item} scale={scale} />}
         {/*{item.children && this.renderObjects(item.children)}*/}
       </div>)
-    })
+    }
+    return list
   }
 
   render () {

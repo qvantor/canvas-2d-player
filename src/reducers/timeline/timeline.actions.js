@@ -7,3 +7,4 @@ export const play = () => dispatch({ type: constants.TIMELINE_PLAY })
 export const pause = () => dispatch({ type: constants.TIMELINE_PAUSE })
 
 export const setFrame = payload => dispatch({ type: constants.TIMELINE_FRAME_SETTED, payload })
+export const setPlayFrame = payload => dispatch({ type: constants.TIMELINE_PLAY_FRAME_SETTED, payload })

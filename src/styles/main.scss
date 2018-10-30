@@ -11,7 +11,6 @@
 @import "keyframes";
 @import "context-menu";
 @import "images-manager";
-
 @import "ui/collapse";
 @import "ui/tabs";
 @import "ui/popover";
@@ -36,7 +35,7 @@
   }
 }
 
-.canvas-container {
+div.canvas {
   @include transparentBg();
   height: 60vh;
 }

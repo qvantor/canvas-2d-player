@@ -20,8 +20,10 @@ class ExplorerItems extends PureComponent {
   }
   renderChild = (childs, parent) => {
     const { selection } = this.props
-    return childs.map(item =>
-      <div
+    const list = []
+    for (let key in childs) {
+      const item = childs[key]
+      list.push(<div
         className={getClassNames('tree-item', { 'active': selection && item.id === selection[0] })}
         key={item.id}
         onDragOver={e => e.preventDefault()}
@@ -36,6 +38,8 @@ class ExplorerItems extends PureComponent {
           {this.renderChild(item.children, item.id)}
         </div>}
       </div>)
+    }
+    return list
   }
 
   render () {

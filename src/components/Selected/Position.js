@@ -14,6 +14,7 @@ const Position = (props) => {
     if (type === types.MASK) setMaskParams(obj.id, { [item.key]: e })
   }
   const positionSchema = [
+    { type: 'Number', key: 'opacity', name: 'Opacity', step: 0.1, onChange, render: renderWithKeyFrames },
     { type: 'Number', name: 'Angle', key: 'angle', step: 0.1, onChange, render: renderWithKeyFrames },
     { type: 'Number', name: 'Top', key: 'top', onChange, render: renderWithKeyFrames },
     { type: 'Number', name: 'Left', key: 'left', onChange, render: renderWithKeyFrames },

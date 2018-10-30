@@ -22,7 +22,7 @@ class Main extends React.Component {
         <Events />
         <LeftMenu />
         <div className='canvas-timeline'>
-          <div className='canvas-container' ref='canvasContainer'>
+          <div ref='canvasContainer'>
             <Canvas width={cwidth} height={cheight} />
           </div>
           <Timeline />

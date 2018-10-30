@@ -1,4 +1,4 @@
-import { renderer } from 'canvas-fabric/core/container'
+import { canvas } from 'canvas/container'
 
 const cache = {}
 const listners = {}
@@ -8,7 +8,7 @@ const updateImgObj = (obj, image) => {
   obj.dirty = true
   obj.setCoords()
   if (obj.group) obj.group.dirty = true
-  renderer.render()
+  canvas.renderer.render()
 }
 
 export const addImage = img => new Promise((resolve, reject) => {

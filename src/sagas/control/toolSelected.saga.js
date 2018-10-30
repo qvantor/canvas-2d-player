@@ -1,16 +1,15 @@
 import { take, select, call } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 import * as constants from 'reducers/control/control.constants'
-import { canvas } from 'canvas-fabric/core/container'
-import splineBrush from 'canvas-fabric/brushes/spline'
+import { canvas } from 'canvas/container'
 import { addObject, removeObject } from 'reducers/objects/objects.actions'
 import { findObj } from 'reducers/objects/objects.utils'
-import { id } from 'utils/'
+import { id, types } from 'utils/'
 
 let brush
 
 function * configureTool (tool) {
-  if (tool === 'spline') {
+  if (tool === types.TOOL_BRUSH_CURVE) {
     const { lastSelected } = yield select(({ control }) => control)
     const objects = yield select(({ objects }) => objects)
     let params = null
@@ -21,8 +20,8 @@ function * configureTool (tool) {
         removeObject(lastSelected[0])
       }
     }
-    brush = splineBrush(canvas, params)
-  } else if (brush && brush.type === 'spline') {
+    brush = splineBrush(canvas.canvas, params)
+  } else if (brush && brush.type === types.TOOL_BRUSH_CURVE) {
     const { points, func, params } = brush.destroy()
     if (points.length <= 1) return
     const { list } = yield select(({ objTypes }) => objTypes)

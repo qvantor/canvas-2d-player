@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { findObj } from 'reducers/objects/objects.utils'
 import { Collapse } from 'antd'
 
 import Keyframes from '../Keyframes/Keyframes'
@@ -16,7 +15,7 @@ const { Panel } = Collapse
 
 const SelectedObject = (props) => {
   const { selected, objects } = props
-  const obj = findObj(selected, objects)
+  const obj = objects[selected]
   if (!obj) return null
 
   const renderWithKeyFrames = (input, params) => (
@@ -49,7 +48,7 @@ const SelectedObject = (props) => {
 
 SelectedObject.propTypes = {
   selected: PropTypes.string,
-  objects: PropTypes.arrayOf(PropTypes.object)
+  objects: PropTypes.object
 }
 
 const mapStateToProps = state => ({

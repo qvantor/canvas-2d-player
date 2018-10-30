@@ -3,6 +3,7 @@ import Button from 'antd/lib/button'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { setTool } from 'reducers/control/control.actions'
+import { types } from 'utils/'
 
 class Tools extends Component {
   render () {
@@ -10,11 +11,11 @@ class Tools extends Component {
 
     const tools = [{
       name: 'Move tool',
-      key: 'standard',
+      key: types.TOOL_SELECTION_MOVE,
       icon: 'drag'
     }, {
       name: 'Spline draw',
-      key: 'spline',
+      key: types.TOOL_BRUSH_CURVE,
       icon: 'highlight'
     }]
 

@@ -6,6 +6,7 @@ import control from './control/control.reducer'
 import timeline from './timeline/timeline.reducer'
 import masks from './masks/masks.reducer'
 import images from './images/images.reducer'
+import visible from './visible/visible.reducer'
 
 export default combineReducers({
   objects,
@@ -13,5 +14,6 @@ export default combineReducers({
   control,
   timeline,
   masks,
-  images
+  images,
+  visible
 })
