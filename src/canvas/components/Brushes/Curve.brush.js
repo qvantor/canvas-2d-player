@@ -2,6 +2,8 @@ import { fabric } from 'fabric'
 import curves from 'canvas-fabric/utils/curves'
 import { extractParams } from 'utils/'
 
+import { addPathByPoints } from 'reducers/objects/objects.actions'
+
 class CurveBrush {
   constructor (params) {
     this.ended = params.points.length !== 0
@@ -53,7 +55,7 @@ class CurveBrush {
   }
 
   calcPath = () => {
-    if (this.points.length > 1) {
+    if (this.points.length > 2) {
       if (this.oldLine) this.canvas.remove(this.oldLine)
       const lineParams = {
         fill: 'rgba(0,0,0,0.4)',
@@ -133,7 +135,7 @@ export default (canvas) => {
     destroy: () => {
       canvas.helperToBack()
       const obj = brush.destroy()
-      if (obj.params) console.log(obj)
+      if (obj.params) addPathByPoints(obj)
     }
   }
 }

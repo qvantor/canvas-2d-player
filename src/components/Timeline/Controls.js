@@ -6,10 +6,13 @@ import { frameToggle } from 'reducers/control/control.actions'
 import { getClassNames } from 'dynamic-class-list'
 
 class Controls extends Component {
-  renderObjects = (objects) =>
-    objects.map(item => {
-      const open = this.props.openFrames.indexOf(item.id) !== -1
-      return (
+  renderObjects = (objects, openFrames) => {
+    const list = []
+
+    for (let key in objects) {
+      const item = objects[key]
+      const open = openFrames.indexOf(item.id) !== -1
+      list.push(
         <div key={item.id}>
           <div className={getClassNames('control-item', { open })}>
             <Icon type='caret-right' onClick={() => frameToggle(item.id)} />
@@ -18,14 +21,16 @@ class Controls extends Component {
           {open && <ControlsFrames obj={item} />}
           {/*{item.children && this.renderObjects(item.children)}*/}
         </div>)
-    })
+    }
+    return list
+  }
 
   render () {
-    const { objects } = this.props
+    const { objects, openFrames } = this.props
 
     return (
       <div className='controls'>
-        {this.renderObjects(objects)}
+        {this.renderObjects(objects, openFrames)}
       </div>
     )
   }

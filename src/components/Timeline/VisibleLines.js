@@ -32,7 +32,6 @@ class VisibleLines extends Component {
           className='handle handle-right'
           ref={el => select(el).call(drag().on('drag', () => {
             const value = scale.invert(mouse(parent || this.refs.parent)[0])
-            // setObjectVisibleFrame(objId, [line[0], value])
             setVisible(objId, [line[0], value])
           }))} />
         <div className='brush' />

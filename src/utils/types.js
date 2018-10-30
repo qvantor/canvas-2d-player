@@ -14,3 +14,6 @@ export const DND_TARGET_CANVAS = 'DND_TARGET_CANVAS'
 // tools types
 export const TOOL_SELECTION_MOVE = 'TOOL_SELECTION_MOVE'
 export const TOOL_BRUSH_CURVE = 'TOOL_BRUSH_CURVE'
+
+// object types
+export const OBJ_TYPE_PATH = 'path'

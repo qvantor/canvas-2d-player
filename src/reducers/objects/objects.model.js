@@ -1,3 +1,3 @@
 import Immutable from 'seamless-immutable'
 
-export default Immutable([])
+export default Immutable({})

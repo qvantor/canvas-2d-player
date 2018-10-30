@@ -14,10 +14,10 @@ export let canvas
 
 const objWithParams = (objId, objects, frame) => {
   // @todo [OPTIMIZATION] object should be taken from object not array
-  const object = objects.find(item => item.id === objId)
+  const object = objects[objId]
   const params = calcParams(object.keyframes, frame)
-  if (Object.keys(object.keyframes).length === 0) return object
-  return Object.assign({}, object, { params: Object.assign({}, object.params, params) })
+  if (Object.keys(object.keyframes).length === 0) return [object, 1]
+  return [Object.assign({}, object, { params: Object.assign({}, object.params, params) }), 1]
 }
 
 class Canvas extends HelperContainer {
@@ -44,10 +44,10 @@ class Canvas extends HelperContainer {
     this.canvas.calcOffset()
   }
 
-  addObj (obj) {
+  addObj ([obj, index]) {
     const newObj = createInstance(obj.type, obj)
     this.scene[obj.id] = newObj
-    this.canvas.add(newObj)
+    this.canvas.insertAt(newObj, index)
   }
 
   deleteObj (objId) {
@@ -88,7 +88,7 @@ class Canvas extends HelperContainer {
         continue
       }
       allVisibleIds.splice(visibleIndex, 1)
-      this.scene[objId].update(objWithParams(objId, objects, frame))
+      this.scene[objId].update(objWithParams(objId, objects, frame)[0])
     }
     for (let objId of allVisibleIds) {
       this.addObj(objWithParams(objId, objects, frame))
