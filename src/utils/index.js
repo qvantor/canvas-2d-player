@@ -1,6 +1,7 @@
 import * as types from 'types'
 import calcParams from './calcParams'
 import connect from './connect'
+import { findObj } from 'reducers/objects/objects.utils'
 
 export { types, calcParams, connect }
 
@@ -29,3 +30,10 @@ export const extractParams = target => ({
   width: target.width,
   height: target.height
 })
+
+export const objWithParams = (objId, objects, frame) => {
+  const object = findObj(objId, objects)
+  const params = calcParams(object.keyframes, frame)
+  if (Object.keys(object.keyframes).length === 0) return [object, 1]
+  return [Object.assign({}, object, { params: Object.assign({}, object.params, params) }), 1]
+}

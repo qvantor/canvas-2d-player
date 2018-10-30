@@ -5,20 +5,13 @@ import HelperContainer from './HelperContainer'
 
 import createInstance from './core/createInstance'
 import components from './components'
+import { getMask } from './core/masks'
 import { getObjects, getFrame, getVisible } from 'sagas/selectors'
-import { calcParams } from 'utils/'
+import { objWithParams, types, typeById } from 'utils/'
 
 import { store } from 'store'
 
 export let canvas
-
-const objWithParams = (objId, objects, frame) => {
-  // @todo [OPTIMIZATION] object should be taken from object not array
-  const object = objects[objId]
-  const params = calcParams(object.keyframes, frame)
-  if (Object.keys(object.keyframes).length === 0) return [object, 1]
-  return [Object.assign({}, object, { params: Object.assign({}, object.params, params) }), 1]
-}
 
 class Canvas extends HelperContainer {
   constructor (params) {
@@ -63,9 +56,12 @@ class Canvas extends HelperContainer {
   }
 
   selectObject (id) {
-    if (this.scene[id]) {
+    const type = typeById(id)
+    if (type === types.OBJECT && this.scene[id]) {
       this.canvas.setActiveObject(this.scene[id])
       this.renderer.render()
+    } else if (type === types.MASK) {
+      this.canvas.setActiveObject(getMask(id))
     }
   }
 

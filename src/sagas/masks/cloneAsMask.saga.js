@@ -16,6 +16,7 @@ export default function * () {
         id: maskId,
         attached: [],
         params: {
+          opacity: 0.2,
           angle: 0,
           top: 100,
           left: 100,

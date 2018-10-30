@@ -3,6 +3,7 @@ import Immutable from 'seamless-immutable'
 import { types } from 'utils'
 
 const basePart = {
+  opacity: 1,
   angle: 0,
   scaleX: 1,
   scaleY: 1,
