@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { getClassNames } from 'dynamic-class-list'
 
 import Number from './Number'
 import Color from './Color'
@@ -7,10 +8,10 @@ import Select from './Select'
 import Checkbox from './Checkbox'
 
 const FormGenerator = (props) => {
-  const { schema, values } = props
+  const { schema, values, className } = props
   const types = { Number, Color, Select, Checkbox }
   return (
-    <div className='generated-form'>
+    <div className={getClassNames(['generated-form', className])}>
       {schema.map(item => {
         const Type = types[item.type]
         const field = (<Type item={item} value={values[item.key]} />)
@@ -23,8 +24,9 @@ const FormGenerator = (props) => {
 }
 
 FormGenerator.propTypes = {
-  schema: PropTypes.arrayOf(PropTypes.object),
-  values: PropTypes.object
+  className: PropTypes.string,
+  schema: PropTypes.arrayOf(PropTypes.object).isRequired,
+  values: PropTypes.object.isRequired
 }
 
 export default FormGenerator

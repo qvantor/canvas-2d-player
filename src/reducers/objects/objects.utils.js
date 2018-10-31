@@ -1,6 +1,6 @@
 import { id, types } from 'utils/'
 import { store } from 'store'
-import { getObjTypesList } from 'sagas/selectors'
+import { getObjTypesList, getColors } from 'sagas/selectors'
 
 export const findObj = (id, list) => list[id]
 
@@ -17,4 +17,26 @@ export const createImgObj = (imgId, params) => {
     imgId,
     params: Object.assign({}, clearImgObj.params, params)
   })
+}
+
+export const createPathByPoints = ({ points, func, params }) => {
+  const list = getObjTypesList(store.getState())
+  const cleanObj = list.find(item => item.type === types.OBJ_TYPE_PATH)
+  const obj = cleanObj.merge({
+    id: id(),
+    params: Object.assign({ points, func }, params)
+  }, { deep: true })
+
+  return createObj(obj)
+}
+
+export const createObj = (cleanObj) => {
+  const obj = Object.assign({ id: id() }, cleanObj)
+  const colors = getColors(store.getState())
+
+  obj.params = obj.params.asMutable()
+  if (obj.params.fill) obj.params.fill = colors[0]
+  if (obj.params.color) obj.params.color = colors[0]
+
+  return obj
 }

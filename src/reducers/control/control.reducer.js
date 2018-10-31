@@ -26,6 +26,9 @@ export default function control (state = Model, { type, payload }) {
       return state.merge({ drag: { dragging: true, type: payload.type, target: payload.target, data: payload.data } })
     case constants.CONTROL_DRAG_ENDED:
       return state.merge({ drag: { dragging: false, type: null, target: null, data: null } })
+
+    case constants.CONTROL_SET_COLORS:
+      return state.merge({ colors: payload })
     default:
       return state
   }

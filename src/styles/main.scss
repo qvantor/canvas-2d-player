@@ -11,21 +11,22 @@
 @import "keyframes";
 @import "context-menu";
 @import "images-manager";
+@import "app-colors";
 @import "ui/collapse";
 @import "ui/tabs";
 @import "ui/popover";
-@import "ui/small";
+@import "ui/color-picker";
 
 .main-layout {
   .left-menu {
     position: fixed;
-    width: 40px;
+    width: 50px;
     height: 100vh;
   }
   .canvas-timeline {
     width: calc(100% - 360px);
     position: fixed;
-    left: 40px;
+    left: 50px;
   }
   .right-menu {
     position: fixed;
@@ -50,4 +51,8 @@ div.canvas {
 
 .color-red {
   color: $alizarin;
+}
+
+.c-pointer {
+  cursor: pointer;
 }

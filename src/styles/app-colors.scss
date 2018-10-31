@@ -1,0 +1,35 @@
+$colorSquareSize: 30px;
+
+.app-colors {
+  position: relative;
+  padding-left: 1px;
+
+  .generated-form {
+    .color-picker {
+      width: $colorSquareSize;
+      height: $colorSquareSize;
+
+      .color-picker-background,
+      .color-picker-background-absolute {
+        width: $colorSquareSize;
+        height: $colorSquareSize;
+      }
+    }
+  }
+  .swap-icon {
+    position: absolute;
+    right: 3px;
+    top: 2px;
+    font-size: 14px;
+    transform: rotate(270deg);
+  }
+  .first-color {
+    position: absolute;
+    z-index: 3;
+  }
+  .second-color {
+    position: absolute;
+    top: $colorSquareSize / 2;
+    right: 3px;
+  }
+}

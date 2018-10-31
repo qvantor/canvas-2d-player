@@ -1,8 +1,5 @@
 import * as constants from './objects.constants'
 import { store } from 'store'
-import { id, types } from 'utils'
-
-import { getObjTypesList } from 'sagas/selectors'
 
 const { dispatch } = store
 
@@ -35,13 +32,3 @@ export const nextFrame = (payload) =>
 
 export const prevFrame = (payload) =>
   dispatch({ type: constants.PREV_KEYFRAME, payload })
-
-export const addPathByPoints = ({ points, func, params }) => {
-  const list = getObjTypesList(store.getState())
-  const cleanObj = list.find(item => item.type === types.OBJ_TYPE_PATH)
-  const obj = cleanObj.merge({
-    id: id(),
-    params: Object.assign({ points, func }, params)
-  }, { deep: true })
-  addObject(obj)
-}

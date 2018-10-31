@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import { Button, Popover } from 'antd'
 import { addObject } from 'reducers/objects/objects.actions'
+import { createObj } from 'reducers/objects/objects.utils'
 import { id } from 'utils/'
 import Img from './Img'
 
@@ -24,7 +25,7 @@ class Objects extends Component {
               if (TypeComponent) return <TypeComponent key={item.type} item={item} />
               return (<Button
                 className={`mr-1 ${item.name}`}
-                onClick={() => addObject(Object.assign({ id: id() }, item))}
+                onClick={() => addObject(createObj(item))}
                 key={item.type}>
                 {item.name}
               </Button>)

@@ -16,7 +16,7 @@ export default class Renderer {
     this.animationTime = 0
     this.frameTime = 16.6666666667
 
-    this.stats.dom.style.left = '40px'
+    this.stats.dom.style.left = '50px'
     this.stats.dom.style['z-index'] = 10
     document.body.appendChild(this.stats.dom)
 

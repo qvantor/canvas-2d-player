@@ -1,7 +1,10 @@
 import { fabric } from 'fabric'
-import { extractParams, curves } from 'utils/'
+import { extractParams, curves, setAlpha } from 'utils/'
+import { store } from 'store'
+import { getColors } from 'sagas/selectors'
 
-import { addPathByPoints } from 'reducers/objects/objects.actions'
+import { addObject } from 'reducers/objects/objects.actions'
+import { createPathByPoints } from 'reducers/objects/objects.utils'
 
 class CurveBrush {
   constructor (params) {
@@ -10,6 +13,7 @@ class CurveBrush {
     this.canvas = params.canvas
     this.curve = curves(params.curve, d => d.point.x, d => d.point.y)
     this.func = params.curve
+    this.firstColor = params.colors[0]
     this.moving = false
 
     this.canvas.defaultCursor = 'crosshair'
@@ -57,7 +61,7 @@ class CurveBrush {
     if (this.points.length > 2) {
       if (this.oldLine) this.canvas.remove(this.oldLine)
       const lineParams = {
-        fill: 'rgba(0,0,0,0.4)',
+        fill: setAlpha(this.firstColor),
         stroke: 'red',
         strokeWidth: 1,
         evented: false,
@@ -113,8 +117,12 @@ class CurveBrush {
     this.canvas.off('mouse:move', this.onMouseMove)
     document.removeEventListener('keydown', this.onKeydown)
     if (this.oldLine) this.canvas.remove(this.oldLine)
+
+    const params = this.oldLine
+      ? Object.assign(extractParams(this.oldLine), { fill: this.oldLine })
+      : null
     return {
-      params: this.oldLine ? extractParams(this.oldLine) : null,
+      params: params,
       points: this.points.map(item => {
         this.canvas.remove(item.obj)
         return item.point
@@ -127,14 +135,15 @@ class CurveBrush {
 export default (canvas) => {
   const points = []
   const curve = 'curveBasis'
-  const brush = new CurveBrush({ points, curve, canvas: canvas.helpCanvas })
+  const colors = getColors(store.getState())
+  const brush = new CurveBrush({ points, curve, canvas: canvas.helpCanvas, colors })
   canvas.helperToFront()
 
   return {
     destroy: () => {
       canvas.helperToBack()
       const obj = brush.destroy()
-      if (obj.params) addPathByPoints(obj)
+      if (obj.params) addObject(createPathByPoints(obj))
     }
   }
 }

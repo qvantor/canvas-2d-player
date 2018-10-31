@@ -39,3 +39,5 @@ export const objWithParams = (objId, objects, frame) => {
   if (Object.keys(object.keyframes).length === 0) return [object, 1]
   return [Object.assign({}, object, { params: Object.assign({}, object.params, params) }), 1]
 }
+
+export const setAlpha = (color, alpha = 0.5) => color.replace(/(\d\.|)\d+\)/, `${alpha})`)
