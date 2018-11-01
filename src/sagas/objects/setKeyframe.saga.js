@@ -2,6 +2,7 @@ import * as constants from 'reducers/objects/objects.constants'
 import { call, select, take, put } from 'redux-saga/effects'
 import { findObj } from 'reducers/objects/objects.utils'
 import { id as idGen, calcParams } from 'utils/'
+import { frameStore } from 'store'
 
 // @todo maybe BEFORE middleware helps
 export default function * () {
@@ -9,7 +10,7 @@ export default function * () {
     const { payload: { id, params } } = yield take(constants.OBJ_PROPS_SET)
     if (!id) continue
     const objects = yield select(({ objects }) => objects)
-    const { frame } = yield select(({ timeline }) => timeline)
+    const frame = frameStore.getState()
     const obj = yield call(findObj, id, objects)
     const { keyframes } = obj
     const oldParams = calcParams(keyframes, frame)

@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import { connect, Provider } from 'react-redux'
 import { scaleLinear } from 'd3-scale'
 
 import XAxis from './SVG/XAxis'
 import Line from './SVG/Line'
 import TimelineEditorList from './TimelineEditorList'
+import * as frameStore from '../../store/frameStore'
 
 class TimelineEditor extends Component {
   render () {

@@ -1,21 +1,38 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { frameStore } from 'store'
 
-const Time = (props) => {
-  const { frame, frameTime } = props
-  return <small>
-    {Math.round((frame * frameTime) / 10) / 100}
-  </small>
+class Time extends Component {
+  componentDidMount () {
+    this.unsubscribe = frameStore.subscribe(this.update)
+  }
+
+  calcTime = (frame = 0) => {
+    const { frameTime } = this.props
+    return Math.round((frame * frameTime) / 10) / 100
+  }
+
+  update = () => {
+    const frame = frameStore.getState()
+    this.refs.value.textContent = this.calcTime(frame)
+  }
+
+  componentWillUnmount () {
+    this.unsubscribe()
+  }
+
+  render () {
+
+    return (<small ref='value'>{this.calcTime()}</small>)
+  }
 }
 
 Time.propTypes = {
-  frame: PropTypes.number.isRequired,
   frameTime: PropTypes.number.isRequired,
 }
 
 const mapStateToProps = state => ({
-  frame: state.timeline.frame,
   frameTime: state.timeline.frameTime
 })
 export default connect(mapStateToProps)(Time)

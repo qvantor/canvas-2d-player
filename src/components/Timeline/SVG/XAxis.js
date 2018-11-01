@@ -4,7 +4,9 @@ import { axisBottom } from 'd3-axis'
 import { select, mouse } from 'd3-selection'
 import { drag } from 'd3-drag'
 
-import { setFrame } from 'reducers/timeline/timeline.actions'
+import { frameStore } from 'store'
+
+const { setFrame } = frameStore
 
 class XAxis extends Component {
   render () {

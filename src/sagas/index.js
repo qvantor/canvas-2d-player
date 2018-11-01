@@ -16,7 +16,6 @@ import cloneAsMask from './masks/cloneAsMask.saga'
 import maskAttached from './masks/maskAttached.saga'
 import removeMask from './masks/removeMask.saga'
 
-import toolSelected from './control/toolSelected.saga'
 import selectSync from './control/selectSync.saga'
 
 import imageAdd from './images/imageAdd.saga'
@@ -42,7 +41,6 @@ function * rootSaga () {
     fork(cloneAsMask),
     fork(removeMask),
 
-    // fork(toolSelected),
     fork(selectSync),
 
     fork(imageAdd),

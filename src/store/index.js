@@ -6,6 +6,10 @@ import rootReducer from '../reducers'
 
 import beforeMiddleware from './beforeMiddleware'
 
+import * as frameStore from './frameStore'
+
+export { frameStore }
+
 export const sagaMiddleware = createSagaMiddleware()
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

@@ -8,7 +8,6 @@ const LeftMenu = () => {
   return (
     <div className='left-menu border-right border-dark bg-clouds'>
       <Objects />
-      <span style={{ fontSize: 11 }}>Tools</span>
       <Tools />
       <AppColors />
     </div>

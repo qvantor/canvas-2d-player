@@ -1,6 +1,5 @@
 export const getObjects = ({ objects }) => objects
 
-export const getFrame = ({ timeline }) => timeline.frame
 export const getFrames = ({ timeline }) => timeline.frames
 
 export const getDrag = ({ control }) => control.drag
