@@ -12,6 +12,8 @@
 @import "context-menu";
 @import "images-manager";
 @import "app-colors";
+@import "timeline";
+
 @import "ui/collapse";
 @import "ui/tabs";
 @import "ui/popover";
@@ -43,6 +45,10 @@ div.canvas {
 
 .bg-clouds {
   background: $clouds;
+}
+
+.bg-asbestos {
+  background: #4d5359;
 }
 
 .text-color-concrete {

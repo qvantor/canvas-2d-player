@@ -3,12 +3,12 @@ import { removeVisible } from 'reducers/visible/visible.actions'
 import * as objConstants from 'reducers/objects/objects.constants'
 import { take, put, select, fork, call } from 'redux-saga/effects'
 
-import { getFrames, getVisible } from 'sagas/selectors'
-import { BEFORE } from '../../store/beforeMiddleware'
+import { getFrames, getVisible, getObjOrder } from 'sagas/selectors'
+import { BEFORE } from 'store/beforeMiddleware'
 
 const checkVisible = (key, frame) => key[0] <= frame && key[1] >= frame
 
-const calcCache = (cache, newObj, frames) => {
+const calcCache = (cache, newObj, frames, order) => {
   const updatedCache = []
   for (let i = 0; i <= frames; i++) {
     const itemVisible = checkVisible(newObj.keys, i)
@@ -25,6 +25,9 @@ const calcCache = (cache, newObj, frames) => {
     } else {
       updatedCache[i] = cache[i]
     }
+    updatedCache[i] = updatedCache[i].asMutable
+      ? updatedCache[i].asMutable().sort((a, b) => order.indexOf(a) > order.indexOf(b))
+      : updatedCache[i].sort((a, b) => order.indexOf(a) > order.indexOf(b))
   }
   return updatedCache
 }
@@ -47,9 +50,10 @@ function * add () {
     const { payload } = yield take(objConstants.ADD_OBJ)
     const frames = yield select(getFrames)
     const visible = yield select(getVisible)
+    const ordering = yield select(getObjOrder)
     const newObj = { id: payload.id, keys: [0, frames] }
     // @todo [OPTIMIZATION] calcCache should be async in worker/on calculate live
-    const cache = calcCache(visible.cache, newObj, frames)
+    const cache = calcCache(visible.cache, newObj, frames, ordering)
 
     yield put({
       type: constants.VISIBLE_FRAMES_UPDATED,
@@ -75,8 +79,9 @@ function * update () {
 
     const frames = yield select(getFrames)
     const visible = yield select(getVisible)
+    const ordering = yield select(getObjOrder)
     const newObj = { id: payload.id, keys: [Math.round(payload.value[0]), Math.round(payload.value[1])] }
-    const cache = calcCache(visible.cache, newObj, frames)
+    const cache = calcCache(visible.cache, newObj, frames, ordering)
 
     yield put({
       type: constants.VISIBLE_FRAMES_UPDATED,

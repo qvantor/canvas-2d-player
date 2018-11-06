@@ -5,4 +5,3 @@ const { dispatch } = store
 
 export const play = () => dispatch({ type: constants.TIMELINE_PLAY })
 export const pause = () => dispatch({ type: constants.TIMELINE_PAUSE })
-

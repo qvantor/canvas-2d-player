@@ -15,7 +15,7 @@ export const sagaMiddleware = createSagaMiddleware()
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const middlewares = [beforeMiddleware, sagaMiddleware]
 const enhancer = composeEnhancers(applyMiddleware(...middlewares),
-  persistState(['objects', 'control', 'masks', 'images', 'visible'], {
+  persistState(['objects', 'control', 'masks', 'images', 'visible', 'objOrder'], {
     deserialize: subset => {
       const data = JSON.parse(subset)
       if (!data) return null

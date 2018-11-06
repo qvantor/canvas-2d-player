@@ -23,6 +23,8 @@ import removeImgObject from './images/removeImgObject.saga'
 import cloneImage from './images/cloneImage.saga'
 import removeImage from './images/removeImage.saga'
 
+import objOrderSet from './objOrder/objOrderSet.saga'
+
 function * rootSaga () {
   yield all([
     fork(play),
@@ -46,7 +48,9 @@ function * rootSaga () {
     fork(imageAdd),
     fork(cloneImage),
     fork(removeImgObject),
-    fork(removeImage)
+    fork(removeImage),
+
+    fork(objOrderSet)
   ])
 }
 

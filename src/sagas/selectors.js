@@ -12,3 +12,5 @@ export const getImages = ({ images }) => images
 export const getVisible = ({ visible }) => visible
 
 export const getMasks = ({ masks }) => masks
+
+export const getObjOrder = ({ objOrder }) => objOrder

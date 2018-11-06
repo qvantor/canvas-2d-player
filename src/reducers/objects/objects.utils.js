@@ -24,7 +24,10 @@ export const createPathByPoints = ({ points, func, params }) => {
   const cleanObj = list.find(item => item.type === types.OBJ_TYPE_PATH)
   const obj = cleanObj.merge({
     id: id(),
-    params: Object.assign({ points, func }, params)
+    params: Object.assign({ points, func }, params, {
+      originX: 'center',
+      originY: 'center'
+    })
   }, { deep: true })
 
   return createObj(obj)
