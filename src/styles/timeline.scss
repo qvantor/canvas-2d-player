@@ -1,3 +1,36 @@
 .timeline {
   height: 40vh;
+
+  .timeline-header {
+    .x-axis {
+      color: $clouds;
+      .domain {
+        display: none;
+      }
+    }
+    .brush {
+      .selection {
+        stroke: none;
+        fill-opacity: 0.07;
+        fill: #fff;
+      }
+    }
+  }
+  .timeline-main-header {
+    .x-axis {
+      color: $clouds;
+      font-weight: bold;
+      .domain, .tick line {
+        display: none;
+      }
+    }
+  }
+  .timeline-main {
+    .timeline-grid {
+      color: $asbestos;
+      .domain, .tick text {
+        display: none;
+      }
+    }
+  }
 }
