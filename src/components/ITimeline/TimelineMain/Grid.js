@@ -17,7 +17,10 @@ const Grid = (props) => {
   )
 }
 
-Grid.propTypes = {}
-Grid.defaultProps = {}
+Grid.propTypes = {
+  height: PropTypes.number.isRequired,
+  scale: PropTypes.func.isRequired,
+  width: PropTypes.number.isRequired
+}
 
 export default Grid

@@ -1,6 +1,11 @@
+$rightWidth: 250px;
+
 .timeline {
   height: 40vh;
 
+  .bg-rect {
+    fill: rgba(0, 0, 0, 0);
+  }
   .timeline-header {
     .x-axis {
       color: $clouds;
@@ -17,12 +22,16 @@
     }
   }
   .timeline-main-header {
+    overflow: visible;
     .x-axis {
       color: $clouds;
       font-weight: bold;
       .domain, .tick line {
         display: none;
       }
+    }
+    .timeline-indicator {
+      fill: $alizarin;
     }
   }
   .timeline-main {
@@ -32,5 +41,16 @@
         display: none;
       }
     }
+  }
+  .timeline-controls {
+    position: absolute;
+    width: $rightWidth;
+    height: 60px;
+    background: $darkGray;
+  }
+
+  .timeline-layers {
+    position: fixed;
+    top: 0;
   }
 }

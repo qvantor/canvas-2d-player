@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { scaleLinear } from 'd3-scale'
 import MainHeader from './MainHeader'
 import Grid from './Grid'
+import Layers from '../Layers/Layers'
 
 const TimelineMain = (props) => {
   const { width, rightWidth, marginY, selection, height } = props
@@ -14,6 +15,7 @@ const TimelineMain = (props) => {
   const croppedScale = scaleLinear()
     .domain(selection)
     .range([0, width - rightWidth - 5])
+    .clamp(true)
   return (
     <div>
       <MainHeader
@@ -30,10 +32,14 @@ const TimelineMain = (props) => {
           <Grid
             width={width}
             height={timelineMainHeight}
-            scale={croppedScale}
-            rightWidth={rightWidth} />
+            scale={croppedScale} />
         </g>
       </svg>
+      <Layers
+        width={width}
+        height={timelineMainHeight}
+        scale={croppedScale}
+        rightWidth={rightWidth} />
     </div>
   )
 }
