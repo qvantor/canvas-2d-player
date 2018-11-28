@@ -2,24 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-const Objects = (props) => {
-  const { order, objects } = props
-  return (
-    <div className='timeline-objects'>
-      {order.map(key => {
-        const item = objects[key]
+import ObjectItem from './ObjectItem/ObjectItem'
 
-        return (<div className='object' key={key}>{item.name}</div>)
-      })}
+const Objects = (props) => {
+  const { order, objects, rightWidth } = props
+  return (
+    <div className='timeline-objects border-top border-dark' style={{ width: rightWidth }}>
+      {order.map((key, index) => <ObjectItem key={key} item={objects[key]} index={index} />)}
     </div>
   )
 }
 
 Objects.propTypes = {
-  height: PropTypes.number.isRequired,
-  scale: PropTypes.func.isRequired,
-  width: PropTypes.number.isRequired,
-  order: PropTypes.arrayOf(PropTypes.string).isRequired
+  rightWidth: PropTypes.number.isRequired,
+  order: PropTypes.arrayOf(PropTypes.string).isRequired,
+  objects: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({

@@ -2,6 +2,7 @@ $rightWidth: 250px;
 
 .timeline {
   height: 40vh;
+  position: relative;
 
   .bg-rect {
     fill: rgba(0, 0, 0, 0);
@@ -50,7 +51,57 @@ $rightWidth: 250px;
   }
 
   .timeline-layers {
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: 60px;
+    color: $clouds;
+
+    .timeline-objects {
+      .object {
+        .object-line {
+          padding-left: 5px;
+          border-bottom: 1px solid $asbestos;
+          line-height: 1;
+
+          .control-buttons {
+            display: inline-block;
+            margin-right: 5px;
+            .control {
+              display: inline-block;
+              border: 1px solid transparentize(#000, 0.6);
+              border-bottom-color: transparentize(#fff, 0.7);
+              background: transparentize($white, 0.93);
+              width: 16px;
+              height: 16px;
+              margin-right: 1px;
+
+              i {
+                display: none;
+                font-size: 10px;
+                margin: 2px;
+              }
+              &.active i {
+                display: block;
+              }
+            }
+          }
+          .name {
+            display: inline-block;
+            font-size: 14px;
+            vertical-align: 2px;
+            width: 120px;
+
+            .index {
+              font-weight: bold;
+              display: inline-block;
+              width: 35px;
+            }
+            span {
+              width: 85px;
+              display: inline-block;
+            }
+          }
+        }
+      }
+    }
   }
 }
