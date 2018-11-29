@@ -1,24 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { getClassNames } from 'dynamic-class-list'
 
 import ControlButtons from './ControlButtons'
+import VisibleLine from './VisibleLine'
+import ObjectName from './ObjectName'
 
 const ObjectItem = (props) => {
-  const { item, index } = props
+  const { item, index, scale, rightWidth, width, open } = props
   return (
-    <div className='object'>
-      <div className='object-line'>
-        <ControlButtons item={item} />
-        <div className='name'>
-          <i className='index'>{index}</i>
-          <span>{item.name}</span>
+    <div className={getClassNames('object', { open })}>
+      <div className='object-line' style={{ width }}>
+        <div className='object-line-left' style={{ width: rightWidth }}>
+          <ControlButtons item={item} />
+          <ObjectName item={item} index={index} />
+        </div>
+        <div className='object-line-right'>
+          <VisibleLine scale={scale} item={item} />
         </div>
       </div>
     </div>
   )
 }
 
-ObjectItem.propTypes = {}
-ObjectItem.defaultProps = {}
+ObjectItem.propTypes = {
+  item: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
+  rightWidth: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired,
+  scale: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired
+}
 
 export default ObjectItem

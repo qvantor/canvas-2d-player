@@ -58,9 +58,15 @@ $rightWidth: 250px;
     .timeline-objects {
       .object {
         .object-line {
-          padding-left: 5px;
           border-bottom: 1px solid $asbestos;
           line-height: 1;
+
+          .object-line-left, .object-line-right {
+            display: inline-block;
+          }
+          .object-line-left {
+            padding-left: 5px;
+          }
 
           .control-buttons {
             display: inline-block;
@@ -88,17 +94,71 @@ $rightWidth: 250px;
             display: inline-block;
             font-size: 14px;
             vertical-align: 2px;
-            width: 120px;
 
+            .open-button {
+              display: inline-block;
+              font-size: 10px;
+              width: 15px;
+              cursor: pointer;
+            }
             .index {
               font-weight: bold;
               display: inline-block;
               width: 35px;
             }
             span {
-              width: 85px;
+              width: 105px;
               display: inline-block;
+              overflow: hidden;
+              white-space: nowrap;
             }
+          }
+          .visible-line {
+            position: relative;
+            border-radius: 3px;
+            height: 18px;
+            margin-bottom: -2px;
+            background: rgba(52, 152, 219, 1);
+            background: -moz-linear-gradient(top, rgba(52, 152, 219, 1) 0%, rgba(52, 152, 219, 1) 79%, rgba(36, 104, 150, 1) 100%);
+            background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(52, 152, 219, 1)), color-stop(79%, rgba(52, 152, 219, 1)), color-stop(100%, rgba(36, 104, 150, 1)));
+            background: -webkit-linear-gradient(top, rgba(52, 152, 219, 1) 0%, rgba(52, 152, 219, 1) 79%, rgba(36, 104, 150, 1) 100%);
+            background: -o-linear-gradient(top, rgba(52, 152, 219, 1) 0%, rgba(52, 152, 219, 1) 79%, rgba(36, 104, 150, 1) 100%);
+            background: -ms-linear-gradient(top, rgba(52, 152, 219, 1) 0%, rgba(52, 152, 219, 1) 79%, rgba(36, 104, 150, 1) 100%);
+            background: linear-gradient(to bottom, rgba(52, 152, 219, 1) 0%, rgba(52, 152, 219, 1) 79%, rgba(36, 104, 150, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3498db', endColorstr='#246896', GradientType=0);
+
+            .handle {
+              position: absolute;
+              top: 0;
+              width: 2px;
+              height: 18px;
+              background: white;
+              cursor: ew-resize;
+
+              background: rgba(255, 255, 255, 1);
+              background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 79%, rgba(36, 104, 150, 1) 100%);
+              background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255, 255, 255, 1)), color-stop(79%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(36, 104, 150, 1)));
+              background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 79%, rgba(36, 104, 150, 1) 100%);
+              background: -o-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 79%, rgba(36, 104, 150, 1) 100%);
+              background: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 79%, rgba(36, 104, 150, 1) 100%);
+              background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 79%, rgba(36, 104, 150, 1) 100%);
+              filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#246896', GradientType=0);
+            }
+            .handle-left {
+              border-bottom-left-radius: 3px;
+              border-top-left-radius: 3px;
+              left: 0;
+            }
+            .handle-right {
+              border-bottom-right-radius: 3px;
+              border-top-right-radius: 3px;
+              right: 0;
+            }
+          }
+        }
+        &.open {
+          .name .open-button i.anticon {
+            @include rotate(90deg);
           }
         }
       }

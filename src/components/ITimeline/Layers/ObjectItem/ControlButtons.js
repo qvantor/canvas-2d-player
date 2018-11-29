@@ -7,8 +7,8 @@ import { toggleLockObj } from 'reducers/objects/objects.actions'
 const ControlButtons = (props) => {
   const { item } = props
   const controls = [
-    { click: toggleLockObj, icon: 'lock', key: 'locked' },
-    { click: () => {}, icon: 'eye', key: 'visible' }
+    { click: () => {}, icon: 'eye', key: 'visible' },
+    { click: toggleLockObj, icon: 'lock', key: 'locked' }
   ]
   return (
     <div className='control-buttons'>
