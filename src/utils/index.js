@@ -36,8 +36,8 @@ export const extractParams = target => ({
 export const objWithParams = (objId, objects, frame) => {
   const object = findObj(objId, objects)
   const params = calcParams(object.keyframes, frame)
-  if (Object.keys(object.keyframes).length === 0) return [object, 1]
-  return [Object.assign({}, object, { params: Object.assign({}, object.params, params) }), 1]
+  if (Object.keys(object.keyframes).length === 0) return object
+  return Object.assign({}, object, { params: Object.assign({}, object.params, params) })
 }
 
 export const setAlpha = (color, alpha = 0.5) => color.replace(/(\d\.|)\d+\)/, `${alpha})`)

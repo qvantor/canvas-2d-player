@@ -20,7 +20,8 @@ class Tools extends Component {
     }]
 
     return (
-      <div>
+      <div className='mx-1'>
+        <span style={{ fontSize: 11 }}>Tools</span>
         {tools.map(item => <Button
           key={item.key}
           size='small'

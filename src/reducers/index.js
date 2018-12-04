@@ -7,6 +7,7 @@ import timeline from './timeline/timeline.reducer'
 import masks from './masks/masks.reducer'
 import images from './images/images.reducer'
 import visible from './visible/visible.reducer'
+import objOrder from './objOrder/objOrder.reducer'
 
 export default combineReducers({
   objects,
@@ -15,5 +16,6 @@ export default combineReducers({
   timeline,
   masks,
   images,
-  visible
+  visible,
+  objOrder
 })

@@ -13,7 +13,19 @@ export const putToRoot = (child) => {
   dispatch({ type: constants.OBJ_MOVED_ROOT, payload: child })
 }
 export const removeObject = (id) => dispatch({ type: constants.REMOVE_OBJ, payload: id })
+
+export const toggleLockObj = (obj) => setParams(obj.id, {
+  locked: !obj.params.locked,
+  selectable: obj.params.locked,
+  hasControls: obj.params.locked,
+  hasBorders: obj.params.locked,
+  hasRotatingPoint: obj.params.locked,
+  evented: obj.params.locked,
+  lockMovementX: !obj.params.locked,
+  lockMovementY: !obj.params.locked
+})
 export const setParams = (id, params) => dispatch({ type: constants.OBJ_PROPS_SET, payload: { id, params } })
+export const setMainProp = (id, props) => dispatch({ type: constants.OBJ_MAIN_PROP_SETTED, payload: { id, props } })
 
 export const addKeyFrameParam = (id, key) =>
   dispatch({ type: constants.OBJ_KEYFRAME_ADD_PARAM, payload: { id, key } })

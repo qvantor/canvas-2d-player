@@ -6,10 +6,10 @@ import HelperContainer from './HelperContainer'
 import createInstance from './core/createInstance'
 import components from './components'
 import { getMask } from './core/masks'
-import { getObjects, getFrame, getVisible } from 'sagas/selectors'
+import { getObjects, getVisible, getObjOrder } from 'sagas/selectors'
 import { objWithParams, types, typeById } from 'utils/'
 
-import { store } from 'store'
+import { store, frameStore } from 'store'
 
 export let canvas
 
@@ -37,10 +37,16 @@ class Canvas extends HelperContainer {
     this.canvas.calcOffset()
   }
 
-  addObj ([obj, index]) {
+  addObj (obj) {
     const newObj = createInstance(obj.type, obj)
     this.scene[obj.id] = newObj
-    this.canvas.insertAt(newObj, index)
+    this.canvas.add(newObj)
+  }
+
+  setOrder (cache) {
+    for (let i = 0; i < cache.length; i++) {
+      if (this.scene[cache[i]]) this.canvas.moveTo(this.scene[cache[i]], i)
+    }
   }
 
   deleteObj (objId) {
@@ -49,8 +55,7 @@ class Canvas extends HelperContainer {
   }
 
   renderCurrentFrame () {
-    const state = store.getState()
-    const frame = getFrame(state)
+    const frame = frameStore.getState()
     this._renderFrame(frame)
     this.renderer.render()
   }
@@ -84,10 +89,11 @@ class Canvas extends HelperContainer {
         continue
       }
       allVisibleIds.splice(visibleIndex, 1)
-      this.scene[objId].update(objWithParams(objId, objects, frame)[0])
+      this.scene[objId].update(objWithParams(objId, objects, frame))
     }
     for (let objId of allVisibleIds) {
       this.addObj(objWithParams(objId, objects, frame))
+      this.setOrder(visible)
     }
   }
 }

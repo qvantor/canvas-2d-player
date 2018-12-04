@@ -12,6 +12,7 @@
 @import "context-menu";
 @import "images-manager";
 @import "app-colors";
+@import "timeline";
 @import "ui/collapse";
 @import "ui/tabs";
 @import "ui/popover";
@@ -45,6 +46,10 @@ div.canvas {
   background: $clouds;
 }
 
+.bg-dark-gray {
+  background: $darkGray;
+}
+
 .text-color-concrete {
   color: $concrete
 }
@@ -55,4 +60,11 @@ div.canvas {
 
 .c-pointer {
   cursor: pointer;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
 }

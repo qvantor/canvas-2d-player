@@ -1,7 +1,8 @@
 import React from 'react'
 
 import Canvas from '../Canvas/Canvas'
-import Timeline from '../Timeline/Timeline'
+import Timeline from '../ITimeline/ITimeline'
+// import Timeline from '../Timeline/Timeline'
 import Events from './Events'
 import LeftMenu from '../LeftMenu/LeftMenu'
 import RightMenu from '../RightMenu/RightMenu'

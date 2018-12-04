@@ -1,0 +1,248 @@
+$rightWidth: 250px;
+
+.timeline {
+  height: 40vh;
+  position: relative;
+
+  .bg-rect {
+    fill: rgba(0, 0, 0, 0);
+  }
+  .timeline-header {
+    .x-axis {
+      color: $clouds;
+      .domain {
+        display: none;
+      }
+    }
+    .brush {
+      .selection {
+        stroke: none;
+        fill-opacity: 0.07;
+        fill: #fff;
+      }
+    }
+  }
+  .timeline-main-header {
+    overflow: visible;
+    .x-axis {
+      color: $clouds;
+      font-weight: bold;
+      .domain, .tick line {
+        display: none;
+      }
+    }
+    .timeline-indicator {
+      fill: $alizarin;
+    }
+  }
+  .timeline-main {
+    .timeline-grid {
+      color: $asbestos;
+      .domain, .tick text {
+        display: none;
+      }
+    }
+  }
+  .timeline-controls {
+    position: absolute;
+    width: $rightWidth;
+    height: 60px;
+    background: $darkGray;
+  }
+
+  .timeline-layers {
+    position: absolute;
+    top: 60px;
+    color: $clouds;
+    overflow-y: scroll;
+
+    .timeline-objects {
+      .object {
+        .object-line {
+          border-bottom: 1px solid $asbestos;
+          line-height: 1;
+
+          .object-line-left, .object-line-right {
+            display: inline-block;
+          }
+          .object-line-left {
+            padding-left: 5px;
+          }
+
+          .control-buttons {
+            display: inline-block;
+            margin-right: 5px;
+            .control {
+              display: inline-block;
+              border: 1px solid transparentize(#000, 0.6);
+              border-bottom-color: transparentize(#fff, 0.7);
+              background: transparentize($white, 0.93);
+              width: 16px;
+              height: 16px;
+              margin-right: 1px;
+
+              i {
+                display: none;
+                font-size: 10px;
+                margin: 2px;
+              }
+              &.active i {
+                display: block;
+              }
+            }
+          }
+          .name {
+            display: inline-block;
+            font-size: 14px;
+
+            .open-button {
+              display: inline-block;
+              font-size: 10px;
+              width: 15px;
+              cursor: pointer;
+              vertical-align: 2px;
+            }
+            .index {
+              font-weight: bold;
+              display: inline-block;
+              width: 35px;
+            }
+            .editor {
+              width: 105px;
+              display: inline-block;
+              overflow: hidden;
+              white-space: nowrap;
+              input {
+                background: none;
+                border: none;
+                height: 16px;
+
+                &:focus {
+                  outline-width: 0;
+                }
+              }
+            }
+          }
+          .visible-line {
+            position: relative;
+            border-radius: 3px;
+            height: 18px;
+            margin-bottom: -2px;
+            background: rgba(52, 152, 219, 1);
+            background: -moz-linear-gradient(top, rgba(52, 152, 219, 1) 0%, rgba(52, 152, 219, 1) 79%, rgba(36, 104, 150, 1) 100%);
+            background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(52, 152, 219, 1)), color-stop(79%, rgba(52, 152, 219, 1)), color-stop(100%, rgba(36, 104, 150, 1)));
+            background: -webkit-linear-gradient(top, rgba(52, 152, 219, 1) 0%, rgba(52, 152, 219, 1) 79%, rgba(36, 104, 150, 1) 100%);
+            background: -o-linear-gradient(top, rgba(52, 152, 219, 1) 0%, rgba(52, 152, 219, 1) 79%, rgba(36, 104, 150, 1) 100%);
+            background: -ms-linear-gradient(top, rgba(52, 152, 219, 1) 0%, rgba(52, 152, 219, 1) 79%, rgba(36, 104, 150, 1) 100%);
+            background: linear-gradient(to bottom, rgba(52, 152, 219, 1) 0%, rgba(52, 152, 219, 1) 79%, rgba(36, 104, 150, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3498db', endColorstr='#246896', GradientType=0);
+
+            .handle {
+              position: absolute;
+              top: 0;
+              width: 2px;
+              height: 18px;
+              background: white;
+              cursor: ew-resize;
+
+              background: rgba(255, 255, 255, 1);
+              background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 79%, rgba(36, 104, 150, 1) 100%);
+              background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255, 255, 255, 1)), color-stop(79%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(36, 104, 150, 1)));
+              background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 79%, rgba(36, 104, 150, 1) 100%);
+              background: -o-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 79%, rgba(36, 104, 150, 1) 100%);
+              background: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 79%, rgba(36, 104, 150, 1) 100%);
+              background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 79%, rgba(36, 104, 150, 1) 100%);
+              filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#246896', GradientType=0);
+            }
+            .handle-left {
+              border-bottom-left-radius: 3px;
+              border-top-left-radius: 3px;
+              left: 0;
+            }
+            .handle-right {
+              border-bottom-right-radius: 3px;
+              border-top-right-radius: 3px;
+              right: 0;
+            }
+          }
+        }
+        .object-params {
+          .value-line {
+            height: 19px;
+            line-height: 1;
+            border-bottom: 1px solid transparentize($asbestos, 0.5);
+            .value-line-left {
+              padding-left: 5px;
+              display: inline-block;
+
+              .keyframes-control {
+                display: inline-block;
+                width: 90px;
+                font-size: 12px;
+              }
+              .generated-form-field {
+                width: 105px;
+                display: inline-block;
+                font-size: 11px;
+
+                .deactive {
+                  display: block;
+                }
+                .active {
+                  display: none;
+                }
+
+                .ant-input-number-sm {
+                  height: 19px;
+                  padding: 0;
+                  .ant-input-number-handler-wrap {
+                    display: none;
+                  }
+                  input {
+                    height: 19px;
+                    padding: 0;
+                  }
+
+                  &.ant-input-number {
+                    background: none;
+                    border: none;
+                    color: $orange;
+                    margin-top: -5px;
+                    font-size: 11px;
+                  }
+                }
+              }
+            }
+            .value-line-right {
+              position: relative;
+              display: inline-block;
+
+              .keyframes {
+                .keyframe {
+                  width: 10px;
+                  height: 10px;
+                  margin-left: -5px;
+                  background: $orange;
+                  position: absolute;
+                  top: -10px;
+                  transform: rotate(-45deg);
+                  cursor: ew-resize;
+                }
+              }
+            }
+            &.line-active {
+              .clock-button {
+                opacity: 0.7;
+              }
+            }
+          }
+        }
+        &.open {
+          .name .open-button i.anticon {
+            @include rotate(90deg);
+          }
+        }
+      }
+    }
+  }
+}
