@@ -25,6 +25,7 @@ export const toggleLockObj = (obj) => setParams(obj.id, {
   lockMovementY: !obj.params.locked
 })
 export const setParams = (id, params) => dispatch({ type: constants.OBJ_PROPS_SET, payload: { id, params } })
+export const setMainProp = (id, props) => dispatch({ type: constants.OBJ_MAIN_PROP_SETTED, payload: { id, props } })
 
 export const addKeyFrameParam = (id, key) =>
   dispatch({ type: constants.OBJ_KEYFRAME_ADD_PARAM, payload: { id, key } })

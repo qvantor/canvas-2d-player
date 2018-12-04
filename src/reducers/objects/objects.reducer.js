@@ -7,6 +7,8 @@ export default function objects (state = Model, { type, payload }) {
       return state.merge({ [payload.id]: payload })
     case constants.REMOVE_OBJ:
       return state.without(payload)
+    case constants.OBJ_MAIN_PROP_SETTED:
+      return state.merge({ [payload.id]: state[payload.id].merge(payload.props) })
     // case constants.OBJ_MOVED:
     //   return recursiveReplace(state, payload.child, payload.parent)
     // case constants.OBJ_MOVED_ROOT:
@@ -40,9 +42,10 @@ export default function objects (state = Model, { type, payload }) {
         [payload.id]: state[payload.id].merge({
           keyframes: state[payload.id].keyframes.merge({
             [payload.key]: {
-              keys: [...state[payload.id].keyframes[payload.key].keys.update(
-                state[payload.id].keyframes[payload.key].keys.findIndex(item => item[2] === payload.keyId),
-                frame => [payload.value, frame[1], frame[2]])]
+              keys: [
+                ...state[payload.id].keyframes[payload.key].keys.update(
+                  state[payload.id].keyframes[payload.key].keys.findIndex(item => item[2] === payload.keyId),
+                  frame => [payload.value, frame[1], frame[2]])]
                 .sort((a, b) => a[0] - b[0])
             }
           })

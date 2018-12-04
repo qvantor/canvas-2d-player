@@ -54,6 +54,7 @@ $rightWidth: 250px;
     position: absolute;
     top: 60px;
     color: $clouds;
+    overflow-y: scroll;
 
     .timeline-objects {
       .object {
@@ -93,24 +94,33 @@ $rightWidth: 250px;
           .name {
             display: inline-block;
             font-size: 14px;
-            vertical-align: 2px;
 
             .open-button {
               display: inline-block;
               font-size: 10px;
               width: 15px;
               cursor: pointer;
+              vertical-align: 2px;
             }
             .index {
               font-weight: bold;
               display: inline-block;
               width: 35px;
             }
-            span {
+            .editor {
               width: 105px;
               display: inline-block;
               overflow: hidden;
               white-space: nowrap;
+              input {
+                background: none;
+                border: none;
+                height: 16px;
+
+                &:focus {
+                  outline-width: 0;
+                }
+              }
             }
           }
           .visible-line {
@@ -153,6 +163,77 @@ $rightWidth: 250px;
               border-bottom-right-radius: 3px;
               border-top-right-radius: 3px;
               right: 0;
+            }
+          }
+        }
+        .object-params {
+          .value-line {
+            height: 19px;
+            line-height: 1;
+            border-bottom: 1px solid transparentize($asbestos, 0.5);
+            .value-line-left {
+              padding-left: 5px;
+              display: inline-block;
+
+              .keyframes-control {
+                display: inline-block;
+                width: 90px;
+                font-size: 12px;
+              }
+              .generated-form-field {
+                width: 105px;
+                display: inline-block;
+                font-size: 11px;
+
+                .deactive {
+                  display: block;
+                }
+                .active {
+                  display: none;
+                }
+
+                .ant-input-number-sm {
+                  height: 19px;
+                  padding: 0;
+                  .ant-input-number-handler-wrap {
+                    display: none;
+                  }
+                  input {
+                    height: 19px;
+                    padding: 0;
+                  }
+
+                  &.ant-input-number {
+                    background: none;
+                    border: none;
+                    color: $orange;
+                    margin-top: -5px;
+                    font-size: 11px;
+                  }
+                }
+              }
+            }
+            .value-line-right {
+              position: relative;
+              display: inline-block;
+
+              .keyframes {
+                .keyframe {
+                  width: 10px;
+                  height: 10px;
+                  margin-left: -5px;
+                  background: $orange;
+                  position: absolute;
+                  top: -10px;
+                  transform: rotate(-45deg);
+                  cursor: ew-resize;
+                }
+              }
+            }
+            &.line-active {
+              .clock-button {
+                opacity: 0.7;
+              }
             }
           }
         }

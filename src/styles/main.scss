@@ -13,7 +13,6 @@
 @import "images-manager";
 @import "app-colors";
 @import "timeline";
-
 @import "ui/collapse";
 @import "ui/tabs";
 @import "ui/popover";
@@ -61,4 +60,11 @@ div.canvas {
 
 .c-pointer {
   cursor: pointer;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
 }

@@ -37,7 +37,7 @@ const TimelineMain = (props) => {
       </svg>
       <Layers
         width={width}
-        height={timelineMainHeight}
+        height={timelineMainHeight - 20}
         scale={croppedScale}
         rightWidth={rightWidth} />
     </div>

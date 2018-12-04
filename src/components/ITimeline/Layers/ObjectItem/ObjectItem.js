@@ -5,6 +5,7 @@ import { getClassNames } from 'dynamic-class-list'
 import ControlButtons from './ControlButtons'
 import VisibleLine from './VisibleLine'
 import ObjectName from './ObjectName'
+import ObjectParams from './ObjectParams'
 
 const ObjectItem = (props) => {
   const { item, index, scale, rightWidth, width, open } = props
@@ -19,6 +20,7 @@ const ObjectItem = (props) => {
           <VisibleLine scale={scale} item={item} />
         </div>
       </div>
+      {open && <ObjectParams item={item} rightWidth={rightWidth} width={width} scale={scale} />}
     </div>
   )
 }

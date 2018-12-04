@@ -6,7 +6,7 @@ import Objects from './Objects'
 const Layers = (props) => {
   const { height, scale, width, rightWidth } = props
   return (
-    <div className='timeline-layers'>
+    <div className='timeline-layers' style={{ height }}>
       <Objects height={height} scale={scale} width={width} rightWidth={rightWidth} />
     </div>
   )

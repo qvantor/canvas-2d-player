@@ -19,20 +19,21 @@ class VisibleLine extends React.Component {
     const line = visible[item.id] || [0, 0]
     const width = scale(line[1]) - scale(line[0])
     const left = scale(line[0])
+    const domain = scale.domain()
     return (
       <div className='visible-line' style={{ width, left }} ref='parent'>
-        <div
+        {domain[0] <= line[0] && <div
           ref={el => select(el).call(drag().on('drag', () => {
             const value = scale.invert(mouse(parent || this.refs.parent)[0])
             setVisible(item.id, [value, line[1]])
           }))}
-          className='handle handle-left' />
-        <div
+          className='handle handle-left' />}
+        {domain[1] >= line[1] && <div
           ref={el => select(el).call(drag().on('drag', () => {
             const value = scale.invert(mouse(parent || this.refs.parent)[0])
             setVisible(item.id, [line[0], value])
           }))}
-          className='handle handle-right' />
+          className='handle handle-right' />}
       </div>
     )
   }
