@@ -5,6 +5,8 @@ import { getClassNames } from 'dynamic-class-list'
 import { select, mouse } from 'd3-selection'
 import { drag } from 'd3-drag'
 
+import * as formatters from './valueFormatter'
+
 class DraggableNumber extends React.Component {
   state = { selected: false }
 
@@ -31,6 +33,7 @@ class DraggableNumber extends React.Component {
     const max = item.max === undefined ? Number.MAX_SAFE_INTEGER : item.max
     const min = item.min === undefined ? Number.MIN_SAFE_INTEGER : item.min
     const roundOn = 1 / step
+    const formatter = item.formatter ? formatters[item.formatter] : formatters.numStandard
 
     return (<div
       className={getClassNames('draggable-number', { selected })}
@@ -44,6 +47,8 @@ class DraggableNumber extends React.Component {
           min={min}
           step={step}
           style={{ width: '100%' }}
+          formatter={formatter.formatter}
+          parser={formatter.parser}
           onChange={e => item.onChange(e, item)} />
         : <div
           className='number'
@@ -56,7 +61,7 @@ class DraggableNumber extends React.Component {
 
               item.onChange(newVal, item)
             })
-          )}>{value}</div>}
+          )}>{formatter.formatter(value)}</div>}
     </div>)
   }
 }

@@ -31,6 +31,7 @@ const TransformParams = (props) => {
       min: 0,
       max: 1,
       onChange,
+      formatter: 'numPercents',
       render: renderTimelineWithKeyframes,
       keyframeClick
     },
@@ -64,6 +65,7 @@ const TransformParams = (props) => {
       key: 'scaleX',
       name: 'Scale X',
       step: 0.01,
+      formatter: 'numPercents',
       onChange,
       render: renderTimelineWithKeyframes,
       keyframeClick
@@ -73,6 +75,7 @@ const TransformParams = (props) => {
       key: 'scaleY',
       name: 'Scale Y',
       step: 0.01,
+      formatter: 'numPercents',
       onChange,
       render: renderTimelineWithKeyframes,
       keyframeClick

@@ -15,20 +15,37 @@ const Position = (props) => {
   }
   const positionSchema = [
     {
-      type: 'Number',
+      type: 'DraggableNumber',
       key: 'opacity',
       name: 'Opacity',
-      step: 0.1,
+      step: 0.01,
       min: 0,
       max: 1,
       onChange,
-      render: renderWithKeyFrames
+      render: renderWithKeyFrames,
+      formatter: 'numPercents'
     },
-    { type: 'Number', name: 'Angle', key: 'angle', step: 0.1, onChange, render: renderWithKeyFrames },
+    { type: 'DraggableNumber', name: 'Angle', key: 'angle', step: 0.1, onChange, render: renderWithKeyFrames },
     { type: 'Number', name: 'Top', key: 'top', onChange, render: renderWithKeyFrames },
     { type: 'Number', name: 'Left', key: 'left', onChange, render: renderWithKeyFrames },
-    { type: 'Number', key: 'scaleX', name: 'Scale X', step: 0.1, onChange, render: renderWithKeyFrames },
-    { type: 'Number', key: 'scaleY', name: 'Scale Y', step: 0.1, onChange, render: renderWithKeyFrames }]
+    {
+      type: 'DraggableNumber',
+      key: 'scaleX',
+      name: 'Scale X',
+      step: 0.01,
+      onChange,
+      render: renderWithKeyFrames,
+      formatter: 'numPercents'
+    },
+    {
+      type: 'DraggableNumber',
+      key: 'scaleY',
+      name: 'Scale Y',
+      step: 0.01,
+      onChange,
+      render: renderWithKeyFrames,
+      formatter: 'numPercents'
+    }]
 
   return (<FormGenerator schema={positionSchema} values={obj.params} />)
 }
