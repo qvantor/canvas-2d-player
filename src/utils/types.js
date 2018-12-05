@@ -6,6 +6,7 @@ export const MASK = 'MASK'
 // drag and drop types
 export const DND_MASK = 'DND_MASK'
 export const DND_IMAGE = 'DND_IMAGE'
+export const DND_TIMELINE_OBJECT = 'DND_TIMELINE_OBJECT'
 
 // drag and drop targets
 export const DND_TARGET_OBJ = 'DND_TARGET_OBJ'

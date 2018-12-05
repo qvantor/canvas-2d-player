@@ -1,7 +1,10 @@
 import * as objConstants from 'reducers/objects/objects.constants'
+import * as constants from 'reducers/objOrder/objOrder.constants'
 import { BEFORE } from 'store/beforeMiddleware'
 import { take, fork, call } from 'redux-saga/effects'
 import { objOrderAdd, objOrderRemove } from 'reducers/objOrder/objOrder.actions'
+
+import { objCacheReorder } from '../visible'
 
 function * add () {
   while (true) {
@@ -17,7 +20,15 @@ function * remove () {
   }
 }
 
+function * reorder () {
+  while (true) {
+    yield take(constants.OBJ_ORDER_REORDER)
+    yield call(objCacheReorder)
+  }
+}
+
 export default function * () {
   yield fork(add)
+  yield fork(reorder)
   yield fork(remove)
 }

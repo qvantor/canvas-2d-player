@@ -26,8 +26,8 @@ const calcCache = (cache, newObj, frames, order) => {
       updatedCache[i] = cache[i]
     }
     updatedCache[i] = updatedCache[i].asMutable
-      ? updatedCache[i].asMutable().sort((a, b) => order.indexOf(a) > order.indexOf(b))
-      : updatedCache[i].sort((a, b) => order.indexOf(a) > order.indexOf(b))
+      ? updatedCache[i].asMutable().sort((a, b) => order.indexOf(a) - order.indexOf(b))
+      : updatedCache[i].sort((a, b) => order.indexOf(a) - order.indexOf(b))
   }
   return updatedCache
 }

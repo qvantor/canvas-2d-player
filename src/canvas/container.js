@@ -6,7 +6,7 @@ import HelperContainer from './HelperContainer'
 import createInstance from './core/createInstance'
 import components from './components'
 import { getMask } from './core/masks'
-import { getObjects, getVisible, getObjOrder } from 'sagas/selectors'
+import { getObjects, getVisible } from 'sagas/selectors'
 import { objWithParams, types, typeById } from 'utils/'
 
 import { store, frameStore } from 'store'
