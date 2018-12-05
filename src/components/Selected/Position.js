@@ -26,8 +26,8 @@ const Position = (props) => {
       formatter: 'numPercents'
     },
     { type: 'DraggableNumber', name: 'Angle', key: 'angle', step: 0.1, onChange, render: renderWithKeyFrames },
-    { type: 'Number', name: 'Top', key: 'top', onChange, render: renderWithKeyFrames },
-    { type: 'Number', name: 'Left', key: 'left', onChange, render: renderWithKeyFrames },
+    { type: 'DraggableNumber', name: 'Top', key: 'top', onChange, render: renderWithKeyFrames },
+    { type: 'DraggableNumber', name: 'Left', key: 'left', onChange, render: renderWithKeyFrames },
     {
       type: 'DraggableNumber',
       key: 'scaleX',

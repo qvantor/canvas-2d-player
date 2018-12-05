@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Icon } from 'antd'
 import { getClassNames } from 'dynamic-class-list'
-import { toggleLockObj } from 'reducers/objects/objects.actions'
+import { toggleLockObj, setParams } from 'reducers/objects/objects.actions'
 
 const ControlButtons = (props) => {
   const { item } = props
   const controls = [
-    { click: () => {}, icon: 'eye', key: 'visible' },
+    { click: () => setParams(item.id, { visible: !item.params.visible }), icon: 'eye', key: 'visible' },
     { click: toggleLockObj, icon: 'lock', key: 'locked' }
   ]
   return (

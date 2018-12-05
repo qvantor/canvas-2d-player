@@ -16,7 +16,8 @@ const basePart = {
   hasBorders: true,
   hasRotatingPoint: true,
   lockMovementX: false,
-  lockMovementY: false
+  lockMovementY: false,
+  visible: true
 }
 
 export default Immutable({
