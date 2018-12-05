@@ -191,7 +191,9 @@ $rightWidth: 250px;
                 .active {
                   display: none;
                 }
-
+                .draggable-number {
+                  color: $orange;
+                }
                 .ant-input-number-sm {
                   height: 19px;
                   padding: 0;

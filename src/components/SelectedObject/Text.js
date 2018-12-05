@@ -22,7 +22,7 @@ const Text = (props) => {
     onChange,
     render: renderField
   }, {
-    type: 'Number',
+    type: 'DraggableNumber',
     name: 'Font size',
     key: 'fontSize',
     min: 0,

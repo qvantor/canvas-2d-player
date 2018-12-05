@@ -23,6 +23,7 @@ yarn.lock*
 /build/index.html
 /build*
 /build/*
+/dist
 # Editor/IDE
 .idea
 packages/api/etc/

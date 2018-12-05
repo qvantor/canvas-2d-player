@@ -10,8 +10,8 @@ const Rect = props => {
   const onChange = (e, item) => setParams(id, { [item.key]: e })
   const rectSchema = [
     { type: 'Color', name: 'Color', key: 'fill', onChange, render: renderField },
-    { type: 'Number', name: 'Width', key: 'width', onChange, render: renderField },
-    { type: 'Number', name: 'Height', key: 'height', onChange, render: renderField }]
+    { type: 'DraggableNumber', name: 'Width', key: 'width', onChange, render: renderField },
+    { type: 'DraggableNumber', name: 'Height', key: 'height', onChange, render: renderField }]
 
   return (<FormGenerator schema={rectSchema} values={params} />)
 }

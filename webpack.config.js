@@ -17,7 +17,7 @@ const extractSass = new ExtractTextPlugin({
 })
 
 const config = {
-  devtool: 'cheap-eval-source-map',
+  devtool: prod ? false : 'cheap-eval-source-map',
   entry: ['@babel/polyfill', `${entry}index.js`],
   output: {
     path: path.join(__dirname, output),
@@ -39,12 +39,13 @@ const config = {
       {
         test: /\.scss|.css$/,
         use: extractSass.extract({
-          use: [{
-            loader: 'css-loader',
-            options: { minimize: prod }
-          }, {
-            loader: 'sass-loader'
-          }
+          use: [
+            {
+              loader: 'css-loader',
+              options: { minimize: prod }
+            }, {
+              loader: 'sass-loader'
+            }
           ],
           fallback: 'style-loader'
         })
