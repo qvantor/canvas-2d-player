@@ -6,7 +6,7 @@ import HelperContainer from './HelperContainer'
 import createInstance from './core/createInstance'
 import components from './components'
 import { getMask } from './core/masks'
-import { getObjects, getVisible } from 'sagas/selectors'
+import { getObjects, getVisibleCache } from 'sagas/selectors'
 import { objWithParams, types, typeById } from 'utils/'
 
 import { store, frameStore } from 'store'
@@ -56,7 +56,9 @@ class Canvas extends HelperContainer {
 
   renderCurrentFrame () {
     const frame = frameStore.getState()
+    const cache = getVisibleCache(store.getState())
     this._renderFrame(frame)
+    if (cache[frame]) this.setOrder(cache[frame])
     this.renderer.render()
   }
 
@@ -76,7 +78,7 @@ class Canvas extends HelperContainer {
 
   _renderFrame (frame) {
     const state = store.getState()
-    const { cache } = getVisible(state)
+    const cache = getVisibleCache(state)
     const visible = cache[frame]
     if (!visible) return
 

@@ -23,6 +23,8 @@ const ControlButtons = (props) => {
   )
 }
 
-ControlButtons.propTypes = {}
+ControlButtons.propTypes = {
+  item: PropTypes.object.isRequired
+}
 
 export default ControlButtons

@@ -14,9 +14,9 @@ class VisibleLine extends React.Component {
   }
 
   render () {
-    const { scale, item, visible } = this.props
+    const { scale, id, visible } = this.props
     const { parent } = this.state
-    const line = visible[item.id] || [0, 0]
+    const line = visible[id] || [0, 0]
     const width = scale(line[1]) - scale(line[0])
     const left = scale(line[0])
     const domain = scale.domain()
@@ -25,13 +25,13 @@ class VisibleLine extends React.Component {
         {domain[0] <= line[0] && <div
           ref={el => select(el).call(drag().on('drag', () => {
             const value = scale.invert(mouse(parent || this.refs.parent)[0])
-            setVisible(item.id, [value, line[1]])
+            setVisible(id, [value, line[1]])
           }))}
           className='handle handle-left' />}
         {domain[1] >= line[1] && <div
           ref={el => select(el).call(drag().on('drag', () => {
             const value = scale.invert(mouse(parent || this.refs.parent)[0])
-            setVisible(item.id, [line[0], value])
+            setVisible(id, [line[0], value])
           }))}
           className='handle handle-right' />}
       </div>
@@ -40,7 +40,7 @@ class VisibleLine extends React.Component {
 }
 
 VisibleLine.propTypes = {
-  item: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
   visible: PropTypes.object.isRequired,
   scale: PropTypes.func.isRequired
 }

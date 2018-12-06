@@ -15,5 +15,6 @@ export default Immutable({
     type: null,
     target: null,
     data: null
-  }
+  },
+  dragEnter: null
 })

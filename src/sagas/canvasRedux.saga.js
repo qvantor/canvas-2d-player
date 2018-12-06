@@ -12,7 +12,8 @@ export default function * () {
       [constants.OBJ_PROPS_SETTED]: take(constants.OBJ_PROPS_SETTED),
       [constants.OBJ_KEYFRAME_TIME_SET]: take(constants.OBJ_KEYFRAME_TIME_SET),
 
-      [visibleConstants.VISIBLE_FRAMES_UPDATED]: take(visibleConstants.VISIBLE_FRAMES_UPDATED)
+      [visibleConstants.VISIBLE_FRAMES_UPDATED]: take(visibleConstants.VISIBLE_FRAMES_UPDATED),
+      [visibleConstants.VISIBLE_FRAMES_CACHE_UPDATED]: take(visibleConstants.VISIBLE_FRAMES_CACHE_UPDATED)
     })
     yield call([canvas, canvas.renderCurrentFrame])
   }

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, Icon } from 'antd'
+import { Icon } from 'antd'
 import { nextFrame, prevFrame } from 'reducers/objects/objects.actions'
 
 const KeyframesControl = (props) => {
@@ -14,6 +14,8 @@ const KeyframesControl = (props) => {
   )
 }
 
-KeyframesControl.propTypes = {}
+KeyframesControl.propTypes = {
+  keyframes: PropTypes.object
+}
 
 export default KeyframesControl
