@@ -24,9 +24,9 @@ const Shadow = props => {
   }]
   const shadowParamsSchema = [
     { type: 'Color', name: 'Color', key: 'color', onChange, render: renderField },
-    { type: 'Number', name: 'Blur', key: 'blur', min: 0, onChange, render: renderField },
-    { type: 'Number', key: 'offsetX', name: 'Offset X', onChange, render: renderField },
-    { type: 'Number', key: 'offsetY', name: 'Offset Y', onChange, render: renderField }]
+    { type: 'DraggableNumber', name: 'Blur', key: 'blur', min: 0, onChange, render: renderField },
+    { type: 'DraggableNumber', key: 'offsetX', name: 'Offset X', onChange, render: renderField },
+    { type: 'DraggableNumber', key: 'offsetY', name: 'Offset Y', onChange, render: renderField }]
 
   return (
     <div>

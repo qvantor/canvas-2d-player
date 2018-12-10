@@ -24,8 +24,10 @@ export default function control (state = Model, { type, payload }) {
 
     case constants.CONTROL_DRAG_STARTED:
       return state.merge({ drag: { dragging: true, type: payload.type, target: payload.target, data: payload.data } })
+    case constants.CONTROL_DRAG_ENTER:
+      return state.merge({ dragEnter: payload })
     case constants.CONTROL_DRAG_ENDED:
-      return state.merge({ drag: { dragging: false, type: null, target: null, data: null } })
+      return state.merge({ drag: { dragging: false, type: null, target: null, data: null }, dragEnter: null })
 
     case constants.CONTROL_SET_COLORS:
       return state.merge({ colors: payload })

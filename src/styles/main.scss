@@ -7,39 +7,40 @@
 @import "masks-explorer";
 @import "objects-creator";
 @import "selected-params";
-@import "timeline-container";
 @import "keyframes";
 @import "context-menu";
 @import "images-manager";
 @import "app-colors";
 @import "timeline";
+@import "top-menu";
 @import "ui/collapse";
 @import "ui/tabs";
 @import "ui/popover";
 @import "ui/color-picker";
+@import "ui/draggable-number";
 
 .main-layout {
   .left-menu {
     position: fixed;
     width: 50px;
-    height: 100vh;
+    height: calc(100vh - #{$topMenuHeight});
   }
   .canvas-timeline {
-    width: calc(100% - 360px);
+    width: calc(100% - 370px);
     position: fixed;
     left: 50px;
+
+    .canvas {
+      @include transparentBg();
+      height: calc(60vh - #{$topMenuHeight});
+    }
   }
   .right-menu {
     position: fixed;
     right: 0;
     width: 320px;
-    height: 100vh;
+    height: calc(100vh - #{$topMenuHeight});
   }
-}
-
-div.canvas {
-  @include transparentBg();
-  height: 60vh;
 }
 
 .bg-clouds {

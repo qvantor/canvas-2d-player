@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Number from './Number'
+import DraggableNumber from './DraggableNumber'
 import Color from './Color'
 import Select from './Select'
 import Checkbox from './Checkbox'
@@ -9,7 +10,7 @@ import { getClassNames } from 'dynamic-class-list'
 
 const InputGenerator = (props) => {
   const { item, className, value } = props
-  const types = { Number, Color, Select, Checkbox }
+  const types = { Number, Color, Select, Checkbox, DraggableNumber }
   const Type = types[item.type]
   const field = (<Type item={item} value={value} />)
   return (

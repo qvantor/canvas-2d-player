@@ -24,18 +24,19 @@ const TransformParams = (props) => {
 
   const positionSchema = [
     {
-      type: 'Number',
+      type: 'DraggableNumber',
       key: 'opacity',
       name: 'Opacity',
-      step: 0.1,
+      step: 0.01,
       min: 0,
       max: 1,
       onChange,
+      formatter: 'numPercents',
       render: renderTimelineWithKeyframes,
       keyframeClick
     },
     {
-      type: 'Number',
+      type: 'DraggableNumber',
       name: 'Angle',
       key: 'angle',
       step: 0.1,
@@ -44,7 +45,7 @@ const TransformParams = (props) => {
       keyframeClick
     },
     {
-      type: 'Number',
+      type: 'DraggableNumber',
       name: 'Top',
       key: 'top',
       onChange,
@@ -52,7 +53,7 @@ const TransformParams = (props) => {
       keyframeClick
     },
     {
-      type: 'Number',
+      type: 'DraggableNumber',
       name: 'Left',
       key: 'left',
       onChange,
@@ -60,19 +61,21 @@ const TransformParams = (props) => {
       keyframeClick
     },
     {
-      type: 'Number',
+      type: 'DraggableNumber',
       key: 'scaleX',
       name: 'Scale X',
-      step: 0.1,
+      step: 0.01,
+      formatter: 'numPercents',
       onChange,
       render: renderTimelineWithKeyframes,
       keyframeClick
     },
     {
-      type: 'Number',
+      type: 'DraggableNumber',
       key: 'scaleY',
       name: 'Scale Y',
-      step: 0.1,
+      step: 0.01,
+      formatter: 'numPercents',
       onChange,
       render: renderTimelineWithKeyframes,
       keyframeClick

@@ -44,6 +44,12 @@ class KeyFrames extends React.Component {
   }
 }
 
-KeyFrames.propTypes = {}
+KeyFrames.propTypes = {
+  id: PropTypes.string.isRequired,
+  schemaKey: PropTypes.string.isRequired,
+  width: PropTypes.number.isRequired,
+  scale: PropTypes.func.isRequired,
+  keyframes: PropTypes.object
+}
 
 export default KeyFrames

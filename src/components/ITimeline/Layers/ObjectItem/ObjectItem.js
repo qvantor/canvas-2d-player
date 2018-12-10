@@ -6,22 +6,27 @@ import ControlButtons from './ControlButtons'
 import VisibleLine from './VisibleLine'
 import ObjectName from './ObjectName'
 import ObjectParams from './ObjectParams'
+import ObjectDND from './ObjectDND'
+import DnDEnter from './DnDEnter'
 
 const ObjectItem = (props) => {
   const { item, index, scale, rightWidth, width, open } = props
   return (
-    <div className={getClassNames('object', { open })}>
-      <div className='object-line' style={{ width }}>
-        <div className='object-line-left' style={{ width: rightWidth }}>
-          <ControlButtons item={item} />
-          <ObjectName item={item} index={index} />
+    <ObjectDND id={item.id} index={index}>
+      <div className={getClassNames('object', { open })}>
+        <div className='object-line' style={{ width }}>
+          <div className='object-line-left' style={{ width: rightWidth }}>
+            <ControlButtons item={item} />
+            <ObjectName item={item} index={index} />
+          </div>
+          <div className='object-line-right'>
+            <VisibleLine scale={scale} id={item.id} />
+          </div>
         </div>
-        <div className='object-line-right'>
-          <VisibleLine scale={scale} item={item} />
-        </div>
+        {open && <ObjectParams item={item} rightWidth={rightWidth} width={width} scale={scale} />}
+        <DnDEnter id={item.id} />
       </div>
-      {open && <ObjectParams item={item} rightWidth={rightWidth} width={width} scale={scale} />}
-    </div>
+    </ObjectDND>
   )
 }
 

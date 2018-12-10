@@ -8,6 +8,8 @@ export default function visible (state = Model, { type, payload }) {
         keys: state.keys.merge({ [payload.id]: payload.keys }),
         cache: payload.cache
       })
+    case constants.VISIBLE_FRAMES_CACHE_UPDATED:
+      return state.merge({ cache: payload })
     case constants.VISIBLE_FRAMES_REMOVED:
       return state.merge({
         keys: state.keys.without(payload.id),

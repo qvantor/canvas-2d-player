@@ -11,6 +11,7 @@ export const getObjTypesList = ({ objTypes }) => objTypes.list
 export const getImages = ({ images }) => images
 
 export const getVisible = ({ visible }) => visible
+export const getVisibleCache = ({ visible }) => visible.cache
 
 export const getMasks = ({ masks }) => masks
 

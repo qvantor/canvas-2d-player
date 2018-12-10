@@ -15,6 +15,7 @@ export const dragStart = (type, target, data) => dispatch({
   type: constants.CONTROL_DRAG_STARTED,
   payload: { type, target, data }
 })
+export const dragEnter = payload => dispatch({ type: constants.CONTROL_DRAG_ENTER, payload })
 export const dragEnd = () => dispatch({ type: constants.CONTROL_DRAG_ENDED })
 
 export const setColors = colors => dispatch({ type: constants.CONTROL_SET_COLORS, payload: colors })
