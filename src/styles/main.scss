@@ -14,6 +14,7 @@
 @import "timeline";
 @import "top-menu";
 @import "settings-modal";
+@import "canvas-overlay";
 @import "ui/collapse";
 @import "ui/tabs";
 @import "ui/popover";
@@ -38,11 +39,6 @@ body {
     width: calc(100% - 370px);
     position: fixed;
     left: 50px;
-
-    .canvas {
-      @include transparentBg();
-      height: calc(60vh - #{$topMenuHeight});
-    }
   }
 
   .right-menu {

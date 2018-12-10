@@ -1,0 +1,14 @@
+.canvas-scale-container {
+  height: calc(60vh - #{$topMenuHeight});
+  background: $asbestos;
+
+  .unscaled-canvas {
+    background: #fff;
+    @include transparentBg();
+
+    max-height: 100%;
+
+    .canvas {
+    }
+  }
+}

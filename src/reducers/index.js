@@ -8,6 +8,7 @@ import masks from './masks/masks.reducer'
 import images from './images/images.reducer'
 import visible from './visible/visible.reducer'
 import objOrder from './objOrder/objOrder.reducer'
+import project from './project/project.reducer'
 
 export default combineReducers({
   objects,
@@ -17,5 +18,6 @@ export default combineReducers({
   masks,
   images,
   visible,
-  objOrder
+  objOrder,
+  project
 })

@@ -8,7 +8,8 @@
   border: 1px solid $black;
   font-size: 13px;
   color: $white;
-  height: 60vh;
+  max-height: 60vh;
+  min-height: 20vh;
 
   .settings-header {
     color: $clouds;
