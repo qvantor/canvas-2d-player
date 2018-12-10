@@ -6,6 +6,7 @@ import Events from './Events'
 import LeftMenu from '../LeftMenu/LeftMenu'
 import RightMenu from '../RightMenu/RightMenu'
 import TopMenu from '../TopMenu/TopMenu'
+import Settings from '../Settings/Settings'
 
 class Main extends React.Component {
   state = { cwidth: null, cheight: null }
@@ -32,6 +33,7 @@ class Main extends React.Component {
           </div>
           <RightMenu />
         </div>
+        <Settings />
       </div>
     )
   }

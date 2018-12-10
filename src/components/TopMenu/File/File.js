@@ -2,7 +2,10 @@ import React from 'react'
 
 import { Menu, Dropdown } from 'antd'
 
-const File = (props) => {
+import { openSettings } from 'reducers/control/control.actions'
+import { menuViews } from 'utils'
+
+const File = () => {
   const menu = (
     <Menu>
       <Menu.Item>
@@ -12,7 +15,7 @@ const File = (props) => {
         Save project
       </Menu.Item>
       <Menu.Divider />
-      <Menu.Item>
+      <Menu.Item onClick={() => openSettings(menuViews.PROJECT_SETTINGS)}>
         Settings
       </Menu.Item>
     </Menu>

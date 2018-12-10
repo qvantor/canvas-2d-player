@@ -1,0 +1,33 @@
+.settings-modal {
+  position: relative;
+  z-index: 10;
+  top: 10vh;
+  margin: 0 auto;
+  width: 560px;
+  background: $darkGray;
+  border: 1px solid $black;
+  font-size: 13px;
+  color: $white;
+  height: 60vh;
+
+  .settings-header {
+    color: $clouds;
+    text-align: center;
+    height: 20px;
+    line-height: 18px;
+    padding: 0 10px;
+    border-bottom: 1px solid $black;
+
+    .right-toolbar {
+      display: inline-block;
+
+      i {
+        margin-top: 3px;
+      }
+    }
+  }
+
+  .settings-body {
+    padding: 5px 10px;
+  }
+}

@@ -1,11 +1,12 @@
 import * as types from 'types'
+import * as menuViews from 'menuViews'
 import calcParams from './calcParams'
 import connect from './connect'
 import curves from './curves'
 
 import { findObj } from 'reducers/objects/objects.utils'
 
-export { types, calcParams, connect, curves }
+export { types, calcParams, connect, curves, menuViews }
 
 export const id = type => {
   const id = '_' + Math.random().toString(36).substr(2, 9)
