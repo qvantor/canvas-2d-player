@@ -74,7 +74,9 @@ const config = {
 
 if (prod) {
   config.plugins.unshift(new CleanWebpackPlugin(['dist']))
-  config.plugins.push(new UglifyJsPlugin())
+  config.plugins.push(new UglifyJsPlugin({
+    extractComments: 'all'
+  }))
 }
 
 module.exports = config

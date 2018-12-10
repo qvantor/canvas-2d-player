@@ -30,8 +30,6 @@ function * rootSaga () {
     fork(play),
     fork(canvasRedux),
 
-    fork(visibleSet),
-
     fork(setVisibleFrame),
     fork(setKeyframe),
     fork(prevKeyframe),
@@ -50,7 +48,8 @@ function * rootSaga () {
     fork(removeImgObject),
     fork(removeImage),
 
-    fork(objOrderSet)
+    fork(objOrderSet),
+    fork(visibleSet)
   ])
 }
 
