@@ -1,6 +1,7 @@
 .canvas-scale-container {
   height: calc(60vh - #{$topMenuHeight});
   background: $asbestos;
+  position: relative;
 
   .unscaled-canvas {
     background: #fff;
@@ -36,6 +37,13 @@
           color: $clouds;
         }
       }
+    }
+
+    .canvas-size {
+      position: absolute;
+      right: 3px;
+      bottom: 0px;
+      font-size: 11px;
     }
   }
 }

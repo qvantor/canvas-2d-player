@@ -16,3 +16,5 @@ export const getVisibleCache = ({ visible }) => visible.cache
 export const getMasks = ({ masks }) => masks
 
 export const getObjOrder = ({ objOrder }) => objOrder
+
+export const getControlSettings = ({ control }) => control.settings

@@ -19,5 +19,5 @@ export default combineReducers({
   images,
   visible,
   objOrder,
-  project
+  project,
 })

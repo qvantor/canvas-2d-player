@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Icon } from 'antd'
 import { closeSettings } from 'reducers/control/control.actions'
 import { menuViews } from 'utils'
-import ProjectSettings from './ProjectSettings'
+import ProjectSettings from './ProjectSettings/ProjectSettings'
 
 const Settings = (props) => {
   const { open, view } = props
@@ -22,7 +22,7 @@ const Settings = (props) => {
         </div>
       </div>
       <div className='settings-body'>
-        <Page />
+        {Page && <Page />}
       </div>
     </div>
   )

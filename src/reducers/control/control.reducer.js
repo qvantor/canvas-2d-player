@@ -30,9 +30,11 @@ export default function control (state = Model, { type, payload }) {
       return state.merge({ drag: { dragging: false, type: null, target: null, data: null }, dragEnter: null })
 
     case constants.CONTROL_OPEN_SETTINGS:
-      return state.merge({ settings: { open: true, view: payload } })
+      return state.merge({ settings: state.settings.merge({ open: true, view: payload }) })
+    case constants.CONTROL_SETTINGS_SETTED:
+      return state.merge({ settings: state.settings.merge(payload) })
     case constants.CONTROL_CLOSE_SETTINGS:
-      return state.merge({ settings: { open: false } })
+      return state.merge({ settings: state.settings.merge({ open: false }) })
 
     case constants.CONTROL_SET_COLORS:
       return state.merge({ colors: payload })
