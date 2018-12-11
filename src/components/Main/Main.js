@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Canvas from '../Canvas/Canvas'
+import CanvasScaled from '../CanvasScaled/CanvasScaled'
 import Timeline from '../ITimeline/ITimeline'
 import Events from './Events'
 import LeftMenu from '../LeftMenu/LeftMenu'
@@ -27,7 +27,7 @@ class Main extends React.Component {
           <LeftMenu />
           <div className='canvas-timeline'>
             <div ref='canvasContainer'>
-              <Canvas width={cwidth} height={cheight} />
+              <CanvasScaled width={cwidth} height={cheight} />
             </div>
             <Timeline />
           </div>

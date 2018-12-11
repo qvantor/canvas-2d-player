@@ -36,6 +36,9 @@ export default function control (state = Model, { type, payload }) {
 
     case constants.CONTROL_SET_COLORS:
       return state.merge({ colors: payload })
+
+    case constants.CONTROL_VIEW_SCALE_SETTED:
+      return state.merge({ viewScale: payload })
     default:
       return state
   }

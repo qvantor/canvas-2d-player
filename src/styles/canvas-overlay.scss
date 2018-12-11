@@ -7,8 +7,60 @@
     @include transparentBg();
 
     max-height: 100%;
+  }
 
-    .canvas {
+  .canvas-controls {
+    .scale-selector {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      .ant-select {
+        font-size: 13px;
+        color: $clouds;
+
+        .ant-select-selection {
+          background: $darkGray;
+          height: 20px;
+          border: none;
+          border-bottom: 1px solid $dark;
+          border-left: 1px solid $dark;
+          border-radius: 0;
+
+          .ant-select-selection-selected-value {
+            line-height: 20px;
+          }
+        }
+
+        .ant-select-arrow {
+          color: $clouds;
+        }
+      }
     }
+  }
+}
+
+.ant-select-dropdown.scale-selector-dropdown {
+  background: $darkGray;
+  border: 1px solid $dark;
+  border-radius: 0;
+
+  ul li {
+    color: $clouds;
+  }
+
+  .ant-select-dropdown-menu-item {
+    border-radius: 0;
+    padding: 2px 5px;
+    line-height: 20px;
+
+    &:hover {
+      background: lighten($darkGray, 10%);
+    }
+  }
+
+  .ant-select-dropdown-menu-item-selected {
+    border-radius: 0;
+    background: transparentize($river, 0.7);
   }
 }

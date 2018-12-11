@@ -22,3 +22,5 @@ export const setColors = colors => dispatch({ type: constants.CONTROL_SET_COLORS
 
 export const openSettings = view => dispatch({ type: constants.CONTROL_OPEN_SETTINGS, payload: view })
 export const closeSettings = () => dispatch({ type: constants.CONTROL_CLOSE_SETTINGS })
+
+export const viewScaleSet = (scale) => dispatch({ type: constants.CONTROL_VIEW_SCALE_SETTED, payload: scale })
