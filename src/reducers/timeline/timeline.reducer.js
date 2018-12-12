@@ -9,6 +9,8 @@ export default function timeline (state = Model, { type, payload }) {
       return state.merge({ play: false })
     case constants.TIMELINE_SELECTION_SETTED:
       return state.merge({ selection: payload })
+    case constants.TIMELINE_DURATION_SETTED:
+      return state.merge({ frames: payload })
     default:
       return state
   }
