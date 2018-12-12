@@ -16,5 +16,14 @@ export default Immutable({
     target: null,
     data: null
   },
-  dragEnter: null
+  dragEnter: null,
+  settings: {
+    open: false,
+    view: null,
+
+    aspect: '16:9',
+    resolution: 'Small',
+    orientation: true
+  },
+  viewScale: null
 })

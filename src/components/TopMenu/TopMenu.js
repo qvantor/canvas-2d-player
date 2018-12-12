@@ -1,13 +1,13 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-const TopMenu = (props) => {
+import File from './File/File'
+
+const TopMenu = () => {
   return (
-    <div className='top-menu border-bottom border-dark' />
+    <div className='top-menu border-bottom border-dark'>
+      <File />
+      <span className='menu-item'>Edit</span>
+    </div>
   )
 }
-
-TopMenu.propTypes = {}
-TopMenu.defaultProps = {}
-
 export default TopMenu

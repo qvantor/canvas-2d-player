@@ -19,3 +19,9 @@ export const dragEnter = payload => dispatch({ type: constants.CONTROL_DRAG_ENTE
 export const dragEnd = () => dispatch({ type: constants.CONTROL_DRAG_ENDED })
 
 export const setColors = colors => dispatch({ type: constants.CONTROL_SET_COLORS, payload: colors })
+
+export const openSettings = view => dispatch({ type: constants.CONTROL_OPEN_SETTINGS, payload: view })
+export const setSettings = payload => dispatch({ type: constants.CONTROL_SETTINGS_SETTED, payload })
+export const closeSettings = () => dispatch({ type: constants.CONTROL_CLOSE_SETTINGS })
+
+export const viewScaleSet = (scale) => dispatch({ type: constants.CONTROL_VIEW_SCALE_SETTED, payload: scale })

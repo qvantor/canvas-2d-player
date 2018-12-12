@@ -13,11 +13,20 @@
 @import "app-colors";
 @import "timeline";
 @import "top-menu";
+@import "settings-modal";
+@import "canvas-overlay";
 @import "ui/collapse";
 @import "ui/tabs";
 @import "ui/popover";
 @import "ui/color-picker";
 @import "ui/draggable-number";
+
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
 .main-layout {
   .left-menu {
@@ -25,16 +34,13 @@
     width: 50px;
     height: calc(100vh - #{$topMenuHeight});
   }
+
   .canvas-timeline {
     width: calc(100% - 370px);
     position: fixed;
     left: 50px;
-
-    .canvas {
-      @include transparentBg();
-      height: calc(60vh - #{$topMenuHeight});
-    }
   }
+
   .right-menu {
     position: fixed;
     right: 0;

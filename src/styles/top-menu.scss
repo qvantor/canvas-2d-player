@@ -1,3 +1,32 @@
 .top-menu {
+  background: $darkGray;
+  color: $white;
   height: $topMenuHeight;
+  line-height: $topMenuHeight - 3px;
+  padding: 0 10px;
+
+  .menu-item {
+    font-size: 13px;
+    padding: 0 7px;
+  }
+}
+
+.top-menu-dropdown {
+  .ant-dropdown-menu {
+    border-radius: 0;
+    background: $darkGray;
+  }
+
+  .ant-dropdown-menu-item {
+    font-size: 13px;
+    color: $white;
+
+    &:hover {
+      background: transparentize($river, 0.7);
+    }
+  }
+
+  .ant-dropdown-menu-item-divider {
+    background: transparentize($white, 0.8);
+  }
 }

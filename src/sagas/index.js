@@ -25,6 +25,8 @@ import removeImage from './images/removeImage.saga'
 
 import objOrderSet from './objOrder/objOrderSet.saga'
 
+import setResolution from './project/setResolution.saga'
+
 function * rootSaga () {
   yield all([
     fork(play),
@@ -49,7 +51,9 @@ function * rootSaga () {
     fork(removeImage),
 
     fork(objOrderSet),
-    fork(visibleSet)
+    fork(visibleSet),
+
+    fork(setResolution)
   ])
 }
 
