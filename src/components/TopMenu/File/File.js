@@ -6,9 +6,13 @@ import { openSettings } from 'reducers/control/control.actions'
 import { menuViews } from 'utils'
 
 const File = () => {
+  const newProject = () => {
+    localStorage.setItem('redux', '{}')
+    location.reload()
+  }
   const menu = (
     <Menu>
-      <Menu.Item>
+      <Menu.Item onClick={newProject}>
         New Project
       </Menu.Item>
       <Menu.Item>
