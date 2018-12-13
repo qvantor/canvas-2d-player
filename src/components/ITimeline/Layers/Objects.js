@@ -8,15 +8,16 @@ const Objects = (props) => {
   const { order, objects, rightWidth, scale, width, openFrames } = props
   return (
     <div className='timeline-objects border-top border-dark'>
-      {order.map((key, index) => <ObjectItem
-        key={key}
-        item={objects[key]}
-        index={index}
-        scale={scale}
-        rightWidth={rightWidth}
-        width={width}
-        open={openFrames.indexOf(key) !== -1}
-      />)}
+      {order.map((key, index) => objects[key]
+        ? <ObjectItem
+          key={key}
+          item={objects[key]}
+          index={index}
+          scale={scale}
+          rightWidth={rightWidth}
+          width={width}
+          open={openFrames.indexOf(key) !== -1} />
+        : null)}
     </div>
   )
 }

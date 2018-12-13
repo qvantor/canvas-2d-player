@@ -6,7 +6,7 @@ import { objReorder } from 'reducers/objOrder/objOrder.actions'
 import * as types from 'utils/types'
 
 const ObjectDND = (props) => {
-  const { id, children, drag } = props
+  const { id, children, drag, open } = props
 
   const onDragStart = () => dragStart(types.DND_TIMELINE_OBJECT, types.DND_TIMELINE_OBJECT, { id: id })
   const onDragEnter = () => drag.target === types.DND_TIMELINE_OBJECT && dragEnter({ id: id })
@@ -22,7 +22,7 @@ const ObjectDND = (props) => {
       onDragStart={onDragStart}
       onDragEnter={onDragEnter}
       onDragEnd={dragEnd}
-      draggable>
+      draggable={!open}>
       {children}
     </div>
   )
@@ -30,6 +30,7 @@ const ObjectDND = (props) => {
 
 ObjectDND.propTypes = {
   children: PropTypes.node.isRequired,
+  open: PropTypes.bool.isRequired,
   drag: PropTypes.object.isRequired,
   id: PropTypes.string.isRequired
 }
