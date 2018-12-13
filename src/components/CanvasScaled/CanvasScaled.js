@@ -20,7 +20,7 @@ class CanvasScaled extends React.Component {
     const originX = (width - scaledWidth) / 2
     const originY = (height - scaledHeight) / 2
 
-    let containerPadding = `${originY}px ${originX}px`
+    let containerPadding = `${originY - 1}px ${originX - 1}px` // -1 because of borders
     let overflow
     if (scaledWidth > width || scaledHeight > height) {
       containerPadding = 0

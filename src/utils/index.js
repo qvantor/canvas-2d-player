@@ -35,8 +35,7 @@ export const extractParams = target => ({
   height: target.height
 })
 
-export const objWithParams = (objId, objects, frame) => {
-  const object = findObj(objId, objects)
+export const objWithParams = (object, frame) => {
   const params = calcParams(object.keyframes, frame)
   if (Object.keys(object.keyframes).length === 0) return object
   return Object.assign({}, object, { params: Object.assign({}, object.params, params) })

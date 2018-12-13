@@ -21,7 +21,7 @@ const TimelineMain = (props) => {
       <MainHeader
         scale={croppedScale}
         width={width}
-        height={mainHeaderHeight}
+        height={height}
         rightWidth={rightWidth}
         marginY={marginY} />
       <svg
