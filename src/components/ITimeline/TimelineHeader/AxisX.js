@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 
 import { axisBottom } from 'd3-axis'
 import { select } from 'd3-selection'
@@ -20,7 +19,4 @@ AxisX.propTypes = {
   width: PropTypes.number.isRequired
 }
 
-const mapStateToProps = state => ({
-  frames: state.timeline.frames
-})
-export default connect(mapStateToProps)(AxisX)
+export default AxisX

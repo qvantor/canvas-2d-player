@@ -4,9 +4,7 @@ import * as mainStore from './'
 import { getFramesSelection } from 'sagas/selectors'
 import * as constants from 'reducers/timeline/timeline.constants'
 
-function reducer (state = 0, { type, payload }) {
-  return payload !== undefined ? payload : state
-}
+const reducer = (state = 0, { type, payload }) => payload !== undefined ? payload : state
 
 export const store = createStore(reducer, compose)
 

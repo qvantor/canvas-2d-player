@@ -10,6 +10,7 @@ const LeftMenu = () => {
       <Objects />
       <Tools />
       <AppColors />
+      <div className='version'>v0.1.1</div>
     </div>
   )
 }

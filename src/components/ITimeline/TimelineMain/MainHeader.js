@@ -11,7 +11,7 @@ import { frameStore } from 'store'
 const { setFrame } = frameStore
 
 const MainHeader = (props) => {
-  const { width, scale, rightWidth } = props
+  const { width, height, scale, rightWidth } = props
   const axis = axisBottom()
     .scale(scale)
     .tickPadding([-6])
@@ -32,12 +32,12 @@ const MainHeader = (props) => {
           select(el)
             .on('click', frameToStore(el))
             .call(drag().on('drag', frameToStore(el)))}>
-        <rect className='bg-rect' width={width} height={30} />
+        <rect className='bg-rect' width={width - rightWidth} height={30} />
         <g
           transform={`translate(0,20)`}
           className='x-axis'
           ref={el => select(el).call(axis)} />
-        <TimeIndicator scale={scale} />
+        <TimeIndicator scale={scale} height={height + 15} />
       </g>
     </svg>
   )
@@ -46,7 +46,8 @@ const MainHeader = (props) => {
 MainHeader.propTypes = {
   rightWidth: PropTypes.number.isRequired,
   scale: PropTypes.func.isRequired,
-  width: PropTypes.number.isRequired
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired
 }
 
 export default MainHeader

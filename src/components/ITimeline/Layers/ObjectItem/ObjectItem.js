@@ -12,7 +12,7 @@ import DnDEnter from './DnDEnter'
 const ObjectItem = (props) => {
   const { item, index, scale, rightWidth, width, open } = props
   return (
-    <ObjectDND id={item.id} index={index}>
+    <ObjectDND id={item.id} index={index} open={open}>
       <div className={getClassNames('object', { open })}>
         <div className='object-line' style={{ width }}>
           <div className='object-line-left' style={{ width: rightWidth }}>

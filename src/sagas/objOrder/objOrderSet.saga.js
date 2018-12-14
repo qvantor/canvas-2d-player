@@ -1,7 +1,6 @@
 import Immutable from 'seamless-immutable'
 import * as objConstants from 'reducers/objects/objects.constants'
 import * as constants from 'reducers/objOrder/objOrder.constants'
-import { BEFORE } from 'store/beforeMiddleware'
 import { take, fork, call, select, put } from 'redux-saga/effects'
 import { objOrderAdd, objOrderRemove } from 'reducers/objOrder/objOrder.actions'
 import { getObjOrder } from '../selectors'
@@ -17,7 +16,7 @@ function * add () {
 
 function * remove () {
   while (true) {
-    const { payload } = yield take(BEFORE + objConstants.REMOVE_OBJ)
+    const { payload } = yield take(objConstants.REMOVE_OBJ)
     yield call(objOrderRemove, payload)
   }
 }

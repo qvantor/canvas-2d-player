@@ -19,7 +19,7 @@ class TimeIndicator extends Component {
   }
 
   render () {
-    const { scale } = this.props
+    const { scale, height } = this.props
     const frame = frameStore.getState()
     const x = scale(frame)
 
@@ -36,14 +36,15 @@ class TimeIndicator extends Component {
           x='-0.5'
           y='0'
           width='1'
-          height='1000' />
+          height={height} />
       </g>
     )
   }
 }
 
 TimeIndicator.propTypes = {
-  scale: PropTypes.func.isRequired
+  scale: PropTypes.func.isRequired,
+  height: PropTypes.number.isRequired
 }
 
 export default TimeIndicator

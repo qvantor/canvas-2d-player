@@ -91,10 +91,10 @@ class Canvas extends HelperContainer {
         continue
       }
       allVisibleIds.splice(visibleIndex, 1)
-      this.scene[objId].update(objWithParams(objId, objects, frame))
+      this.scene[objId].update(objWithParams(objects[objId], frame))
     }
     for (let objId of allVisibleIds) {
-      this.addObj(objWithParams(objId, objects, frame))
+      this.addObj(objWithParams(objects[objId], frame))
       this.setOrder(visible)
     }
   }
