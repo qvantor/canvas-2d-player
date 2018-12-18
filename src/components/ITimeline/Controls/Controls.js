@@ -14,6 +14,7 @@ const Controls = (props) => {
       <Group size='small'>
         <Button
           type='primary'
+          className='play-button'
           onClick={e => playing ? pause() : play()}
           icon={playing ? 'pause-circle-o' : 'play-circle-o'} />
         <Button type='primary' icon='setting' />
