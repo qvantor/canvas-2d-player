@@ -16,8 +16,8 @@ const bench = async () => {
   const client = await page.target().createCDPSession()
 
   await page.evaluate((bench) => window.localStorage.setItem('redux', bench), bench)
-  await page.reload({ waitUntil: 'domcontentloaded' })
-  await page.waitFor(2000)
+  await page.reload({ waitUntil: 'networkidle0' })
+  await page.waitFor(100)
   await client.send('Emulation.setCPUThrottlingRate', { rate: 4 })
   await page.tracing.start({ path: 'trace.json' }, false, ['toplevel'])
   await page.click('.play-button')

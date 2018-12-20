@@ -1,7 +1,7 @@
 import * as constants from 'reducers/objects/objects.constants'
 import { call, select, take, put } from 'redux-saga/effects'
 import { findObj } from 'reducers/objects/objects.utils'
-import { id as idGen, calcParams } from 'utils/'
+import { id as idGen, calcParams, types } from 'utils/'
 import { frameStore } from 'store'
 
 // @todo maybe BEFORE middleware helps
@@ -19,7 +19,7 @@ export default function * () {
     let changes = false
     for (let key in keyframes) {
       if (params[key] !== undefined && oldParams[key] !== params[key]) {
-        const newKeyFrame = [frame, params[key], idGen()]
+        const newKeyFrame = [frame, params[key], idGen(types.KEYFRAME)]
         const sameTimeFrame = keyframes[key].keys.find((item) => item[0] === newKeyFrame[0])
         if (sameTimeFrame) {
           newKeyFrames[key] = {
