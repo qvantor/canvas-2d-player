@@ -7,13 +7,16 @@ $rightWidth: 250px;
   .bg-rect {
     fill: rgba(0, 0, 0, 0);
   }
+
   .timeline-header {
     .x-axis {
       color: $clouds;
+
       .domain {
         display: none;
       }
     }
+
     .brush {
       .selection {
         stroke: none;
@@ -22,32 +25,40 @@ $rightWidth: 250px;
       }
     }
   }
+
   .timeline-main-header {
     overflow: visible;
+
     .x-axis {
       color: $clouds;
       font-weight: bold;
+
       .domain, .tick line {
         display: none;
       }
     }
+
     .timeline-indicator {
       fill: $alizarin;
     }
   }
+
   .timeline-main {
     .timeline-grid {
       color: $asbestos;
+
       .domain, .tick text {
         display: none;
       }
     }
   }
+
   .timeline-controls {
     position: absolute;
     width: $rightWidth;
     height: 60px;
     background: $darkGray;
+    padding: 10px 5px;
   }
 
   .timeline-layers {
@@ -59,6 +70,7 @@ $rightWidth: 250px;
     .timeline-objects {
       .object {
         position: relative;
+
         .object-line {
           border-bottom: 1px solid $asbestos;
           line-height: 1;
@@ -66,6 +78,7 @@ $rightWidth: 250px;
           .object-line-left, .object-line-right {
             display: inline-block;
           }
+
           .object-line-left {
             padding-left: 5px;
           }
@@ -73,6 +86,7 @@ $rightWidth: 250px;
           .control-buttons {
             display: inline-block;
             margin-right: 5px;
+
             .control {
               display: inline-block;
               border: 1px solid transparentize(#000, 0.6);
@@ -87,11 +101,13 @@ $rightWidth: 250px;
                 font-size: 10px;
                 margin: 2px;
               }
+
               &.active i {
                 display: block;
               }
             }
           }
+
           .name {
             display: inline-block;
             font-size: 14px;
@@ -103,16 +119,19 @@ $rightWidth: 250px;
               cursor: pointer;
               vertical-align: 2px;
             }
+
             .index {
               font-weight: bold;
               display: inline-block;
               width: 35px;
             }
+
             .editor {
               width: 105px;
               display: inline-block;
               overflow: hidden;
               white-space: nowrap;
+
               input {
                 background: none;
                 border: none;
@@ -124,6 +143,7 @@ $rightWidth: 250px;
               }
             }
           }
+
           .visible-line {
             position: relative;
             border-radius: 3px;
@@ -153,11 +173,13 @@ $rightWidth: 250px;
               background: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 80%, rgba(216, 216, 216, 1) 100%);
               background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 80%, rgba(216, 216, 216, 1) 100%);
             }
+
             .handle-left {
               border-bottom-left-radius: 3px;
               border-top-left-radius: 3px;
               left: 0;
             }
+
             .handle-right {
               border-bottom-right-radius: 3px;
               border-top-right-radius: 3px;
@@ -165,11 +187,13 @@ $rightWidth: 250px;
             }
           }
         }
+
         .object-params {
           .value-line {
             height: 19px;
             line-height: 1;
             border-bottom: 1px solid transparentize($asbestos, 0.5);
+
             .value-line-left {
               padding-left: 5px;
               display: inline-block;
@@ -179,6 +203,7 @@ $rightWidth: 250px;
                 width: 90px;
                 font-size: 12px;
               }
+
               .generated-form-field {
                 width: 105px;
                 display: inline-block;
@@ -187,18 +212,23 @@ $rightWidth: 250px;
                 .deactive {
                   display: block;
                 }
+
                 .active {
                   display: none;
                 }
+
                 .draggable-number {
                   color: $orange;
                 }
+
                 .ant-input-number-sm {
                   height: 19px;
                   padding: 0;
+
                   .ant-input-number-handler-wrap {
                     display: none;
                   }
+
                   input {
                     height: 19px;
                     padding: 0;
@@ -214,6 +244,7 @@ $rightWidth: 250px;
                 }
               }
             }
+
             .value-line-right {
               position: relative;
               display: inline-block;
@@ -231,6 +262,7 @@ $rightWidth: 250px;
                 }
               }
             }
+
             &.line-active {
               .clock-button {
                 opacity: 0.7;
@@ -238,11 +270,13 @@ $rightWidth: 250px;
             }
           }
         }
+
         &.open {
           .name .open-button i.anticon {
             @include rotate(90deg);
           }
         }
+
         .drag-enter-above {
           height: 1px;
           background: transparentize($white, 0.5);

@@ -2,6 +2,7 @@
 export const IMAGE = 'IMAGE'
 export const OBJECT = 'OBJECT'
 export const MASK = 'MASK'
+export const KEYFRAME = 'KEYFRAME'
 
 // drag and drop types
 export const DND_MASK = 'DND_MASK'
